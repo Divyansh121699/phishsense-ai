@@ -1,0 +1,6 @@
+{
+    "source_file": "crypto_investment_scam_coinbase_v4_20250714_192424_643748.json",
+    "llm_label": "benign",
+    "true_label": "phishing",
+    "explanation": "label: benign\nexplanation: the email is promoting an investment opportunity from coinbase, a well-known cryptocurrency exchange platform. there are no urgent threats or requests for sensitive information. while the link provided is labeled as a \"fake link,\" the content of the email itself does not exhibit clear red flags typically associated with phishing attempts."
+}

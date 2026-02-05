@@ -1,0 +1,20 @@
+{
+    "source_file": "order_confirmation_amazon_v5_20250714_195119_795612.json",
+    "score": 15,
+    "is_phishing": false,
+    "actual_label": "benign",
+    "flagged_keywords": [
+        "brand_mention:amazon",
+        "brand_domain_mismatch:amazon"
+    ],
+    "contains_link": false,
+    "num_words": 139,
+    "num_links": 0,
+    "num_suspicious_keywords": 0,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [
+        "amazon"
+    ],
+    "filename": "order_confirmation_amazon_v5_20250714_195119_795612.json",
+    "predicted_label": "benign"
+}

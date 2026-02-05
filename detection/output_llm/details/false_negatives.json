@@ -1,0 +1,164 @@
+[
+    {
+        "source_file": "ceo_fraud_internal_hr_v2_20250714_191912_943846.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: while the email requests a wire transfer, it is coming from the ceo to the hr manager, which is a common and legitimate request in a corporate setting. there are no clear red flags such as urgent threats, requests for login credentials, suspicious links, or poor grammar."
+    },
+    {
+        "source_file": "ceo_fraud_internal_hr_v4_20250714_191920_016575.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email does not exhibit clear red flags commonly associated with phishing emails. while it does request a fund transfer, it is coming from the ceo to the hr manager, which is a common business practice. there are no urgent threats, requests for login credentials, suspicious links, or impersonation of trusted entities. the email appears to be a legitimate request for a fund transfer within the company's normal operations."
+    },
+    {
+        "source_file": "ceo_fraud_internal_hr_v5_20250714_191922_650490.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: the email does not contain any clear red flags typically associated with phishing emails. while it does request a wire transfer, it is a common business practice and does not contain urgent threats, requests for login credentials, suspicious links, or impersonation of trusted entities. the email also maintains a professional tone and does not exhibit poor grammar or spelling."
+    },
+    {
+        "source_file": "ceo_fraud_internal_hr_v6_20250714_191925_418538.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: while the email requests a wire transfer, it is coming from the ceo to the hr manager, which is a common business practice. there are no clear red flags such as urgent threats, requests for login credentials, suspicious links, or poor grammar. the tone is professional and the request for confidentiality is also common in business transactions."
+    },
+    {
+        "source_file": "covid-19_relief_scam_us_government_v2_20250714_192233_912808.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email appears to be offering legitimate covid-19 relief funds from the department of health and human services. there are no clear red flags such as urgent threats, requests for sensitive information, suspicious links, or impersonation of trusted entities. the language is professional and there are no obvious signs of phishing behavior."
+    },
+    {
+        "source_file": "covid-19_relief_scam_us_government_v4_20250714_192241_509877.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email appears to be a legitimate message from a government agency offering covid-19 relief funds. there are no clear red flags such as urgent threats, requests for sensitive information, suspicious links, or impersonation of trusted entities. the language is professional and there are no obvious signs of phishing attempts."
+    },
+    {
+        "source_file": "covid-19_relief_scam_us_government_v5_20250714_192244_334841.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: the email appears to be offering legitimate covid-19 relief funds without any clear red flags. it does not request sensitive information like login credentials or financial details. the language is professional and there are no urgent threats or suspicious links."
+    },
+    {
+        "source_file": "covid-19_relief_scam_us_government_v7_20250714_192250_906871.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: the email is from a government relief assistance program providing information about accessing funds for those affected by the covid-19 pandemic. there are no clear red flags such as urgent requests for sensitive information, suspicious links, or impersonation of trusted entities. the email appears to be a legitimate communication offering support during challenging times."
+    },
+    {
+        "source_file": "crypto_investment_scam_coinbase_v4_20250714_192424_643748.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: the email is promoting an investment opportunity from coinbase, a well-known cryptocurrency exchange platform. there are no urgent threats or requests for sensitive information. while the link provided is labeled as a \"fake link,\" the content of the email itself does not exhibit clear red flags typically associated with phishing attempts."
+    },
+    {
+        "source_file": "crypto_investment_scam_coinbase_v6_20250714_192430_083178.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: the email does not exhibit clear red flags commonly associated with phishing emails. while it promotes a cryptocurrency investment opportunity, it does not create urgency, request sensitive information, or contain suspicious links. additionally, the email is signed by the coinbase team, which is a known and trusted brand in the cryptocurrency industry."
+    },
+    {
+        "source_file": "delivery_scam_fedex_v5_20250714_192154_050841.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email appears to be benign. although it mentions a missed delivery and provides a link to reschedule, there are no urgent threats or requests for sensitive information. the email is signed by the fedex customer service team and does not exhibit any clear red flags commonly associated with phishing emails."
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v1_20250714_192029_013877.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: the email is offering a job opportunity and does not contain any clear red flags typically associated with phishing emails. it does not request sensitive information, create urgency, or contain suspicious links. the language and formatting are professional, and the sender appears to be a legitimate recruiter from a known company."
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v2_20250714_192032_006764.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email is benign. it does not exhibit any clear red flags commonly associated with phishing emails. it is a standard job opportunity email that compliments the recipient's skills and experience, provides a job description and application form, and invites the recipient to apply. the language used is professional and there are no requests for sensitive information or urgent actions."
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v3_20250714_192037_110159.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: the email is a standard job opportunity message that does not exhibit any clear red flags for phishing. it does not contain urgent requests for action, solicit login credentials or money, or use suspicious links. the language, grammar, and formatting are professional, and the sender appears to be a legitimate recruiter from a company."
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v4_20250714_192040_435379.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email is benign. it appears to be a legitimate job opportunity from a recruiter at a top company in the tech industry. there are no clear red flags such as urgency, requests for sensitive information, suspicious links, or poor grammar. the email does not exhibit typical phishing characteristics."
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v5_20250714_192044_393485.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: the email is a standard job opportunity message from a recruiter. there are no urgent requests, threats, or pressure to act. it does not ask for login credentials, account access, or money. the language is professional, and there are no suspicious links or impersonation of trusted brands. the sender's address and domain appear legitimate."
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v6_20250714_192047_314983.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: the email is offering a job opportunity and does not contain any clear red flags typically associated with phishing emails. it does not request sensitive information, create urgency, or contain suspicious links. the language and formatting are professional, and the sender appears to be a recruiter reaching out based on the recipient's linkedin profile."
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v7_20250714_192050_205901.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email is benign. it does not contain any clear red flags typically associated with phishing emails. the sender is a recruiter from a known company, there are no urgent requests for sensitive information, and the attachment is a job description and application form, which is common in recruitment emails."
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v8_20250714_192052_964274.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: the email is offering a job opportunity and does not contain any clear red flags typically associated with phishing emails. it does not request sensitive information, create urgency, or contain suspicious links. the language and formatting are professional, and the sender appears to be a legitimate recruiter from a known company."
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v1_20250714_191934_093690.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email does not exhibit any clear red flags commonly associated with phishing emails. it is a standard communication regarding an overdue invoice, with no urgent threats or requests for sensitive information. the language is professional, and there are no suspicious links or unusual sender addresses."
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v2_20250714_191936_924199.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: the email is a standard reminder about an overdue invoice, with no urgent threats or requests for sensitive data. it does not contain any clear red flags typically associated with phishing emails."
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v3_20250714_191941_103430.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email is a standard accounts receivable message regarding an overdue invoice. it does not contain any clear red flags typically associated with phishing emails, such as urgent threats, requests for sensitive information, suspicious links, or impersonation of trusted entities. the email simply requests payment for an outstanding invoice and provides a secure payment link for convenience."
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v4_20250714_191943_907045.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email is a standard reminder about an overdue invoice, with no urgent threats or requests for sensitive information. it does not exhibit any clear red flags commonly associated with phishing emails."
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v5_20250714_191948_077885.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email is a standard payment reminder from a vendor, requesting payment for an overdue invoice. there are no clear red flags indicating phishing behavior such as urgent threats, requests for login credentials, suspicious links, or impersonation of trusted entities. the email is well-written and does not exhibit poor grammar or spelling. it appears to be a legitimate communication regarding a business transaction."
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v6_20250714_191950_959256.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email is benign. it does not contain any clear red flags typically associated with phishing emails. it is a standard follow-up regarding an overdue invoice, with no urgent threats or requests for sensitive information. the language is professional and there are no suspicious links or impersonation attempts."
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v7_20250714_191954_662544.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email is a standard reminder about an overdue invoice with no urgent threats or requests for sensitive information. the language is professional, and the links provided are related to payment methods, which is expected in such communications. no clear red flags indicating phishing behavior are present."
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v8_20250714_191958_976507.json",
+        "llm_label": "benign",
+        "true_label": "phishing",
+        "explanation": "label: benign\nexplanation: this email is a standard reminder about an overdue invoice, which is a common business practice. there are no urgent threats or requests for sensitive information. the language is professional, and there are no clear red flags indicating phishing behavior."
+    }
+]

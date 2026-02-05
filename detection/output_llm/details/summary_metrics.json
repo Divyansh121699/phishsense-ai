@@ -1,0 +1,11 @@
+{
+    "total_emails": 170,
+    "true_positives": 93,
+    "true_negatives": 50,
+    "false_positives": 0,
+    "false_negatives": 27,
+    "precision": 1.0,
+    "recall": 0.775,
+    "accuracy": 0.841,
+    "f1_score": 0.873
+}

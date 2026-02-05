@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:23:31.580965",
+    "category": "Credit Card Update",
+    "target_brand": "Amazon",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 5,
+    "email_text": "Subject: Urgent: Update Your Payment Information on Amazon\n\nDear Valued Customer,\n\nWe have noticed that the payment method linked to your Amazon account is outdated and needs to be updated immediately to avoid any interruptions to your services. \n\nTo ensure seamless transactions and continued access to your account, we kindly ask you to update your credit card details by clicking on the link provided below. \n\n[Link to a fake Amazon login page]\n\nPlease note that failure to update your payment information within the next 48 hours may result in a temporary suspension of your account. \n\nThank you for your prompt attention to this matter. We appreciate your business and look forward to serving you better.\n\nWarm regards,\nThe Amazon Team"
+}

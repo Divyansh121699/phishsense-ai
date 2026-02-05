@@ -1,0 +1,6 @@
+{
+    "source_file": "crypto_investment_scam_coinbase_v1_20250714_192415_023576.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by mentioning a limited and time-sensitive opportunity, which is a common tactic used in phishing emails to pressure recipients into taking immediate action. additionally, the email requests the recipient to click on a link to invest in a cryptocurrency project, which could potentially lead to a phishing website designed to steal login credentials or financial information. the email also impersonates coinbase, a trusted cryptocurrency platform, to gain the recipient's trust. the use of a fake link further raises suspicion about the legitimacy of the email."
+}

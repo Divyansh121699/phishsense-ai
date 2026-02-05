@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:23:20.802854",
+    "category": "Credit Card Update",
+    "target_brand": "Amazon",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 1,
+    "email_text": "Subject: Action Required: Update Your Credit Card Information\n\nDear Valued Amazon Customer,\n\nWe are reaching out to inform you that your payment method on file for your Amazon account needs to be updated. Our records show that the credit card you have on file will be expiring soon, and we require you to update your payment information to avoid any disruptions to your account.\n\nTo update your credit card details, please click on the following link and follow the instructions provided: [Phishing link]\n\nPlease note that failure to update your payment information within the next 24 hours may result in the suspension of your Amazon account. We value your business and want to ensure that you can continue to enjoy shopping with us hassle-free.\n\nThank you for your prompt attention to this matter. If you have any questions or concerns, please do not hesitate to contact our Customer Service team for assistance.\n\nSincerely,\nAmazon Customer Support Team"
+}

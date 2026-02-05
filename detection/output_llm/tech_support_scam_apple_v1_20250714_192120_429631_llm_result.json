@@ -1,0 +1,6 @@
+{
+    "source_file": "tech_support_scam_apple_v1_20250714_192120_429631.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by threatening permanent lockout of the account within 24 hours if action is not taken. it also requests the recipient to click on a suspicious link to reset their apple id, which is a common tactic used in phishing emails to steal login credentials. additionally, the email impersonates apple support team, a trusted brand, which is another red flag."
+}

@@ -1,0 +1,6 @@
+{
+    "source_file": "covid-19_relief_scam_us_government_v6_20250714_192247_394360.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by stating \"time is of the essence\" and requests sensitive personal information such as social security number and bank account details. this is a common tactic used in phishing emails to steal personal information. additionally, the email does not specify which government agency it is from, and the attachment could potentially contain malware."
+}

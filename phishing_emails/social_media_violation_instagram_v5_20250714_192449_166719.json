@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:24:49.166719",
+    "category": "Social Media Violation",
+    "target_brand": "Instagram",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 5,
+    "email_text": "Subject: Urgent: Action Required - Your Instagram Account may be at Risk \n\nDear [User],\n\nWe are writing to inform you that your Instagram account has been flagged for violating our community guidelines. Our system has detected suspicious activity on your account, including posting inappropriate content and engaging in spam-like behavior.\n\nIn order to prevent your account from being permanently disabled, we kindly ask you to verify your account by filling out the appeal form linked below. This form will allow us to review your account and take appropriate action to ensure the safety and integrity of our platform.\n\nPlease click on the following link to access the appeal form: [Fake link]\n\nWe understand that mistakes can happen, and we want to give you the opportunity to address any issues before taking further action. We value your presence on Instagram and want to work together to resolve this matter promptly.\n\nThank you for your cooperation and understanding.\n\nBest regards,\nThe Instagram Team"
+}

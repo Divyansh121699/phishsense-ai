@@ -1,0 +1,6 @@
+{
+    "source_file": "mfa_reset_scam_google_v8_20250714_192227_310796.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by claiming unusual activity on the google account and threatens suspension or termination if the 2fa is not reset. it requests sensitive information (2fa reset) through a suspicious link and provides a fake google support email address. these are clear red flags commonly seen in phishing emails."
+}

@@ -1,0 +1,24 @@
+{
+    "source_file": "bank_account_suspension_bank_of_america_v1_20250714_192056_097583.json",
+    "score": 80,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "verify",
+        "click here",
+        "unauthorized",
+        "urgent",
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "repeated:account"
+    ],
+    "contains_link": false,
+    "num_words": 127,
+    "num_links": 0,
+    "num_suspicious_keywords": 4,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [],
+    "filename": "bank_account_suspension_bank_of_america_v1_20250714_192056_097583.json",
+    "predicted_label": "phishing"
+}

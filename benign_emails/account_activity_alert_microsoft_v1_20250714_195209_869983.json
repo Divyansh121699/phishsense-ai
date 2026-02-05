@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:52:09.869983",
+    "category": "Account Activity Alert",
+    "brand": "Microsoft",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 1,
+    "email_text": "Subject: Successful Sign-In Notification for your Microsoft Account\n\nDear [User],\n\nWe are writing to inform you that a successful sign-in was detected on your Microsoft account from a new location. \n\nLocation: [City, Country]\nIP Address: [XXX.XXX.XXX.XXX]\n\nIf you did not perform this sign-in, we recommend that you review your recent account activity and take appropriate action to secure your account. You can review your recent sign-in activity by visiting your account security settings.\n\nIf you have any concerns or require further assistance, please do not hesitate to contact our customer support team.\n\nThank you for choosing Microsoft.\n\nSincerely,\nMicrosoft Security Team"
+}

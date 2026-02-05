@@ -1,0 +1,6 @@
+{
+    "source_file": "account_verification_scam_netflix_v6_20250714_192312_041146.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by threatening a temporary suspension of the account if billing information is not updated within 48 hours. it requests login credentials through a suspicious link, which is a common tactic in phishing attempts. additionally, the impersonation of netflix as a trusted brand adds to the red flags. the disclaimer at the end confirms that this email is indeed a phishing attempt."
+}

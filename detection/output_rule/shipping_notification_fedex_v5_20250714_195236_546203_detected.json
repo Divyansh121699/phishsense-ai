@@ -1,0 +1,20 @@
+{
+    "source_file": "shipping_notification_fedex_v5_20250714_195236_546203.json",
+    "score": 15,
+    "is_phishing": false,
+    "actual_label": "benign",
+    "flagged_keywords": [
+        "brand_mention:fedex",
+        "brand_domain_mismatch:fedex"
+    ],
+    "contains_link": false,
+    "num_words": 122,
+    "num_links": 0,
+    "num_suspicious_keywords": 0,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [
+        "fedex"
+    ],
+    "filename": "shipping_notification_fedex_v5_20250714_195236_546203.json",
+    "predicted_label": "benign"
+}

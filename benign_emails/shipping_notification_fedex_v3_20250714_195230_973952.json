@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:52:30.973952",
+    "category": "Shipping Notification",
+    "brand": "FedEx",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 3,
+    "email_text": "Dear [Recipient],\n\nThis is to notify you that your package with tracking number [tracking number] has been dispatched and is on its way to you via FedEx. \n\nEstimated delivery date: [date]\nEstimated delivery time: [time]\nDelivery address: [shipping address]\n\nPlease note that a signature may be required upon delivery. You can track your package in real-time by visiting our website and entering the tracking number provided.\n\nThank you for choosing FedEx for your shipping needs. If you have any questions or concerns, please feel free to contact our customer service team at [phone number] or visit our website for more information.\n\nSincerely,\nFedEx Delivery Team"
+}

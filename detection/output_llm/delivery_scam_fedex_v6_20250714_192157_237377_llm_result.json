@@ -1,0 +1,6 @@
+{
+    "source_file": "delivery_scam_fedex_v6_20250714_192157_237377.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by stating that a delivery driver attempted to deliver a package but the recipient was not available. it then requests the recipient to click on a suspicious link to track the package, which could potentially lead to a phishing website. additionally, the email does not provide specific details about the package or the recipient, and the sender address is not from an official fedex domain."
+}

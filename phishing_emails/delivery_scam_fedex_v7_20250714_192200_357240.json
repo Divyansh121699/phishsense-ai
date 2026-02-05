@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:22:00.357240",
+    "category": "Delivery Scam",
+    "target_brand": "FedEx",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 7,
+    "email_text": "Subject: FedEx Delivery Notification - Missed Package\n\nDear Customer,\n\nWe attempted to deliver a package to you today, but unfortunately, you were not available to receive it. Your package with tracking number 123456789 is now ready for rescheduling. Please click on the link below to arrange for a new delivery date:\n\n[Insert Fake Tracking Link Here]\n\nPlease note that failure to reschedule the delivery within 24 hours may result in additional charges. We apologize for any inconvenience this may have caused and appreciate your prompt attention to this matter.\n\nThank you for choosing FedEx for your shipping needs.\n\nSincerely,\nFedEx Customer Service Team"
+}

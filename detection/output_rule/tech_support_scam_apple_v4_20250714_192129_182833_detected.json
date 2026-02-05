@@ -1,0 +1,24 @@
+{
+    "source_file": "tech_support_scam_apple_v4_20250714_192129_182833.json",
+    "score": 75,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "verify",
+        "unauthorized",
+        "urgent",
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "repeated:account",
+        "time_pressure_phrase"
+    ],
+    "contains_link": false,
+    "num_words": 172,
+    "num_links": 0,
+    "num_suspicious_keywords": 3,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [],
+    "filename": "tech_support_scam_apple_v4_20250714_192129_182833.json",
+    "predicted_label": "phishing"
+}

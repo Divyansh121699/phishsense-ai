@@ -1,0 +1,6 @@
+{
+    "source_file": "crypto_investment_scam_coinbase_v7_20250714_192433_501217.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by mentioning a limited exclusive investment opportunity with high returns within a short period of time. it requests the recipient to click on a suspicious link to participate, which is a common tactic used in phishing emails to steal sensitive information. additionally, the email impersonates coinbase, a trusted brand in the cryptocurrency industry, which is another red flag."
+}

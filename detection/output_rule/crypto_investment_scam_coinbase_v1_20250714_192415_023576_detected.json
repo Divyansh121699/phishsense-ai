@@ -1,0 +1,25 @@
+{
+    "source_file": "crypto_investment_scam_coinbase_v1_20250714_192415_023576.json",
+    "score": 67,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "click here",
+        "limited",
+        "HR",
+        "brand_mention:coinbase",
+        "obfuscated_pattern",
+        "brand_domain_mismatch:coinbase",
+        "time_pressure_phrase"
+    ],
+    "contains_link": false,
+    "num_words": 181,
+    "num_links": 0,
+    "num_suspicious_keywords": 2,
+    "num_social_engineering_hits": 1,
+    "brand_mentions": [
+        "coinbase"
+    ],
+    "filename": "crypto_investment_scam_coinbase_v1_20250714_192415_023576.json",
+    "predicted_label": "phishing"
+}

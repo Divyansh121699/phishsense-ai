@@ -1,0 +1,6 @@
+{
+    "source_file": "crypto_investment_scam_coinbase_v8_20250714_192436_484252.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by mentioning \"exclusive investment opportunity\" and \"the early bird catches the worm\", pressuring the recipient to act quickly. it also requests the recipient to click on a suspicious link to invest money, which is a common tactic used in phishing emails to steal sensitive information or money. additionally, the email impersonates a trusted brand, coinbase, to gain credibility and deceive the recipient. these red flags indicate that this email is likely a phishing attempt."
+}

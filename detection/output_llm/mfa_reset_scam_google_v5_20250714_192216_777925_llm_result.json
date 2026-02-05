@@ -1,0 +1,6 @@
+{
+    "source_file": "mfa_reset_scam_google_v5_20250714_192216_777925.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the account within 24 hours if the 2fa is not reset. it also requests the recipient to click on a link to reset the 2fa, which could lead to a fake phishing website. additionally, the email impersonates the google security team, which is a red flag for phishing attempts."
+}

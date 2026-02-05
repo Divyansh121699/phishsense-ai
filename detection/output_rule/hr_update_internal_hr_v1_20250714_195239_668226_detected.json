@@ -1,0 +1,15 @@
+{
+    "source_file": "hr_update_internal_hr_v1_20250714_195239_668226.json",
+    "score": 0,
+    "is_phishing": false,
+    "actual_label": "benign",
+    "flagged_keywords": [],
+    "contains_link": false,
+    "num_words": 175,
+    "num_links": 0,
+    "num_suspicious_keywords": 0,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [],
+    "filename": "hr_update_internal_hr_v1_20250714_195239_668226.json",
+    "predicted_label": "benign"
+}

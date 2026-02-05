@@ -1,0 +1,6 @@
+{
+    "source_file": "covid-19_relief_scam_us_government_v8_20250714_192254_648767.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by mentioning a fast-approaching deadline to apply for relief funds. it also requests the recipient to click on a link to access an application form, which could potentially lead to a phishing website designed to steal personal information. the sender's identity as a \"government agency for covid-19 relief\" could be impersonated to deceive recipients."
+}

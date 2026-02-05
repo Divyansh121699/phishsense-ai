@@ -1,0 +1,6 @@
+{
+    "source_file": "fake_security_alert_microsoft_v3_20250714_192009_218975.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by stating that a suspicious login attempt was detected and threatens the temporary suspension of the account if not confirmed within 24 hours. it requests the recipient to click on a link to confirm the login attempt, which is a common phishing tactic to steal login credentials. additionally, the email impersonates microsoft's security team, a trusted brand, to deceive the recipient into believing it is legitimate."
+}

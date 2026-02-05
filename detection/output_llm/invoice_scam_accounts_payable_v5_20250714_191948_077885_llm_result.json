@@ -1,0 +1,6 @@
+{
+    "source_file": "invoice_scam_accounts_payable_v5_20250714_191948_077885.json",
+    "llm_label": "benign",
+    "true_label": "phishing",
+    "explanation": "label: benign\nexplanation: this email is a standard payment reminder from a vendor, requesting payment for an overdue invoice. there are no clear red flags indicating phishing behavior such as urgent threats, requests for login credentials, suspicious links, or impersonation of trusted entities. the email is well-written and does not exhibit poor grammar or spelling. it appears to be a legitimate communication regarding a business transaction."
+}

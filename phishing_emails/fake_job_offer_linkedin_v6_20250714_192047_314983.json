@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:20:47.314983",
+    "category": "Fake Job Offer",
+    "target_brand": "LinkedIn",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 6,
+    "email_text": "Subject: Exciting Job Opportunity at Top Company!\n\nDear [Recipient],\n\nI hope this email finds you well. I came across your profile on LinkedIn and I am very impressed with your experience and skills. I am currently recruiting for a prestigious company that is looking for someone with your background to join their team.\n\nThe position is for a [Job Title] and offers a competitive salary along with great benefits. This is a fantastic opportunity for you to further your career and work with some of the best in the industry.\n\nI have attached the job description and application form for your review. Please fill out the application form and send it back to me as soon as possible so we can schedule an interview for you.\n\nI look forward to hearing from you and hopefully working together in the near future.\n\nBest regards,\n[Recruiter]\n\n[Attachment: Job Description and Application Form]"
+}

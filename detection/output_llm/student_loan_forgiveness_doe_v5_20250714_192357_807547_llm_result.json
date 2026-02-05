@@ -1,0 +1,6 @@
+{
+    "source_file": "student_loan_forgiveness_doe_v5_20250714_192357_807547.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by offering an opportunity for loan forgiveness and encourages the recipient to act quickly. it requests sensitive information by asking the recipient to click on a suspicious link to apply for loan forgiveness. the email also impersonates the department of education, a trusted entity, which is a common tactic used in phishing emails."
+}

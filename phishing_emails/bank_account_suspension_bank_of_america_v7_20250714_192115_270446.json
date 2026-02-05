@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:21:15.270446",
+    "category": "Bank Account Suspension",
+    "target_brand": "Bank of America",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 7,
+    "email_text": "Subject: Urgent: Account Suspension Notification from Bank of America\n\nDear Valued Customer,\n\nWe regret to inform you that we have detected some unusual activity on your Bank of America account. For security reasons, we have temporarily suspended your account to prevent any unauthorized access and potential fraud.\n\nTo resolve this issue and reactivate your account, please click on the link below and follow the instructions provided. Failure to do so may result in permanent suspension of your account.\n\n[Phishing Link]\n\nWe take the security of our customers' accounts very seriously and want to ensure that your funds and personal information are protected at all times. By verifying your account through the link provided, you will help us in ensuring the safety and security of your account.\n\nIf you have any questions or concerns regarding this suspension, please do not hesitate to contact our customer service team immediately at 1-800-555-1234.\n\nThank you for your prompt attention to this matter.\n\nSincerely,\n\nBank of America Customer Service Team"
+}

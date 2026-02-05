@@ -1,0 +1,6 @@
+{
+    "source_file": "credit_card_update_amazon_v8_20250714_192339_738939.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by threatening to cancel the order within 24 hours if payment information is not updated. it requests sensitive information (credit card details) through a suspicious link, which is a common tactic used in phishing emails. additionally, the email impersonates amazon, a trusted brand, which is another red flag for phishing."
+}

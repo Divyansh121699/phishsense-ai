@@ -1,0 +1,23 @@
+{
+    "source_file": "account_activity_alert_microsoft_v2_20250714_195212_286600.json",
+    "score": 35,
+    "is_phishing": true,
+    "actual_label": "benign",
+    "flagged_keywords": [
+        "brand_mention:microsoft",
+        "obfuscated_pattern",
+        "repeated:account",
+        "brand_domain_mismatch:microsoft",
+        "time_pressure_phrase"
+    ],
+    "contains_link": false,
+    "num_words": 118,
+    "num_links": 0,
+    "num_suspicious_keywords": 0,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [
+        "microsoft"
+    ],
+    "filename": "account_activity_alert_microsoft_v2_20250714_195212_286600.json",
+    "predicted_label": "phishing"
+}

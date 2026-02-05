@@ -1,0 +1,6 @@
+{
+    "source_file": "delivery_scam_fedex_v8_20250714_192203_287616.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by stating that a delivery attempt was unsuccessful and requires immediate action to reschedule. the link provided is suspicious as it directs to a fake domain \"fedexdeliveryreschedule.com\" instead of the official fedex website. this could be a phishing attempt to steal personal information or credentials."
+}

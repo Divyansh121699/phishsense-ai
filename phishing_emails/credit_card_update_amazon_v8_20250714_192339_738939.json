@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:23:39.738939",
+    "category": "Credit Card Update",
+    "target_brand": "Amazon",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 8,
+    "email_text": "Subject: Urgent Action Required: Update Your Payment Information\n\nDear Valued Amazon Customer,\n\nWe are writing to inform you that there has been an issue processing your recent payment for an order on Amazon. In order to avoid any disruptions to your account and ensure that your order is processed smoothly, we kindly ask that you update your payment information as soon as possible.\n\nPlease click on the link below to securely update your credit card details:\n\n[Malicious Link]\n\nPlease note that failure to update your payment information within the next 24 hours may result in the cancellation of your order. We appreciate your prompt attention to this matter and apologize for any inconvenience this may cause.\n\nThank you for being a valued Amazon customer.\n\nSincerely,\nAmazon Customer Service Team"
+}

@@ -1,0 +1,6 @@
+{
+    "source_file": "bank_account_suspension_bank_of_america_v5_20250714_192108_064923.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by threatening account suspension and loss of funds if action is not taken within 24 hours. it requests verification of account information through a suspicious link, which is a common tactic used in phishing attacks to steal credentials. additionally, the email impersonates bank of america, a trusted brand, to deceive the recipient."
+}

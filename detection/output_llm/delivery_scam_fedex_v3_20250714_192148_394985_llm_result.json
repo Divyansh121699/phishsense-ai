@@ -1,0 +1,6 @@
+{
+    "source_file": "delivery_scam_fedex_v3_20250714_192148_394985.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by stating that failure to reschedule delivery within the next 24 hours may result in the package being returned. the email also contains a suspicious link that does not lead to the official fedex website (http://fedextracking-update.com). this mismatched link is a clear red flag for phishing attempts."
+}

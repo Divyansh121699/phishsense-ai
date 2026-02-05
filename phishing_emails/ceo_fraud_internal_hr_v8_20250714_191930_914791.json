@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:19:30.914791",
+    "category": "CEO Fraud",
+    "target_brand": "Internal HR",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 8,
+    "email_text": "Subject: Urgent Request for Wire Transfer\n\nDear [HR Manager],\n\nI hope this email finds you well. I am currently in a meeting and unable to make calls, which is why I am reaching out to you via email for this urgent matter.\n\nWe have a vendor that requires immediate payment for the services they provided to our company. They have requested a wire transfer to be completed by the end of today to avoid any late fees or penalties. \n\nI understand that this is a last-minute request, but I trust that you will be able to handle this efficiently. Please initiate the wire transfer as soon as possible and let me know once it has been completed.\n\nThank you for your prompt attention to this matter. Your cooperation is greatly appreciated.\n\nBest regards,\n[CEO's Name]"
+}

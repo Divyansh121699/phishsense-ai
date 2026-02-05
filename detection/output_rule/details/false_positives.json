@@ -1,0 +1,270 @@
+[
+    {
+        "source_file": "account_activity_alert_microsoft_v1_20250714_195209_869983.json",
+        "score": 30,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft"
+        ],
+        "contains_link": false,
+        "num_words": 101,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "account_activity_alert_microsoft_v1_20250714_195209_869983.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_activity_alert_microsoft_v2_20250714_195212_286600.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 118,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "account_activity_alert_microsoft_v2_20250714_195212_286600.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_activity_alert_microsoft_v3_20250714_195215_433235.json",
+        "score": 40,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "unauthorized",
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft"
+        ],
+        "contains_link": false,
+        "num_words": 152,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "account_activity_alert_microsoft_v3_20250714_195215_433235.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_activity_alert_microsoft_v4_20250714_195219_178013.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 160,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "account_activity_alert_microsoft_v4_20250714_195219_178013.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_activity_alert_microsoft_v5_20250714_195222_024890.json",
+        "score": 30,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft"
+        ],
+        "contains_link": false,
+        "num_words": 114,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "account_activity_alert_microsoft_v5_20250714_195222_024890.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "order_confirmation_amazon_v2_20250714_195108_641536.json",
+        "score": 40,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:amazon",
+            "brand_mention:doe",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:amazon",
+            "brand_domain_mismatch:doe"
+        ],
+        "contains_link": false,
+        "num_words": 153,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon",
+            "doe"
+        ],
+        "filename": "order_confirmation_amazon_v2_20250714_195108_641536.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "password_change_confirmation_linkedin_v1_20250714_195157_628903.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 80,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "password_change_confirmation_linkedin_v1_20250714_195157_628903.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "password_change_confirmation_linkedin_v2_20250714_195159_878650.json",
+        "score": 47,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "HR",
+            "brand_mention:linkedin",
+            "obfuscated_pattern",
+            "repeated:account",
+            "repeated:password",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 98,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "password_change_confirmation_linkedin_v2_20250714_195159_878650.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "password_change_confirmation_linkedin_v3_20250714_195202_376316.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "obfuscated_pattern",
+            "repeated:account",
+            "repeated:password",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 117,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "password_change_confirmation_linkedin_v3_20250714_195202_376316.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "password_change_confirmation_linkedin_v4_20250714_195204_735019.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 74,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "password_change_confirmation_linkedin_v4_20250714_195204_735019.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "password_change_confirmation_linkedin_v5_20250714_195207_203488.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 73,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "password_change_confirmation_linkedin_v5_20250714_195207_203488.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "shipping_notification_fedex_v4_20250714_195233_477481.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:fedex",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:fedex"
+        ],
+        "contains_link": false,
+        "num_words": 104,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "shipping_notification_fedex_v4_20250714_195233_477481.json",
+        "predicted_label": "phishing"
+    }
+]

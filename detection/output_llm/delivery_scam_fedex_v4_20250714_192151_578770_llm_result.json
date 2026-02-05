@@ -1,0 +1,6 @@
+{
+    "source_file": "delivery_scam_fedex_v4_20250714_192151_578770.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email contains red flags such as urgency (\"reschedule within 24 hours\"), a suspicious link to track the shipment, and impersonation of a trusted brand (fedex). additionally, the email does not address the recipient by name, which is a common tactic in phishing emails."
+}

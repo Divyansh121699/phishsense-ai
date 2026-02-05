@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:51:42.761738",
+    "category": "Event Reminder",
+    "brand": "Zoom",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 1,
+    "email_text": "Subject: Reminder: Weekly Team Meeting on Monday, 9/20 at 10:00 AM\n\nDear Team,\n\nThis is a friendly reminder about our weekly team meeting scheduled for Monday, September 20th at 10:00 AM. The meeting will be held via Zoom, and the meeting link is provided below:\n\nMeeting Link: [Insert Zoom Meeting Link]\n\nAgenda:\n1. Welcome and Introductions\n2. Review of Action Items from Last Meeting\n3. Project Updates\n4. Team Collaboration and Communication Strategies\n5. Any Other Business\n\nPlease make sure to join the meeting promptly at the scheduled time. If you have any items you would like to add to the agenda, please let me know by Sunday evening.\n\nLooking forward to our productive discussion on Monday.\n\nBest regards,\n[Your Name]"
+}

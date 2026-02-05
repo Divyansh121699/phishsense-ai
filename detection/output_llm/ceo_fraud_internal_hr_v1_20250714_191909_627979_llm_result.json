@@ -1,0 +1,6 @@
+{
+    "source_file": "ceo_fraud_internal_hr_v1_20250714_191909_627979.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by requesting an immediate funds transfer without following usual procedures. additionally, the ceo's name is not specified, and there is a lack of personalization in the email. these are red flags commonly seen in phishing emails."
+}

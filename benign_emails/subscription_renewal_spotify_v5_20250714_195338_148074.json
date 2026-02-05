@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:53:38.148074",
+    "category": "Subscription Renewal",
+    "brand": "Spotify",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 5,
+    "email_text": "Subject: Your Spotify Premium Renewal Confirmation - Invoice #987654321\n\nDear [Customer's Name],\n\nWe hope this email finds you well. We are writing to confirm the renewal of your Spotify Premium subscription for another month. Thank you for choosing to continue enjoying ad-free music streaming, offline listening, and exclusive content.\n\nHere are the details of your recent transaction:\nInvoice Number: 987654321\nSubscription Plan: Spotify Premium\nRenewal Date: [Date of Renewal]\nAmount: $9.99\n\nBilling Details:\nCard Type: Visa\nCard Number: XXXX-XXXX-XXXX-1234\nExpiry Date: XX/XX\nBilling Address: [Customer's Billing Address]\n\nIf you have any questions or concerns regarding your subscription or billing details, please feel free to reach out to our customer support team at support@spotify.com. We are here to assist you with any inquiries you may have.\n\nThank you for being a valued member of the Spotify community. We appreciate your continued support and look forward to providing you with the best music experience possible.\n\nWarm regards,\n\nSpotify Customer Support Team"
+}

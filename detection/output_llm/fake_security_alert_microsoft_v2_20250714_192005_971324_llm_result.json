@@ -1,0 +1,6 @@
+{
+    "source_file": "fake_security_alert_microsoft_v2_20250714_192005_971324.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by threatening to suspend the account within 24 hours, requests the recipient to click on a suspicious link to confirm login attempt, and impersonates a trusted brand (microsoft). these are clear red flags commonly seen in phishing emails."
+}

@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:53:32.785745",
+    "category": "Subscription Renewal",
+    "brand": "Spotify",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 3,
+    "email_text": "Subject: Your Spotify Premium Renewal Confirmation\n\nDear [Customer's Name],\n\nWe are pleased to inform you that your Spotify Premium subscription has been successfully renewed for another month. Your continued support allows us to provide you with an ad-free listening experience and access to exclusive content.\n\nBilling Details:\n- Subscription Plan: Spotify Premium\n- Renewal Date: [Renewal Date]\n- Billing Amount: $9.99\n- Payment Method: [Payment Method]\n\nIf you have any questions or concerns regarding your subscription, please feel free to contact our customer support team at support@spotify.com. \n\nThank you for being a valued member of the Spotify community.\n\nSincerely,\nThe Spotify Team"
+}

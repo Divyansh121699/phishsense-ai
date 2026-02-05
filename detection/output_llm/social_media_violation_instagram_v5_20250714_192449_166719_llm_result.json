@@ -1,0 +1,6 @@
+{
+    "source_file": "social_media_violation_instagram_v5_20250714_192449_166719.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by stating that the account has been flagged for violating guidelines and could be permanently disabled. it requests the recipient to verify their account by filling out an appeal form through a suspicious link. the email also impersonates the trusted brand, instagram."
+}

@@ -1,0 +1,6 @@
+{
+    "source_file": "covid-19_relief_scam_us_government_v3_20250714_192236_966713.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by mentioning relief assistance for covid-19, requests personal and financial information, and includes an attachment for a form. this is a common tactic used in phishing emails to steal sensitive data. additionally, the email does not specify the government agency's name or provide a legitimate contact number, which are red flags for impersonation."
+}

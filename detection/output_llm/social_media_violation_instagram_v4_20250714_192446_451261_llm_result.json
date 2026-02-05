@@ -1,0 +1,6 @@
+{
+    "source_file": "social_media_violation_instagram_v4_20250714_192446_451261.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by threatening the permanent suspension of the account if the appeal form is not submitted within 24 hours. it also requests the recipient to click on a suspicious link, which is a common tactic used in phishing emails to steal login credentials. additionally, the email impersonates a trusted brand, instagram, which adds to the suspicious nature of the message."
+}

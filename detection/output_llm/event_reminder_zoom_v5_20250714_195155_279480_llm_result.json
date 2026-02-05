@@ -1,0 +1,6 @@
+{
+    "source_file": "event_reminder_zoom_v5_20250714_195155_279480.json",
+    "llm_label": "benign",
+    "true_label": "benign",
+    "explanation": "label: benign\nexplanation: this email is a standard meeting reminder with no requests for sensitive information or urgent actions. the language is professional, and the sender address appears legitimate. no clear red flags indicating phishing activity are present."
+}

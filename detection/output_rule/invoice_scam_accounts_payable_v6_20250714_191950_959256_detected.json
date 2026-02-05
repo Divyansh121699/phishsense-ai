@@ -1,0 +1,17 @@
+{
+    "source_file": "invoice_scam_accounts_payable_v6_20250714_191950_959256.json",
+    "score": 10,
+    "is_phishing": false,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "urgent"
+    ],
+    "contains_link": false,
+    "num_words": 178,
+    "num_links": 0,
+    "num_suspicious_keywords": 1,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [],
+    "filename": "invoice_scam_accounts_payable_v6_20250714_191950_959256.json",
+    "predicted_label": "benign"
+}

@@ -1,0 +1,6 @@
+{
+    "source_file": "ceo_fraud_internal_hr_v5_20250714_191922_650490.json",
+    "llm_label": "benign",
+    "true_label": "phishing",
+    "explanation": "label: benign\nexplanation: the email does not contain any clear red flags typically associated with phishing emails. while it does request a wire transfer, it is a common business practice and does not contain urgent threats, requests for login credentials, suspicious links, or impersonation of trusted entities. the email also maintains a professional tone and does not exhibit poor grammar or spelling."
+}

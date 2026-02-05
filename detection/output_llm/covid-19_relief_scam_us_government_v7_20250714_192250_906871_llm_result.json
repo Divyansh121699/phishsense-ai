@@ -1,0 +1,6 @@
+{
+    "source_file": "covid-19_relief_scam_us_government_v7_20250714_192250_906871.json",
+    "llm_label": "benign",
+    "true_label": "phishing",
+    "explanation": "label: benign\nexplanation: the email is from a government relief assistance program providing information about accessing funds for those affected by the covid-19 pandemic. there are no clear red flags such as urgent requests for sensitive information, suspicious links, or impersonation of trusted entities. the email appears to be a legitimate communication offering support during challenging times."
+}

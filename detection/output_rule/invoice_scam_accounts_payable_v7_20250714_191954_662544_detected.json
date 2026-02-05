@@ -1,0 +1,19 @@
+{
+    "source_file": "invoice_scam_accounts_payable_v7_20250714_191954_662544.json",
+    "score": 32,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "urgent",
+        "HR",
+        "obfuscated_pattern"
+    ],
+    "contains_link": false,
+    "num_words": 190,
+    "num_links": 0,
+    "num_suspicious_keywords": 1,
+    "num_social_engineering_hits": 1,
+    "brand_mentions": [],
+    "filename": "invoice_scam_accounts_payable_v7_20250714_191954_662544.json",
+    "predicted_label": "phishing"
+}

@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:51:08.641536",
+    "category": "Order Confirmation",
+    "brand": "Amazon",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 2,
+    "email_text": "Subject: Your Amazon Order Confirmation (#123456789)\n\nDear [Customer],\n\nThank you for shopping with Amazon! We are pleased to confirm that your recent order has been successfully processed. Please find the details of your purchase below:\n\nOrder Number: #123456789\nOrder Date: May 15, 2022\n\nShipping Address:\nJane Doe\n123 Main Street\nAnytown, USA\n\nPayment Method: Visa ending in 1234\n\nOrder Details:\n1. Product: Amazon Basics 4-Slice Toaster\n   Price: $39.99\n\n2. Product: Amazon Smart Plug\n   Price: $24.99\n\n3. Product: Samsung 32-Inch Smart TV\n   Price: $249.99\n\nSubtotal: $314.97\nShipping: FREE\nTotal: $314.97\n\nYour order is scheduled to be delivered on May 20, 2022. You can track the status of your shipment by visiting the \"Your Orders\" section of your Amazon account.\n\nIf you have any questions or concerns regarding your order, please don't hesitate to contact our Customer Service team at 1-888-123-4567.\n\nThank you for choosing Amazon. We appreciate your business!\n\nSincerely,\n\nAmazon Customer Service Team"
+}

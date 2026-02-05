@@ -1,0 +1,6 @@
+{
+    "source_file": "social_media_violation_instagram_v1_20250714_192438_827805.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by threatening the suspension or termination of the account within 24 hours if action is not taken. it requests the recipient to click on a suspicious link to fill out an appeal form, which is a common phishing tactic to steal login credentials. additionally, the email impersonates instagram, a trusted brand, and lacks personalization by addressing the recipient as \"instagram user\" instead of using their actual name."
+}

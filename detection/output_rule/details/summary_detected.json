@@ -1,0 +1,3650 @@
+[
+    {
+        "source_file": "account_verification_scam_netflix_v1_20250714_192257_081589.json",
+        "score": 75,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "urgent",
+            "brand_mention:netflix",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:verify",
+            "brand_domain_mismatch:netflix"
+        ],
+        "contains_link": false,
+        "num_words": 120,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "netflix"
+        ],
+        "filename": "account_verification_scam_netflix_v1_20250714_192257_081589.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_verification_scam_netflix_v2_20250714_192259_877933.json",
+        "score": 75,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "urgent",
+            "brand_mention:netflix",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:netflix"
+        ],
+        "contains_link": false,
+        "num_words": 169,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "netflix"
+        ],
+        "filename": "account_verification_scam_netflix_v2_20250714_192259_877933.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_verification_scam_netflix_v3_20250714_192302_480683.json",
+        "score": 70,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "urgent",
+            "brand_mention:netflix",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:netflix"
+        ],
+        "contains_link": false,
+        "num_words": 152,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "netflix"
+        ],
+        "filename": "account_verification_scam_netflix_v3_20250714_192302_480683.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_verification_scam_netflix_v4_20250714_192305_141908.json",
+        "score": 70,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "urgent",
+            "brand_mention:netflix",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:netflix"
+        ],
+        "contains_link": false,
+        "num_words": 137,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "netflix"
+        ],
+        "filename": "account_verification_scam_netflix_v4_20250714_192305_141908.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_verification_scam_netflix_v5_20250714_192308_311455.json",
+        "score": 70,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "urgent",
+            "brand_mention:netflix",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:netflix"
+        ],
+        "contains_link": false,
+        "num_words": 118,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "netflix"
+        ],
+        "filename": "account_verification_scam_netflix_v5_20250714_192308_311455.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_verification_scam_netflix_v6_20250714_192312_041146.json",
+        "score": 75,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "urgent",
+            "brand_mention:netflix",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:verify",
+            "brand_domain_mismatch:netflix"
+        ],
+        "contains_link": false,
+        "num_words": 189,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "netflix"
+        ],
+        "filename": "account_verification_scam_netflix_v6_20250714_192312_041146.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_verification_scam_netflix_v7_20250714_192314_741098.json",
+        "score": 75,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "urgent",
+            "brand_mention:netflix",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:verify",
+            "brand_domain_mismatch:netflix"
+        ],
+        "contains_link": false,
+        "num_words": 145,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "netflix"
+        ],
+        "filename": "account_verification_scam_netflix_v7_20250714_192314_741098.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_verification_scam_netflix_v8_20250714_192317_683077.json",
+        "score": 92,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "urgent",
+            "HR",
+            "brand_mention:netflix",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:verify",
+            "repeated:account",
+            "brand_domain_mismatch:netflix"
+        ],
+        "contains_link": false,
+        "num_words": 198,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "netflix"
+        ],
+        "filename": "account_verification_scam_netflix_v8_20250714_192317_683077.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "bank_account_suspension_bank_of_america_v1_20250714_192056_097583.json",
+        "score": 80,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "click here",
+            "unauthorized",
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 127,
+        "num_links": 0,
+        "num_suspicious_keywords": 4,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "bank_account_suspension_bank_of_america_v1_20250714_192056_097583.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "bank_account_suspension_bank_of_america_v2_20250714_192058_696728.json",
+        "score": 80,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "suspended",
+            "unauthorized",
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 146,
+        "num_links": 0,
+        "num_suspicious_keywords": 4,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "bank_account_suspension_bank_of_america_v2_20250714_192058_696728.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "bank_account_suspension_bank_of_america_v3_20250714_192101_633872.json",
+        "score": 85,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "suspended",
+            "unauthorized",
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 194,
+        "num_links": 0,
+        "num_suspicious_keywords": 4,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "bank_account_suspension_bank_of_america_v3_20250714_192101_633872.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "bank_account_suspension_bank_of_america_v4_20250714_192105_098200.json",
+        "score": 80,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "suspended",
+            "unauthorized",
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 152,
+        "num_links": 0,
+        "num_suspicious_keywords": 4,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "bank_account_suspension_bank_of_america_v4_20250714_192105_098200.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "bank_account_suspension_bank_of_america_v5_20250714_192108_064923.json",
+        "score": 92,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "suspended",
+            "unauthorized",
+            "urgent",
+            "immediate attention",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 177,
+        "num_links": 0,
+        "num_suspicious_keywords": 4,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "bank_account_suspension_bank_of_america_v5_20250714_192108_064923.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "bank_account_suspension_bank_of_america_v6_20250714_192111_527079.json",
+        "score": 88,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "suspended",
+            "unauthorized",
+            "urgent",
+            "within 24 hours",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 136,
+        "num_links": 0,
+        "num_suspicious_keywords": 4,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "bank_account_suspension_bank_of_america_v6_20250714_192111_527079.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "bank_account_suspension_bank_of_america_v7_20250714_192115_270446.json",
+        "score": 92,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "suspended",
+            "unauthorized",
+            "urgent",
+            "HR",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 165,
+        "num_links": 0,
+        "num_suspicious_keywords": 4,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "bank_account_suspension_bank_of_america_v7_20250714_192115_270446.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "bank_account_suspension_bank_of_america_v8_20250714_192117_830089.json",
+        "score": 70,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "suspended",
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 135,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "bank_account_suspension_bank_of_america_v8_20250714_192117_830089.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "ceo_fraud_internal_hr_v1_20250714_191909_627979.json",
+        "score": 68,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "CEO",
+            "HR",
+            "urgent request",
+            "wire transfer",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 152,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 4,
+        "brand_mentions": [],
+        "filename": "ceo_fraud_internal_hr_v1_20250714_191909_627979.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "ceo_fraud_internal_hr_v2_20250714_191912_943846.json",
+        "score": 58,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "CEO",
+            "HR",
+            "urgent request",
+            "wire transfer"
+        ],
+        "contains_link": false,
+        "num_words": 127,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 4,
+        "brand_mentions": [],
+        "filename": "ceo_fraud_internal_hr_v2_20250714_191912_943846.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "ceo_fraud_internal_hr_v3_20250714_191915_700517.json",
+        "score": 73,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "CEO",
+            "HR",
+            "urgent request",
+            "wire transfer",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 126,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 4,
+        "brand_mentions": [],
+        "filename": "ceo_fraud_internal_hr_v3_20250714_191915_700517.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "ceo_fraud_internal_hr_v4_20250714_191920_016575.json",
+        "score": 80,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "CEO",
+            "HR",
+            "urgent request",
+            "immediate attention",
+            "wire transfer",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 160,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 5,
+        "brand_mentions": [],
+        "filename": "ceo_fraud_internal_hr_v4_20250714_191920_016575.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "ceo_fraud_internal_hr_v5_20250714_191922_650490.json",
+        "score": 80,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "CEO",
+            "HR",
+            "urgent request",
+            "immediate attention",
+            "wire transfer",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 144,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 5,
+        "brand_mentions": [],
+        "filename": "ceo_fraud_internal_hr_v5_20250714_191922_650490.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "ceo_fraud_internal_hr_v6_20250714_191925_418538.json",
+        "score": 85,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "confidential",
+            "CEO",
+            "HR",
+            "urgent request",
+            "confidential",
+            "wire transfer"
+        ],
+        "contains_link": false,
+        "num_words": 141,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 5,
+        "brand_mentions": [],
+        "filename": "ceo_fraud_internal_hr_v6_20250714_191925_418538.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "ceo_fraud_internal_hr_v7_20250714_191928_002083.json",
+        "score": 58,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "CEO",
+            "HR",
+            "urgent request",
+            "wire transfer"
+        ],
+        "contains_link": false,
+        "num_words": 132,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 4,
+        "brand_mentions": [],
+        "filename": "ceo_fraud_internal_hr_v7_20250714_191928_002083.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "ceo_fraud_internal_hr_v8_20250714_191930_914791.json",
+        "score": 58,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "CEO",
+            "HR",
+            "urgent request",
+            "wire transfer"
+        ],
+        "contains_link": false,
+        "num_words": 135,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 4,
+        "brand_mentions": [],
+        "filename": "ceo_fraud_internal_hr_v8_20250714_191930_914791.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "covid-19_relief_scam_us_government_v1_20250714_192230_667257.json",
+        "score": 37,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "confidential",
+            "confidential"
+        ],
+        "contains_link": false,
+        "num_words": 192,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "covid-19_relief_scam_us_government_v1_20250714_192230_667257.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "covid-19_relief_scam_us_government_v2_20250714_192233_912808.json",
+        "score": 22,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "HR"
+        ],
+        "contains_link": false,
+        "num_words": 215,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "covid-19_relief_scam_us_government_v2_20250714_192233_912808.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "covid-19_relief_scam_us_government_v3_20250714_192236_966713.json",
+        "score": 37,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "confidential",
+            "confidential"
+        ],
+        "contains_link": false,
+        "num_words": 185,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "covid-19_relief_scam_us_government_v3_20250714_192236_966713.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "covid-19_relief_scam_us_government_v4_20250714_192241_509877.json",
+        "score": 22,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "HR"
+        ],
+        "contains_link": false,
+        "num_words": 228,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "covid-19_relief_scam_us_government_v4_20250714_192241_509877.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "covid-19_relief_scam_us_government_v5_20250714_192244_334841.json",
+        "score": 57,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "urgent",
+            "confidential",
+            "confidential",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 164,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "covid-19_relief_scam_us_government_v5_20250714_192244_334841.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "covid-19_relief_scam_us_government_v6_20250714_192247_394360.json",
+        "score": 32,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "HR",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 181,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "covid-19_relief_scam_us_government_v6_20250714_192247_394360.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "covid-19_relief_scam_us_government_v7_20250714_192250_906871.json",
+        "score": 49,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "confidential",
+            "HR",
+            "confidential"
+        ],
+        "contains_link": false,
+        "num_words": 251,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 2,
+        "brand_mentions": [],
+        "filename": "covid-19_relief_scam_us_government_v7_20250714_192250_906871.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "covid-19_relief_scam_us_government_v8_20250714_192254_648767.json",
+        "score": 20,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 190,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "covid-19_relief_scam_us_government_v8_20250714_192254_648767.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "credential_harvesting_paypal_v1_20250714_191844_752017.json",
+        "score": 98,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "within 24 hours",
+            "brand_mention:paypal",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:verify",
+            "repeated:account",
+            "brand_domain_mismatch:paypal",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 161,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "paypal"
+        ],
+        "filename": "credential_harvesting_paypal_v1_20250714_191844_752017.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credential_harvesting_paypal_v2_20250714_191847_952317.json",
+        "score": 90,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "brand_mention:paypal",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:verify",
+            "repeated:account",
+            "brand_domain_mismatch:paypal"
+        ],
+        "contains_link": false,
+        "num_words": 112,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "paypal"
+        ],
+        "filename": "credential_harvesting_paypal_v2_20250714_191847_952317.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credential_harvesting_paypal_v3_20250714_191850_502026.json",
+        "score": 65,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "brand_mention:paypal",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:verify",
+            "repeated:account",
+            "brand_domain_mismatch:paypal"
+        ],
+        "contains_link": false,
+        "num_words": 90,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "paypal"
+        ],
+        "filename": "credential_harvesting_paypal_v3_20250714_191850_502026.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credential_harvesting_paypal_v4_20250714_191854_730957.json",
+        "score": 98,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "within 24 hours",
+            "brand_mention:paypal",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:verify",
+            "repeated:account",
+            "brand_domain_mismatch:paypal",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 170,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "paypal"
+        ],
+        "filename": "credential_harvesting_paypal_v4_20250714_191854_730957.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credential_harvesting_paypal_v5_20250714_191857_827179.json",
+        "score": 90,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "brand_mention:paypal",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:verify",
+            "repeated:account",
+            "brand_domain_mismatch:paypal"
+        ],
+        "contains_link": false,
+        "num_words": 138,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "paypal"
+        ],
+        "filename": "credential_harvesting_paypal_v5_20250714_191857_827179.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credential_harvesting_paypal_v6_20250714_191901_049849.json",
+        "score": 100,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "HR",
+            "brand_mention:paypal",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:verify",
+            "repeated:account",
+            "brand_domain_mismatch:paypal"
+        ],
+        "contains_link": false,
+        "num_words": 153,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "paypal"
+        ],
+        "filename": "credential_harvesting_paypal_v6_20250714_191901_049849.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credential_harvesting_paypal_v7_20250714_191904_034705.json",
+        "score": 100,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "HR",
+            "brand_mention:paypal",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:verify",
+            "repeated:account",
+            "brand_domain_mismatch:paypal"
+        ],
+        "contains_link": false,
+        "num_words": 170,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "paypal"
+        ],
+        "filename": "credential_harvesting_paypal_v7_20250714_191904_034705.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credential_harvesting_paypal_v8_20250714_191906_988969.json",
+        "score": 90,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "brand_mention:paypal",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:verify",
+            "repeated:account",
+            "brand_domain_mismatch:paypal"
+        ],
+        "contains_link": false,
+        "num_words": 148,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "paypal"
+        ],
+        "filename": "credential_harvesting_paypal_v8_20250714_191906_988969.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credit_card_update_amazon_v1_20250714_192320_802854.json",
+        "score": 40,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:amazon",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:amazon"
+        ],
+        "contains_link": false,
+        "num_words": 157,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon"
+        ],
+        "filename": "credit_card_update_amazon_v1_20250714_192320_802854.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credit_card_update_amazon_v2_20250714_192323_598158.json",
+        "score": 50,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "brand_mention:amazon",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:amazon"
+        ],
+        "contains_link": false,
+        "num_words": 169,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon"
+        ],
+        "filename": "credit_card_update_amazon_v2_20250714_192323_598158.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credit_card_update_amazon_v3_20250714_192326_510947.json",
+        "score": 60,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "suspended",
+            "urgent",
+            "brand_mention:amazon",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:amazon"
+        ],
+        "contains_link": false,
+        "num_words": 142,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon"
+        ],
+        "filename": "credit_card_update_amazon_v3_20250714_192326_510947.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credit_card_update_amazon_v4_20250714_192328_819246.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:amazon",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:amazon"
+        ],
+        "contains_link": false,
+        "num_words": 127,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon"
+        ],
+        "filename": "credit_card_update_amazon_v4_20250714_192328_819246.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credit_card_update_amazon_v5_20250714_192331_580965.json",
+        "score": 50,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "brand_mention:amazon",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:amazon"
+        ],
+        "contains_link": false,
+        "num_words": 120,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon"
+        ],
+        "filename": "credit_card_update_amazon_v5_20250714_192331_580965.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credit_card_update_amazon_v6_20250714_192334_024826.json",
+        "score": 57,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "immediate attention",
+            "brand_mention:amazon",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:amazon"
+        ],
+        "contains_link": false,
+        "num_words": 136,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "amazon"
+        ],
+        "filename": "credit_card_update_amazon_v6_20250714_192334_024826.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credit_card_update_amazon_v7_20250714_192336_751601.json",
+        "score": 45,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "brand_mention:amazon",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:amazon"
+        ],
+        "contains_link": false,
+        "num_words": 168,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon"
+        ],
+        "filename": "credit_card_update_amazon_v7_20250714_192336_751601.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "credit_card_update_amazon_v8_20250714_192339_738939.json",
+        "score": 45,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "brand_mention:amazon",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:amazon"
+        ],
+        "contains_link": false,
+        "num_words": 129,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon"
+        ],
+        "filename": "credit_card_update_amazon_v8_20250714_192339_738939.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "crypto_investment_scam_coinbase_v1_20250714_192415_023576.json",
+        "score": 67,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "click here",
+            "limited",
+            "HR",
+            "brand_mention:coinbase",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:coinbase",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 181,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "coinbase"
+        ],
+        "filename": "crypto_investment_scam_coinbase_v1_20250714_192415_023576.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "crypto_investment_scam_coinbase_v2_20250714_192419_073571.json",
+        "score": 40,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "limited",
+            "act now",
+            "brand_mention:coinbase",
+            "brand_domain_mismatch:coinbase"
+        ],
+        "contains_link": false,
+        "num_words": 191,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "coinbase"
+        ],
+        "filename": "crypto_investment_scam_coinbase_v2_20250714_192419_073571.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "crypto_investment_scam_coinbase_v3_20250714_192421_958442.json",
+        "score": 52,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "limited",
+            "act now",
+            "HR",
+            "brand_mention:coinbase",
+            "brand_domain_mismatch:coinbase"
+        ],
+        "contains_link": false,
+        "num_words": 225,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "coinbase"
+        ],
+        "filename": "crypto_investment_scam_coinbase_v3_20250714_192421_958442.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "crypto_investment_scam_coinbase_v4_20250714_192424_643748.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "limited",
+            "brand_mention:coinbase",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:coinbase"
+        ],
+        "contains_link": false,
+        "num_words": 166,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "coinbase"
+        ],
+        "filename": "crypto_investment_scam_coinbase_v4_20250714_192424_643748.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "crypto_investment_scam_coinbase_v5_20250714_192427_342657.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:coinbase",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:coinbase"
+        ],
+        "contains_link": false,
+        "num_words": 170,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "coinbase"
+        ],
+        "filename": "crypto_investment_scam_coinbase_v5_20250714_192427_342657.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "crypto_investment_scam_coinbase_v6_20250714_192430_083178.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "limited",
+            "brand_mention:coinbase",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:coinbase"
+        ],
+        "contains_link": false,
+        "num_words": 160,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "coinbase"
+        ],
+        "filename": "crypto_investment_scam_coinbase_v6_20250714_192430_083178.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "crypto_investment_scam_coinbase_v7_20250714_192433_501217.json",
+        "score": 72,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "click here",
+            "limited",
+            "act now",
+            "HR",
+            "brand_mention:coinbase",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:coinbase"
+        ],
+        "contains_link": false,
+        "num_words": 215,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "coinbase"
+        ],
+        "filename": "crypto_investment_scam_coinbase_v7_20250714_192433_501217.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "crypto_investment_scam_coinbase_v8_20250714_192436_484252.json",
+        "score": 37,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "HR",
+            "brand_mention:coinbase",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:coinbase"
+        ],
+        "contains_link": false,
+        "num_words": 195,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "coinbase"
+        ],
+        "filename": "crypto_investment_scam_coinbase_v8_20250714_192436_484252.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "delivery_scam_fedex_v1_20250714_192142_773594.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "brand_mention:fedex",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:fedex"
+        ],
+        "contains_link": false,
+        "num_words": 98,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "delivery_scam_fedex_v1_20250714_192142_773594.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "delivery_scam_fedex_v2_20250714_192145_927836.json",
+        "score": 43,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "within 24 hours",
+            "brand_mention:fedex",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:fedex",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 125,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "delivery_scam_fedex_v2_20250714_192145_927836.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "delivery_scam_fedex_v3_20250714_192148_394985.json",
+        "score": 45,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "link_detected",
+            "brand_mention:fedex",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:fedex"
+        ],
+        "contains_link": true,
+        "num_words": 123,
+        "num_links": 1,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "delivery_scam_fedex_v3_20250714_192148_394985.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "delivery_scam_fedex_v4_20250714_192151_578770.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:fedex",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:fedex"
+        ],
+        "contains_link": false,
+        "num_words": 118,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "delivery_scam_fedex_v4_20250714_192151_578770.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "delivery_scam_fedex_v5_20250714_192154_050841.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:fedex",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:fedex"
+        ],
+        "contains_link": false,
+        "num_words": 116,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "delivery_scam_fedex_v5_20250714_192154_050841.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "delivery_scam_fedex_v6_20250714_192157_237377.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:fedex",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:fedex"
+        ],
+        "contains_link": false,
+        "num_words": 108,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "delivery_scam_fedex_v6_20250714_192157_237377.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "delivery_scam_fedex_v7_20250714_192200_357240.json",
+        "score": 33,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "within 24 hours",
+            "brand_mention:fedex",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:fedex",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 103,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "delivery_scam_fedex_v7_20250714_192200_357240.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "delivery_scam_fedex_v8_20250714_192203_287616.json",
+        "score": 45,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "link_detected",
+            "brand_mention:fedex",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:fedex"
+        ],
+        "contains_link": true,
+        "num_words": 101,
+        "num_links": 1,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "delivery_scam_fedex_v8_20250714_192203_287616.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v1_20250714_192029_013877.json",
+        "score": 27,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "HR",
+            "brand_mention:linkedin",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 148,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "fake_job_offer_linkedin_v1_20250714_192029_013877.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v2_20250714_192032_006764.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 200,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "fake_job_offer_linkedin_v2_20250714_192032_006764.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v3_20250714_192037_110159.json",
+        "score": 20,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "brand_domain_mismatch:linkedin",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 180,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "fake_job_offer_linkedin_v3_20250714_192037_110159.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v4_20250714_192040_435379.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 215,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "fake_job_offer_linkedin_v4_20250714_192040_435379.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v5_20250714_192044_393485.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 136,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "fake_job_offer_linkedin_v5_20250714_192044_393485.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v6_20250714_192047_314983.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 150,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "fake_job_offer_linkedin_v6_20250714_192047_314983.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v7_20250714_192050_205901.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 150,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "fake_job_offer_linkedin_v7_20250714_192050_205901.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "fake_job_offer_linkedin_v8_20250714_192052_964274.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 155,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "fake_job_offer_linkedin_v8_20250714_192052_964274.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "fake_security_alert_microsoft_v1_20250714_192001_616152.json",
+        "score": 85,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft"
+        ],
+        "contains_link": false,
+        "num_words": 148,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "fake_security_alert_microsoft_v1_20250714_192001_616152.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "fake_security_alert_microsoft_v2_20250714_192005_971324.json",
+        "score": 100,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "click here",
+            "unauthorized",
+            "urgent",
+            "security breach",
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:confirm",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 178,
+        "num_links": 0,
+        "num_suspicious_keywords": 4,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "fake_security_alert_microsoft_v2_20250714_192005_971324.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "fake_security_alert_microsoft_v3_20250714_192009_218975.json",
+        "score": 78,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "unauthorized",
+            "urgent",
+            "security breach",
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:confirm",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 206,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "fake_security_alert_microsoft_v3_20250714_192009_218975.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "fake_security_alert_microsoft_v4_20250714_192013_400038.json",
+        "score": 97,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "HR",
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft"
+        ],
+        "contains_link": false,
+        "num_words": 141,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "fake_security_alert_microsoft_v4_20250714_192013_400038.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "fake_security_alert_microsoft_v5_20250714_192016_810937.json",
+        "score": 85,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft"
+        ],
+        "contains_link": false,
+        "num_words": 155,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "fake_security_alert_microsoft_v5_20250714_192016_810937.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "fake_security_alert_microsoft_v6_20250714_192019_771496.json",
+        "score": 85,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft"
+        ],
+        "contains_link": false,
+        "num_words": 183,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "fake_security_alert_microsoft_v6_20250714_192019_771496.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "fake_security_alert_microsoft_v7_20250714_192022_532635.json",
+        "score": 100,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "HR",
+            "security breach",
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft"
+        ],
+        "contains_link": false,
+        "num_words": 163,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "fake_security_alert_microsoft_v7_20250714_192022_532635.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "fake_security_alert_microsoft_v8_20250714_192025_568641.json",
+        "score": 100,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "suspended",
+            "unauthorized",
+            "urgent",
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 190,
+        "num_links": 0,
+        "num_suspicious_keywords": 4,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "fake_security_alert_microsoft_v8_20250714_192025_568641.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v1_20250714_191934_093690.json",
+        "score": 10,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent"
+        ],
+        "contains_link": false,
+        "num_words": 189,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "invoice_scam_accounts_payable_v1_20250714_191934_093690.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v2_20250714_191936_924199.json",
+        "score": 22,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "HR"
+        ],
+        "contains_link": false,
+        "num_words": 183,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "invoice_scam_accounts_payable_v2_20250714_191936_924199.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v3_20250714_191941_103430.json",
+        "score": 42,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "immediate attention",
+            "obfuscated_pattern",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 212,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "invoice_scam_accounts_payable_v3_20250714_191941_103430.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v4_20250714_191943_907045.json",
+        "score": 22,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "immediate attention"
+        ],
+        "contains_link": false,
+        "num_words": 149,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "invoice_scam_accounts_payable_v4_20250714_191943_907045.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v5_20250714_191948_077885.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 252,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "invoice_scam_accounts_payable_v5_20250714_191948_077885.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v6_20250714_191950_959256.json",
+        "score": 10,
+        "is_phishing": false,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent"
+        ],
+        "contains_link": false,
+        "num_words": 178,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "invoice_scam_accounts_payable_v6_20250714_191950_959256.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v7_20250714_191954_662544.json",
+        "score": 32,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "HR",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 190,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "invoice_scam_accounts_payable_v7_20250714_191954_662544.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "invoice_scam_accounts_payable_v8_20250714_191958_976507.json",
+        "score": 44,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "HR",
+            "immediate attention",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 227,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 2,
+        "brand_mentions": [],
+        "filename": "invoice_scam_accounts_payable_v8_20250714_191958_976507.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "mfa_reset_scam_google_v1_20250714_192205_644931.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 117,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "mfa_reset_scam_google_v1_20250714_192205_644931.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "mfa_reset_scam_google_v2_20250714_192208_051860.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 106,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "mfa_reset_scam_google_v2_20250714_192208_051860.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "mfa_reset_scam_google_v3_20250714_192211_327440.json",
+        "score": 53,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "unauthorized",
+            "urgent",
+            "security breach",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 111,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "mfa_reset_scam_google_v3_20250714_192211_327440.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "mfa_reset_scam_google_v4_20250714_192214_123321.json",
+        "score": 50,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "unauthorized",
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 128,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "mfa_reset_scam_google_v4_20250714_192214_123321.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "mfa_reset_scam_google_v5_20250714_192216_777925.json",
+        "score": 70,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "suspended",
+            "unauthorized",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 141,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "mfa_reset_scam_google_v5_20250714_192216_777925.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "mfa_reset_scam_google_v6_20250714_192219_920927.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 117,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "mfa_reset_scam_google_v6_20250714_192219_920927.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "mfa_reset_scam_google_v7_20250714_192223_552270.json",
+        "score": 80,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "suspended",
+            "unauthorized",
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 136,
+        "num_links": 0,
+        "num_suspicious_keywords": 4,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "mfa_reset_scam_google_v7_20250714_192223_552270.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "mfa_reset_scam_google_v8_20250714_192227_310796.json",
+        "score": 62,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "unauthorized",
+            "urgent",
+            "HR",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 180,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "mfa_reset_scam_google_v8_20250714_192227_310796.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "social_media_violation_instagram_v1_20250714_192438_827805.json",
+        "score": 43,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "within 24 hours",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 124,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "social_media_violation_instagram_v1_20250714_192438_827805.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "social_media_violation_instagram_v2_20250714_192441_672302.json",
+        "score": 68,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "urgent",
+            "within 24 hours",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 163,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "social_media_violation_instagram_v2_20250714_192441_672302.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "social_media_violation_instagram_v3_20250714_192444_035733.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 126,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "social_media_violation_instagram_v3_20250714_192444_035733.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "social_media_violation_instagram_v4_20250714_192446_451261.json",
+        "score": 55,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "immediate attention",
+            "within 24 hours",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 132,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "social_media_violation_instagram_v4_20250714_192446_451261.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "social_media_violation_instagram_v5_20250714_192449_166719.json",
+        "score": 60,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 161,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "social_media_violation_instagram_v5_20250714_192449_166719.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "social_media_violation_instagram_v6_20250714_192452_438950.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 142,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "social_media_violation_instagram_v6_20250714_192452_438950.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "social_media_violation_instagram_v7_20250714_192455_182997.json",
+        "score": 37,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "urgent",
+            "HR",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 166,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "social_media_violation_instagram_v7_20250714_192455_182997.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "social_media_violation_instagram_v8_20250714_192457_737828.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 148,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "social_media_violation_instagram_v8_20250714_192457_737828.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "student_loan_forgiveness_doe_v1_20250714_192344_024378.json",
+        "score": 40,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "limited",
+            "HR",
+            "limited time",
+            "obfuscated_pattern",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 260,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "student_loan_forgiveness_doe_v1_20250714_192344_024378.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "student_loan_forgiveness_doe_v2_20250714_192347_467918.json",
+        "score": 30,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "obfuscated_pattern",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 192,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "student_loan_forgiveness_doe_v2_20250714_192347_467918.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "student_loan_forgiveness_doe_v3_20250714_192351_759550.json",
+        "score": 47,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "limited",
+            "act now",
+            "HR",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 204,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "student_loan_forgiveness_doe_v3_20250714_192351_759550.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "student_loan_forgiveness_doe_v4_20250714_192354_812973.json",
+        "score": 47,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "click here",
+            "limited",
+            "HR",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 228,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "student_loan_forgiveness_doe_v4_20250714_192354_812973.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "student_loan_forgiveness_doe_v5_20250714_192357_807547.json",
+        "score": 32,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "act now",
+            "HR",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 201,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "student_loan_forgiveness_doe_v5_20250714_192357_807547.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "student_loan_forgiveness_doe_v6_20250714_192401_824050.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "limited",
+            "HR",
+            "limited time",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 213,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "student_loan_forgiveness_doe_v6_20250714_192401_824050.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "student_loan_forgiveness_doe_v7_20250714_192406_610370.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "limited",
+            "HR",
+            "limited time",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 268,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "student_loan_forgiveness_doe_v7_20250714_192406_610370.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "student_loan_forgiveness_doe_v8_20250714_192411_251067.json",
+        "score": 32,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "limited",
+            "HR",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 256,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "student_loan_forgiveness_doe_v8_20250714_192411_251067.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "tech_support_scam_apple_v1_20250714_192120_429631.json",
+        "score": 50,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "unauthorized",
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 123,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "tech_support_scam_apple_v1_20250714_192120_429631.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "tech_support_scam_apple_v2_20250714_192123_611545.json",
+        "score": 65,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "unauthorized",
+            "urgent",
+            "reset your password",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "repeated:password"
+        ],
+        "contains_link": false,
+        "num_words": 151,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "tech_support_scam_apple_v2_20250714_192123_611545.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "tech_support_scam_apple_v3_20250714_192126_327946.json",
+        "score": 65,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "unauthorized",
+            "urgent",
+            "reset your password",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "repeated:password"
+        ],
+        "contains_link": false,
+        "num_words": 156,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "tech_support_scam_apple_v3_20250714_192126_327946.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "tech_support_scam_apple_v4_20250714_192129_182833.json",
+        "score": 75,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "verify",
+            "unauthorized",
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 172,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "tech_support_scam_apple_v4_20250714_192129_182833.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "tech_support_scam_apple_v5_20250714_192132_082486.json",
+        "score": 65,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "unauthorized",
+            "urgent",
+            "reset your password",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 123,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "tech_support_scam_apple_v5_20250714_192132_082486.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "tech_support_scam_apple_v6_20250714_192134_761769.json",
+        "score": 65,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "unauthorized",
+            "urgent",
+            "reset your password",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "repeated:password"
+        ],
+        "contains_link": false,
+        "num_words": 162,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "tech_support_scam_apple_v6_20250714_192134_761769.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "tech_support_scam_apple_v7_20250714_192137_394007.json",
+        "score": 50,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "unauthorized",
+            "urgent",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account"
+        ],
+        "contains_link": false,
+        "num_words": 145,
+        "num_links": 0,
+        "num_suspicious_keywords": 2,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "tech_support_scam_apple_v7_20250714_192137_394007.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "tech_support_scam_apple_v8_20250714_192140_595950.json",
+        "score": 65,
+        "is_phishing": true,
+        "actual_label": "phishing",
+        "flagged_keywords": [
+            "unauthorized",
+            "urgent",
+            "reset your password",
+            "obfuscated_pattern",
+            "obfuscated_pattern",
+            "repeated:account",
+            "repeated:password"
+        ],
+        "contains_link": false,
+        "num_words": 147,
+        "num_links": 0,
+        "num_suspicious_keywords": 3,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "tech_support_scam_apple_v8_20250714_192140_595950.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_activity_alert_microsoft_v1_20250714_195209_869983.json",
+        "score": 30,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft"
+        ],
+        "contains_link": false,
+        "num_words": 101,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "account_activity_alert_microsoft_v1_20250714_195209_869983.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_activity_alert_microsoft_v2_20250714_195212_286600.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 118,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "account_activity_alert_microsoft_v2_20250714_195212_286600.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_activity_alert_microsoft_v3_20250714_195215_433235.json",
+        "score": 40,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "unauthorized",
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft"
+        ],
+        "contains_link": false,
+        "num_words": 152,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "account_activity_alert_microsoft_v3_20250714_195215_433235.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_activity_alert_microsoft_v4_20250714_195219_178013.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft",
+            "time_pressure_phrase"
+        ],
+        "contains_link": false,
+        "num_words": 160,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "account_activity_alert_microsoft_v4_20250714_195219_178013.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "account_activity_alert_microsoft_v5_20250714_195222_024890.json",
+        "score": 30,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:microsoft",
+            "obfuscated_pattern",
+            "repeated:account",
+            "brand_domain_mismatch:microsoft"
+        ],
+        "contains_link": false,
+        "num_words": 114,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "account_activity_alert_microsoft_v5_20250714_195222_024890.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "event_reminder_zoom_v1_20250714_195142_761738.json",
+        "score": 0,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [],
+        "contains_link": false,
+        "num_words": 121,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "event_reminder_zoom_v1_20250714_195142_761738.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "event_reminder_zoom_v2_20250714_195146_637484.json",
+        "score": 0,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [],
+        "contains_link": false,
+        "num_words": 150,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "event_reminder_zoom_v2_20250714_195146_637484.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "event_reminder_zoom_v3_20250714_195149_176825.json",
+        "score": 0,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [],
+        "contains_link": false,
+        "num_words": 109,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "event_reminder_zoom_v3_20250714_195149_176825.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "event_reminder_zoom_v4_20250714_195152_713327.json",
+        "score": 0,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [],
+        "contains_link": false,
+        "num_words": 157,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "event_reminder_zoom_v4_20250714_195152_713327.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "event_reminder_zoom_v5_20250714_195155_279480.json",
+        "score": 0,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [],
+        "contains_link": false,
+        "num_words": 113,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "event_reminder_zoom_v5_20250714_195155_279480.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "hr_update_internal_hr_v1_20250714_195239_668226.json",
+        "score": 0,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [],
+        "contains_link": false,
+        "num_words": 175,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "hr_update_internal_hr_v1_20250714_195239_668226.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "hr_update_internal_hr_v2_20250714_195242_120560.json",
+        "score": 12,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "HR"
+        ],
+        "contains_link": false,
+        "num_words": 142,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "hr_update_internal_hr_v2_20250714_195242_120560.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "hr_update_internal_hr_v3_20250714_195244_944226.json",
+        "score": 12,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "HR"
+        ],
+        "contains_link": false,
+        "num_words": 195,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "hr_update_internal_hr_v3_20250714_195244_944226.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "hr_update_internal_hr_v4_20250714_195249_347555.json",
+        "score": 12,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "HR"
+        ],
+        "contains_link": false,
+        "num_words": 192,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "hr_update_internal_hr_v4_20250714_195249_347555.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "hr_update_internal_hr_v5_20250714_195252_073170.json",
+        "score": 12,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "HR"
+        ],
+        "contains_link": false,
+        "num_words": 148,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "hr_update_internal_hr_v5_20250714_195252_073170.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "monthly_bill_verizon_v1_20250714_195254_976520.json",
+        "score": 10,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 114,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "monthly_bill_verizon_v1_20250714_195254_976520.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "monthly_bill_verizon_v2_20250714_195257_610922.json",
+        "score": 20,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "obfuscated_pattern",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 137,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "monthly_bill_verizon_v2_20250714_195257_610922.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "monthly_bill_verizon_v3_20250714_195300_900710.json",
+        "score": 20,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "obfuscated_pattern",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 133,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "monthly_bill_verizon_v3_20250714_195300_900710.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "monthly_bill_verizon_v4_20250714_195303_440146.json",
+        "score": 20,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "obfuscated_pattern",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 132,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "monthly_bill_verizon_v4_20250714_195303_440146.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "monthly_bill_verizon_v5_20250714_195305_926102.json",
+        "score": 20,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "obfuscated_pattern",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 127,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "monthly_bill_verizon_v5_20250714_195305_926102.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "newsletter_google_v1_20250714_195123_195252.json",
+        "score": 0,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [],
+        "contains_link": false,
+        "num_words": 200,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "newsletter_google_v1_20250714_195123_195252.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "newsletter_google_v2_20250714_195128_604900.json",
+        "score": 0,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [],
+        "contains_link": false,
+        "num_words": 267,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "newsletter_google_v2_20250714_195128_604900.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "newsletter_google_v3_20250714_195132_639555.json",
+        "score": 22,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "HR",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 300,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [],
+        "filename": "newsletter_google_v3_20250714_195132_639555.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "newsletter_google_v4_20250714_195136_261644.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:microsoft",
+            "brand_domain_mismatch:microsoft"
+        ],
+        "contains_link": false,
+        "num_words": 256,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "microsoft"
+        ],
+        "filename": "newsletter_google_v4_20250714_195136_261644.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "newsletter_google_v5_20250714_195140_301086.json",
+        "score": 0,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [],
+        "contains_link": false,
+        "num_words": 232,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "newsletter_google_v5_20250714_195140_301086.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "order_confirmation_amazon_v1_20250714_195104_416629.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:amazon",
+            "brand_domain_mismatch:amazon"
+        ],
+        "contains_link": false,
+        "num_words": 154,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon"
+        ],
+        "filename": "order_confirmation_amazon_v1_20250714_195104_416629.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "order_confirmation_amazon_v2_20250714_195108_641536.json",
+        "score": 40,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:amazon",
+            "brand_mention:doe",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:amazon",
+            "brand_domain_mismatch:doe"
+        ],
+        "contains_link": false,
+        "num_words": 153,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon",
+            "doe"
+        ],
+        "filename": "order_confirmation_amazon_v2_20250714_195108_641536.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "order_confirmation_amazon_v3_20250714_195113_012915.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:amazon",
+            "brand_domain_mismatch:amazon"
+        ],
+        "contains_link": false,
+        "num_words": 161,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon"
+        ],
+        "filename": "order_confirmation_amazon_v3_20250714_195113_012915.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "order_confirmation_amazon_v4_20250714_195116_642630.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:amazon",
+            "brand_domain_mismatch:amazon"
+        ],
+        "contains_link": false,
+        "num_words": 165,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon"
+        ],
+        "filename": "order_confirmation_amazon_v4_20250714_195116_642630.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "order_confirmation_amazon_v5_20250714_195119_795612.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:amazon",
+            "brand_domain_mismatch:amazon"
+        ],
+        "contains_link": false,
+        "num_words": 139,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "amazon"
+        ],
+        "filename": "order_confirmation_amazon_v5_20250714_195119_795612.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "password_change_confirmation_linkedin_v1_20250714_195157_628903.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 80,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "password_change_confirmation_linkedin_v1_20250714_195157_628903.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "password_change_confirmation_linkedin_v2_20250714_195159_878650.json",
+        "score": 47,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "HR",
+            "brand_mention:linkedin",
+            "obfuscated_pattern",
+            "repeated:account",
+            "repeated:password",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 98,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 1,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "password_change_confirmation_linkedin_v2_20250714_195159_878650.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "password_change_confirmation_linkedin_v3_20250714_195202_376316.json",
+        "score": 35,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "obfuscated_pattern",
+            "repeated:account",
+            "repeated:password",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 117,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "password_change_confirmation_linkedin_v3_20250714_195202_376316.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "password_change_confirmation_linkedin_v4_20250714_195204_735019.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 74,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "password_change_confirmation_linkedin_v4_20250714_195204_735019.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "password_change_confirmation_linkedin_v5_20250714_195207_203488.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:linkedin",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:linkedin"
+        ],
+        "contains_link": false,
+        "num_words": 73,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "linkedin"
+        ],
+        "filename": "password_change_confirmation_linkedin_v5_20250714_195207_203488.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "shipping_notification_fedex_v1_20250714_195224_448160.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:fedex",
+            "brand_domain_mismatch:fedex"
+        ],
+        "contains_link": false,
+        "num_words": 87,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "shipping_notification_fedex_v1_20250714_195224_448160.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "shipping_notification_fedex_v2_20250714_195227_693162.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:fedex",
+            "brand_domain_mismatch:fedex"
+        ],
+        "contains_link": false,
+        "num_words": 128,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "shipping_notification_fedex_v2_20250714_195227_693162.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "shipping_notification_fedex_v3_20250714_195230_973952.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:fedex",
+            "brand_domain_mismatch:fedex"
+        ],
+        "contains_link": false,
+        "num_words": 105,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "shipping_notification_fedex_v3_20250714_195230_973952.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "shipping_notification_fedex_v4_20250714_195233_477481.json",
+        "score": 25,
+        "is_phishing": true,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:fedex",
+            "obfuscated_pattern",
+            "brand_domain_mismatch:fedex"
+        ],
+        "contains_link": false,
+        "num_words": 104,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "shipping_notification_fedex_v4_20250714_195233_477481.json",
+        "predicted_label": "phishing"
+    },
+    {
+        "source_file": "shipping_notification_fedex_v5_20250714_195236_546203.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:fedex",
+            "brand_domain_mismatch:fedex"
+        ],
+        "contains_link": false,
+        "num_words": 122,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "fedex"
+        ],
+        "filename": "shipping_notification_fedex_v5_20250714_195236_546203.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "subscription_renewal_spotify_v1_20250714_195326_302607.json",
+        "score": 20,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "limited",
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 136,
+        "num_links": 0,
+        "num_suspicious_keywords": 1,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "subscription_renewal_spotify_v1_20250714_195326_302607.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "subscription_renewal_spotify_v2_20250714_195329_121819.json",
+        "score": 15,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "brand_mention:paypal",
+            "brand_domain_mismatch:paypal"
+        ],
+        "contains_link": false,
+        "num_words": 151,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [
+            "paypal"
+        ],
+        "filename": "subscription_renewal_spotify_v2_20250714_195329_121819.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "subscription_renewal_spotify_v3_20250714_195332_785745.json",
+        "score": 0,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [],
+        "contains_link": false,
+        "num_words": 102,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "subscription_renewal_spotify_v3_20250714_195332_785745.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "subscription_renewal_spotify_v4_20250714_195335_235372.json",
+        "score": 0,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [],
+        "contains_link": false,
+        "num_words": 114,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "subscription_renewal_spotify_v4_20250714_195335_235372.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "subscription_renewal_spotify_v5_20250714_195338_148074.json",
+        "score": 0,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [],
+        "contains_link": false,
+        "num_words": 159,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "subscription_renewal_spotify_v5_20250714_195338_148074.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "travel_itinerary_delta_airlines_v1_20250714_195309_459697.json",
+        "score": 10,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 129,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "travel_itinerary_delta_airlines_v1_20250714_195309_459697.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "travel_itinerary_delta_airlines_v2_20250714_195312_065914.json",
+        "score": 10,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 124,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "travel_itinerary_delta_airlines_v2_20250714_195312_065914.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "travel_itinerary_delta_airlines_v3_20250714_195315_043421.json",
+        "score": 10,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 144,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "travel_itinerary_delta_airlines_v3_20250714_195315_043421.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "travel_itinerary_delta_airlines_v4_20250714_195319_342465.json",
+        "score": 10,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "obfuscated_pattern"
+        ],
+        "contains_link": false,
+        "num_words": 151,
+        "num_links": 0,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "travel_itinerary_delta_airlines_v4_20250714_195319_342465.json",
+        "predicted_label": "benign"
+    },
+    {
+        "source_file": "travel_itinerary_delta_airlines_v5_20250714_195323_660994.json",
+        "score": 20,
+        "is_phishing": false,
+        "actual_label": "benign",
+        "flagged_keywords": [
+            "link_detected"
+        ],
+        "contains_link": true,
+        "num_words": 126,
+        "num_links": 1,
+        "num_suspicious_keywords": 0,
+        "num_social_engineering_hits": 0,
+        "brand_mentions": [],
+        "filename": "travel_itinerary_delta_airlines_v5_20250714_195323_660994.json",
+        "predicted_label": "benign"
+    }
+]

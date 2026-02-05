@@ -1,0 +1,6 @@
+{
+    "source_file": "delivery_scam_fedex_v7_20250714_192200_357240.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by mentioning additional charges if the delivery is not rescheduled within 24 hours. it also contains a suspicious link that could potentially lead to a phishing website. the email impersonates fedex, a trusted brand, which is a common tactic used in phishing attacks."
+}

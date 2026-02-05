@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:51:49.176825",
+    "category": "Event Reminder",
+    "brand": "Zoom",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 3,
+    "email_text": "Subject: Reminder: Weekly Team Meeting on Wednesday\n\nDear Team,\n\nI hope this message finds you well. Just a friendly reminder that our weekly team meeting is scheduled for this Wednesday at 10:00 AM.\n\nPlease find the Zoom meeting details below:\n\nMeeting Link: [Insert Zoom Meeting Link]\nMeeting ID: XXX XXXX XXXX\nPasscode: XXXXXX\n\nAgenda:\n1. Review of last week's progress\n2. Discussion of upcoming projects and deadlines\n3. Team updates and announcements\n4. Any other business\n\nPlease come prepared with any updates or questions you may have. If you are unable to attend, please let me know in advance.\n\nLooking forward to our productive meeting!\n\nBest regards,\n[Your Name]"
+}

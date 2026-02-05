@@ -1,0 +1,6 @@
+{
+    "source_file": "student_loan_forgiveness_doe_v4_20250714_192354_812973.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by mentioning limited spaces and time-sensitive nature of the program. it requests sensitive information (financial and personal details) through a link, which is a common tactic used in phishing emails to steal credentials. additionally, the email impersonates a trusted entity, the department of education, to deceive recipients. these are clear red flags indicating a phishing attempt."
+}

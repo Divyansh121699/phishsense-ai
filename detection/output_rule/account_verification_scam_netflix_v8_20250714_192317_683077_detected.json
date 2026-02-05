@@ -1,0 +1,28 @@
+{
+    "source_file": "account_verification_scam_netflix_v8_20250714_192317_683077.json",
+    "score": 92,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "verify",
+        "urgent",
+        "HR",
+        "brand_mention:netflix",
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "repeated:verify",
+        "repeated:account",
+        "brand_domain_mismatch:netflix"
+    ],
+    "contains_link": false,
+    "num_words": 198,
+    "num_links": 0,
+    "num_suspicious_keywords": 2,
+    "num_social_engineering_hits": 1,
+    "brand_mentions": [
+        "netflix"
+    ],
+    "filename": "account_verification_scam_netflix_v8_20250714_192317_683077.json",
+    "predicted_label": "phishing"
+}

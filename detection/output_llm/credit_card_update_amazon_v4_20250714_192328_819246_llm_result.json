@@ -1,0 +1,6 @@
+{
+    "source_file": "credit_card_update_amazon_v4_20250714_192328_819246.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by mentioning potential account suspension and order delays if payment information is not updated. it requests sensitive information (credit card details) through a suspicious link that is not directly associated with amazon. additionally, the email does not address the recipient by name, which is a common tactic in phishing emails."
+}

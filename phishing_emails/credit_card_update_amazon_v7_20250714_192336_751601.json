@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:23:36.751601",
+    "category": "Credit Card Update",
+    "target_brand": "Amazon",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 7,
+    "email_text": "Subject: Urgent Action Required: Update Your Payment Information Now\n\nDear Valued Amazon Customer,\n\nWe are writing to inform you that there has been an issue with the payment method linked to your Amazon account. In order to avoid any disruptions to your account and to continue enjoying our services, we kindly ask you to update your payment information as soon as possible.\n\nPlease click on the link below to securely update your credit card details:\n\n[Phishing link]\n\nWe understand that updating payment information can be inconvenient, but it is necessary to ensure the smooth processing of your orders and subscriptions. Your prompt action in this matter is greatly appreciated.\n\nThank you for choosing Amazon as your preferred online shopping destination. We look forward to serving you better with your updated payment information.\n\nSincerely,\nThe Amazon Team\n\nNote: Amazon will never ask for your personal information or login credentials via email. If you have any doubts about the authenticity of this message, please contact our customer service team immediately."
+}

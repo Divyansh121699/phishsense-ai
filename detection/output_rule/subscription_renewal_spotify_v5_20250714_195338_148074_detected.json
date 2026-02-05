@@ -1,0 +1,15 @@
+{
+    "source_file": "subscription_renewal_spotify_v5_20250714_195338_148074.json",
+    "score": 0,
+    "is_phishing": false,
+    "actual_label": "benign",
+    "flagged_keywords": [],
+    "contains_link": false,
+    "num_words": 159,
+    "num_links": 0,
+    "num_suspicious_keywords": 0,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [],
+    "filename": "subscription_renewal_spotify_v5_20250714_195338_148074.json",
+    "predicted_label": "benign"
+}

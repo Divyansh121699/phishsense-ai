@@ -1,0 +1,6 @@
+{
+    "source_file": "ceo_fraud_internal_hr_v3_20250714_191915_700517.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by stating the need for an immediate wire transfer to avoid disruptions to business operations. it requests a significant amount of money to be transferred without prior verification. additionally, the email does not follow standard protocols for financial transactions, such as providing proper documentation or approval processes. this combination of urgency and financial request without proper verification raises red flags for phishing attempts."
+}

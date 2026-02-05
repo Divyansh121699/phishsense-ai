@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:20:25.568641",
+    "category": "Fake Security Alert",
+    "target_brand": "Microsoft",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 8,
+    "email_text": "Subject: Urgent Action Required: Suspicious Login Attempt Detected on Your Microsoft Account\n\nDear Valued Microsoft User,\n\nWe regret to inform you that our system has detected a suspicious login attempt on your Microsoft account. Our security team has flagged this activity as potentially harmful and we urge you to take immediate action to secure your account.\n\nTo verify that this login attempt was made by you and not an unauthorized user, we kindly ask you to confirm your identity by clicking the link below and following the instructions provided:\n\n[Insert Phishing Link Here]\n\nIt is crucial that you do not ignore this message as failing to confirm your identity may result in your account being temporarily suspended or permanently disabled. We take the security of our users very seriously and we are committed to safeguarding your personal information.\n\nIf you have any concerns or require further assistance, please do not hesitate to contact our support team at [Fake Support Email Address]. Please note that Microsoft will never ask for your password or sensitive information via email.\n\nThank you for your prompt attention to this matter.\n\nSincerely,\n\nThe Microsoft Security Team"
+}

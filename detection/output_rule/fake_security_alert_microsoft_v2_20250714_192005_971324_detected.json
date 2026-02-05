@@ -1,0 +1,31 @@
+{
+    "source_file": "fake_security_alert_microsoft_v2_20250714_192005_971324.json",
+    "score": 100,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "verify",
+        "click here",
+        "unauthorized",
+        "urgent",
+        "security breach",
+        "brand_mention:microsoft",
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "repeated:confirm",
+        "repeated:account",
+        "brand_domain_mismatch:microsoft",
+        "time_pressure_phrase"
+    ],
+    "contains_link": false,
+    "num_words": 178,
+    "num_links": 0,
+    "num_suspicious_keywords": 4,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [
+        "microsoft"
+    ],
+    "filename": "fake_security_alert_microsoft_v2_20250714_192005_971324.json",
+    "predicted_label": "phishing"
+}

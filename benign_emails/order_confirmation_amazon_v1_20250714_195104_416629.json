@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:51:04.416629",
+    "category": "Order Confirmation",
+    "brand": "Amazon",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 1,
+    "email_text": "Subject: Your Amazon Order Confirmation (#1234567890)\n\nDear [Customer's Name],\n\nThank you for shopping with Amazon! We are pleased to confirm that your recent order has been successfully processed and is now being prepared for shipment. Below are the details of your purchase:\n\nOrder Number: #1234567890\nOrder Date: [Insert Order Date]\nEstimated Delivery Date: [Insert Estimated Delivery Date]\n\nOrder Details:\n- Item 1: [Product Name]\n  Price: $XX.XX\n- Item 2: [Product Name]\n  Price: $XX.XX\n- Item 3: [Product Name]\n  Price: $XX.XX\n\nSubtotal: $XXX.XX\nShipping: $X.XX\nTax: $X.XX\nTotal: $XXX.XX\n\nPayment Method: [Payment Method Used]\n\nShipping Address:\n[Customer's Shipping Address]\n\nIf you have any questions or need further assistance with your order, please don't hesitate to contact our Customer Service team at [Customer Service Contact Information]. Please note that this email is not a VAT invoice.\n\nThank you for choosing Amazon. We appreciate your business and hope you enjoy your purchase!\n\nSincerely,\nAmazon Customer Service Team"
+}

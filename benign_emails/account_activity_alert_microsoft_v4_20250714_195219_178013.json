@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:52:19.178013",
+    "category": "Account Activity Alert",
+    "brand": "Microsoft",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 4,
+    "email_text": "Subject: Successful sign-in to your Microsoft account from a new location\n\nDear [User],\n\nWe are writing to inform you that a successful sign-in to your Microsoft account was detected from a new location. The sign-in occurred on [date] at [time] from the IP address [IP address] in [city], [country].\n\nIf you authorized this sign-in, you can disregard this message. However, if you did not initiate this sign-in or believe your account has been compromised, please take immediate action to secure your account.\n\nAs a precaution, we recommend changing your password and enabling two-step verification to add an extra layer of security to your account. You can do this by visiting the Security settings in your Microsoft account.\n\nIf you have any concerns or require further assistance, please do not hesitate to contact our support team. We are here to help ensure the security of your Microsoft account.\n\nThank you for your attention to this matter.\n\nSincerely,\n\nThe Microsoft Security Team"
+}

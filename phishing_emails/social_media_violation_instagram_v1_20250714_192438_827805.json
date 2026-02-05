@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:24:38.827805",
+    "category": "Social Media Violation",
+    "target_brand": "Instagram",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 1,
+    "email_text": "Subject: Urgent Action Required: Instagram Policy Violation \n\nDear Instagram User,\n\nWe regret to inform you that your account has been found to be in violation of our community guidelines. Our system has detected suspicious activity on your account, leading to this violation.\n\nIn order to resolve this issue and prevent any further action being taken against your account, we kindly request that you click on the following link to fill out an appeal form: [fake link]\n\nPlease note that failure to appeal within 24 hours may result in the suspension or termination of your account. We value the safety and security of our community and take violations of our policies seriously.\n\nThank you for your prompt attention to this matter.\n\nSincerely,\nThe Instagram Team"
+}

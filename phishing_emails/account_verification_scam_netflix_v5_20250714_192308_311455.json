@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:23:08.311455",
+    "category": "Account Verification Scam",
+    "target_brand": "Netflix",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 5,
+    "email_text": "Subject: Urgent: Verify your Netflix billing information now!\n\nDear valued Netflix customer,\n\nWe are contacting you to inform you that there is an issue with your billing information on file. In order to ensure uninterrupted service and continue enjoying all the amazing content on Netflix, we kindly ask you to verify your billing information immediately.\n\nPlease click on the link below to securely update your payment details:\n[Malicious link]\n\nFailure to update your billing information within the next 24 hours may result in a temporary suspension of your account. We value your continued loyalty and want to make sure you have a seamless streaming experience.\n\nThank you for your prompt attention to this matter.\n\nSincerely,\nThe Netflix Team"
+}

@@ -1,0 +1,6 @@
+{
+    "source_file": "social_media_violation_instagram_v3_20250714_192444_035733.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by threatening permanent suspension of the account within 24 hours if action is not taken. it requests the recipient to click on a suspicious link to appeal the decision, which is a common tactic used in phishing emails to steal login credentials. additionally, the email impersonates the instagram support team, a trusted brand, which is a red flag for phishing attempts."
+}

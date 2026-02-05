@@ -1,0 +1,6 @@
+{
+    "source_file": "crypto_investment_scam_coinbase_v2_20250714_192419_073571.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by offering an exclusive investment opportunity with the promise of massive returns in a short period of time. it requests a minimum transfer of $1000 to a provided wallet address, which is a common tactic used in phishing scams to steal money. additionally, the email impersonates coinbase, a trusted cryptocurrency platform, to gain credibility and deceive recipients. these red flags indicate that this email is likely a phishing attempt."
+}

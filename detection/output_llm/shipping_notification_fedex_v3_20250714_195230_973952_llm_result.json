@@ -1,0 +1,6 @@
+{
+    "source_file": "shipping_notification_fedex_v3_20250714_195230_973952.json",
+    "llm_label": "benign",
+    "true_label": "benign",
+    "explanation": "label: benign\nexplanation: this email is benign as it simply provides information about a package being dispatched by fedex. there are no urgent requests for action, no solicitation of sensitive data, and the language used is professional and appropriate for a legitimate shipping notification."
+}

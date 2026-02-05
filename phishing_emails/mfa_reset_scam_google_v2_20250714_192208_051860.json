@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:22:08.051860",
+    "category": "MFA Reset Scam",
+    "target_brand": "Google",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 2,
+    "email_text": "Subject: Urgent: Reset Your Google 2FA Now\n\nDear Valued Google User,\n\nWe are writing to inform you that we have detected some unusual activity on your Google account. In order to ensure the security of your account, we require you to reset your Two-Factor Authentication (2FA) immediately.\n\nTo reset your 2FA, please click on the following link: [malicious link]\n\nFailure to reset your 2FA within the next 24 hours may result in temporary suspension of your account. We take the security of our users very seriously and urge you to take action promptly.\n\nThank you for your cooperation in this matter.\n\nSincerely,\nThe Google Security Team"
+}

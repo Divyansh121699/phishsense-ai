@@ -1,0 +1,6 @@
+{
+    "source_file": "fake_security_alert_microsoft_v7_20250714_192022_532635.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by mentioning a suspicious login attempt and requests the recipient to click on a link to verify their account. the email also asks for personal information without providing a clear reason for doing so. additionally, the sender address is not from an official microsoft domain, indicating potential impersonation."
+}

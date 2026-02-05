@@ -1,0 +1,6 @@
+{
+    "source_file": "crypto_investment_scam_coinbase_v3_20250714_192421_958442.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by mentioning a limited and time-sensitive opportunity, requests for contact information which could lead to further personal details being shared, and impersonates coinbase, a trusted brand in the cryptocurrency industry. additionally, the promise of high returns in a short period of time is a common tactic used in phishing schemes to lure victims into sharing sensitive information."
+}

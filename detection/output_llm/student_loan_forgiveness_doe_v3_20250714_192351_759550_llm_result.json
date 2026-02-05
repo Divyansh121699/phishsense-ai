@@ -1,0 +1,6 @@
+{
+    "source_file": "student_loan_forgiveness_doe_v3_20250714_192351_759550.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by mentioning a \"limited-time offer\" and encourages the recipient to act quickly. it requests the recipient to click on a link to provide personal information about their student loans, which is a common tactic used in phishing emails to steal sensitive data. additionally, the email does not provide a direct contact method or official website for verification, and the sender address could potentially be spoofed."
+}

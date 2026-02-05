@@ -1,0 +1,6 @@
+{
+    "source_file": "social_media_violation_instagram_v8_20250714_192457_737828.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by threatening account suspension or removal, requests the recipient to click on a suspicious link to complete an appeal form, and impersonates a trusted brand (instagram). these are clear red flags commonly seen in phishing emails."
+}

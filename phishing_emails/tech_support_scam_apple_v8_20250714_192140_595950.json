@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:21:40.595950",
+    "category": "Tech Support Scam",
+    "target_brand": "Apple",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 8,
+    "email_text": "Subject: Urgent: Apple ID Lockout Detected - Reset Required\n\nDear valued Apple customer,\n\nWe regret to inform you that our system has detected unusual activity on your Apple ID account. To protect your security and prevent any unauthorized access, we have temporarily locked your account.\n\nTo regain access to your account, we kindly ask you to reset your Apple ID password immediately. Please click on the link below to initiate the password reset process:\n\n[Phishing link]\n\nIt is crucial that you take action promptly to avoid any further disruption to your account. Failure to reset your password within the next 24 hours may result in a permanent lockout of your Apple ID.\n\nIf you did not initiate this request or believe this to be an error, please contact Apple Support immediately for further assistance.\n\nThank you for your prompt attention to this matter.\n\nSincerely,\nApple Support Team"
+}

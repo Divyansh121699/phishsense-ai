@@ -1,0 +1,6 @@
+{
+    "source_file": "fake_security_alert_microsoft_v4_20250714_192013_400038.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by mentioning a suspicious login attempt and requests the recipient to click on a link to verify their identity. this is a common tactic used in phishing emails to trick users into providing their login credentials or personal information. additionally, the email does not provide specific details about the suspicious login attempt, uses a generic salutation (\"dear valued microsoft user\"), and contains a suspicious link without a clear indication of where it leads to. these are all red flags commonly associated with phishing emails."
+}

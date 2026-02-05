@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:19:15.700517",
+    "category": "CEO Fraud",
+    "target_brand": "Internal HR",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 3,
+    "email_text": "Subject: Urgent Request for Wire Transfer\n\nDear [HR Manager],\n\nI hope this email finds you well. I am currently in an important meeting and unable to make calls. I need your urgent assistance in processing a wire transfer to one of our vendors. We are behind on payments and it is crucial that we settle this outstanding balance immediately to avoid any disruptions to our business operations.\n\nPlease transfer $10,000 to the following account:\n\nAccount Name: XYZ Company\nAccount Number: 123456789\nRouting Number: 987654321\n\nI understand that this is an unexpected request, but I trust your judgment and efficiency in handling this matter promptly. Please confirm once the transfer has been successfully processed.\n\nThank you for your prompt attention to this matter.\n\nBest regards,\n[CEO's Name]"
+}

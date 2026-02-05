@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:19:43.907045",
+    "category": "Invoice Scam",
+    "target_brand": "Accounts Payable",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 4,
+    "email_text": "Subject: Urgent Payment Required for Overdue Invoice\n\nDear [Recipient],\n\nI hope this email finds you well. I am writing to bring to your attention that we have not received payment for invoice #123456 dated October 15, 2021, which was due on November 15, 2021. \n\nAs a valued vendor, we understand that delays can happen, but we kindly request your immediate attention to settle this outstanding balance. Failure to do so may result in disruption to our services and future orders being placed on hold.\n\nTo avoid any further inconvenience, we urge you to make the payment as soon as possible. Attached to this email is a copy of the invoice for your reference.\n\nPlease do not hesitate to contact me if you have any questions or need assistance with processing the payment. Your prompt attention to this matter is greatly appreciated.\n\nThank you for your cooperation.\n\nSincerely,\n[Vendor Name]"
+}

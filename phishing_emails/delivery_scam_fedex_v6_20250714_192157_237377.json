@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:21:57.237377",
+    "category": "Delivery Scam",
+    "target_brand": "FedEx",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 6,
+    "email_text": "Subject: Important: Your FedEx Delivery Notification\n\nDear Customer,\n\nWe regret to inform you that our delivery driver attempted to deliver a package to you today, but unfortunately, you were not available to receive it. \n\nTo reschedule delivery or pick up your package at the nearest FedEx location, please click on the following link to track your package: [Fake Tracking Link]\n\nPlease make sure to schedule a new delivery date as soon as possible to avoid any further delays. Your package is important to us and we want to ensure it reaches you in a timely manner.\n\nThank you for choosing FedEx for your shipping needs.\n\nSincerely,\nFedEx Team"
+}

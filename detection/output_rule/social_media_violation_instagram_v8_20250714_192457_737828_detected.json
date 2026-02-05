@@ -1,0 +1,19 @@
+{
+    "source_file": "social_media_violation_instagram_v8_20250714_192457_737828.json",
+    "score": 25,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "repeated:account"
+    ],
+    "contains_link": false,
+    "num_words": 148,
+    "num_links": 0,
+    "num_suspicious_keywords": 0,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [],
+    "filename": "social_media_violation_instagram_v8_20250714_192457_737828.json",
+    "predicted_label": "phishing"
+}

@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:52:24.448160",
+    "category": "Shipping Notification",
+    "brand": "FedEx",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 1,
+    "email_text": "Subject: Your FedEx Package Tracking Information\n\nDear [Recipient],\n\nWe are pleased to inform you that your package with tracking number #123456789 has been successfully processed and is on its way to you. \n\nEstimated delivery date: [Date]\nDelivery address: [Address]\nShipping method: FedEx Ground\n\nYou can track your package in real-time using the following link: [Tracking link]\n\nFor any further assistance or inquiries, please do not hesitate to contact us at [FedEx customer service number].\n\nThank you for choosing FedEx for your shipping needs.\n\nSincerely,\nFedEx Shipping Team"
+}

@@ -1,0 +1,6 @@
+{
+    "source_file": "delivery_scam_fedex_v2_20250714_192145_927836.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by threatening additional fees or return of the package if not rescheduled within 24 hours. it also requests the recipient to click on a suspicious link to track the package, which could potentially lead to phishing or malware attacks. the email impersonates fedex, a trusted brand, but the fake tracking link is a red flag."
+}

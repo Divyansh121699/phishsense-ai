@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:53:23.660994",
+    "category": "Travel Itinerary",
+    "brand": "Delta Airlines",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 5,
+    "email_text": "Dear [Passenger Name],\n\nThank you for choosing Delta Air Lines for your upcoming trip. Below is your itinerary confirmation:\n\nFlight Details:\n- Flight 1: Delta Flight DL1234\n  - Departure: New York (JFK) on October 15, 2023 at 7:00 AM\n  - Arrival: Los Angeles (LAX) on October 15, 2023 at 10:00 AM\n\n- Flight 2: Delta Flight DL5678\n  - Departure: Los Angeles (LAX) on October 20, 2023 at 2:00 PM\n  - Arrival: New York (JFK) on October 20, 2023 at 10:00 PM\n\nPlease check-in for your flight using the following link: https://www.delta.com/checkin\n\nIf you have any questions or need assistance, please do not hesitate to contact us at 1-800-123-4567. \n\nWe look forward to welcoming you on board. Have a safe and pleasant journey!\n\nSincerely,\nDelta Air Lines"
+}

@@ -1,0 +1,19 @@
+{
+    "source_file": "invoice_scam_accounts_payable_v5_20250714_191948_077885.json",
+    "score": 25,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "urgent",
+        "obfuscated_pattern",
+        "repeated:account"
+    ],
+    "contains_link": false,
+    "num_words": 252,
+    "num_links": 0,
+    "num_suspicious_keywords": 1,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [],
+    "filename": "invoice_scam_accounts_payable_v5_20250714_191948_077885.json",
+    "predicted_label": "phishing"
+}

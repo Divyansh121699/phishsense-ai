@@ -1,0 +1,6 @@
+{
+    "source_file": "ceo_fraud_internal_hr_v6_20250714_191925_418538.json",
+    "llm_label": "benign",
+    "true_label": "phishing",
+    "explanation": "label: benign\nexplanation: while the email requests a wire transfer, it is coming from the ceo to the hr manager, which is a common business practice. there are no clear red flags such as urgent threats, requests for login credentials, suspicious links, or poor grammar. the tone is professional and the request for confidentiality is also common in business transactions."
+}

@@ -1,0 +1,19 @@
+{
+    "source_file": "student_loan_forgiveness_doe_v8_20250714_192411_251067.json",
+    "score": 32,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "limited",
+        "HR",
+        "obfuscated_pattern"
+    ],
+    "contains_link": false,
+    "num_words": 256,
+    "num_links": 0,
+    "num_suspicious_keywords": 1,
+    "num_social_engineering_hits": 1,
+    "brand_mentions": [],
+    "filename": "student_loan_forgiveness_doe_v8_20250714_192411_251067.json",
+    "predicted_label": "phishing"
+}

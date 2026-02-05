@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:53:09.459697",
+    "category": "Travel Itinerary",
+    "brand": "Delta Airlines",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 1,
+    "email_text": "Subject: Your Delta Flight Itinerary Confirmation\n\nDear [Passenger's Name],\n\nThank you for choosing Delta Airlines for your upcoming flight. Below are the details of your itinerary:\n\nFlight Confirmation Number: DL123456789\nDeparture Date: [Date]\nDeparture Time: [Time]\nDeparture Airport: [Airport]\nArrival Airport: [Airport]\nFlight Number: DL123\nSeat Number: [Seat Number]\nBaggage Allowance: 1 carry-on and 1 personal item\n\nTo check-in for your flight, please click on the following link: [Check-in Link]\n\nWe recommend that you arrive at the airport at least 2 hours before your scheduled departure time. If you have any questions or need assistance, feel free to contact our customer service team at [Customer Service Number].\n\nWe look forward to welcoming you on board and wish you a pleasant journey with Delta Airlines.\n\nSafe travels,\n\nDelta Airlines Team"
+}

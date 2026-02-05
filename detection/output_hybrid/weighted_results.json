@@ -1,0 +1,1532 @@
+[
+    {
+        "filename": "account_verification_scam_netflix_v1_20250714_192257_081589.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 75,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening a temporary suspension of the account if billing information is not updated within 24 hours. it requests sensitive information (billing details) through a suspicious link, which is a common tactic used in phishing attacks. additionally, the email impersonates a trusted brand, netflix, to deceive the recipient into providing their credentials.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "account_verification_scam_netflix_v2_20250714_192259_877933.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 75,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the netflix account within 24 hours if billing information is not updated. it requests sensitive information (billing details) through a suspicious link, which is a common tactic used in phishing attacks. additionally, the email does not address the recipient by name, which is a red flag.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "account_verification_scam_netflix_v3_20250714_192302_480683.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 70,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening a temporary suspension of the netflix account if billing information is not updated within 24 hours. it requests sensitive information (billing details) through a suspicious link, which is a common tactic used in phishing attacks to steal credentials. additionally, the email impersonates a trusted brand (netflix) to deceive recipients.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "account_verification_scam_netflix_v4_20250714_192305_141908.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 70,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening a temporary suspension of the netflix account if billing information is not updated within 24 hours. it also requests sensitive information (payment details) through a suspicious link, which is a common tactic used in phishing emails. additionally, the email does not address the recipient by name, indicating a lack of personalization often seen in legitimate emails from companies like netflix.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "account_verification_scam_netflix_v5_20250714_192308_311455.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 70,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening a temporary suspension of the account if billing information is not updated within 24 hours. it requests sensitive information (billing details) through a suspicious link, which is a common tactic used in phishing attacks. additionally, the email impersonates a trusted brand, netflix, to deceive the recipient into providing their information.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "account_verification_scam_netflix_v6_20250714_192312_041146.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 75,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening a temporary suspension of the account if billing information is not updated within 48 hours. it requests login credentials through a suspicious link, which is a common tactic in phishing attempts. additionally, the impersonation of netflix as a trusted brand adds to the red flags. the disclaimer at the end confirms that this email is indeed a phishing attempt.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "account_verification_scam_netflix_v7_20250714_192314_741098.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 75,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening a temporary suspension of the netflix account if billing information is not updated. it requests the recipient to click on a suspicious link to verify their billing details, which is a common tactic used in phishing emails to steal login credentials or sensitive information. additionally, the email does not address the recipient by name, which is a red flag for potential phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "account_verification_scam_netflix_v8_20250714_192317_683077.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 92,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the account within 24 hours if billing information is not updated. it requests sensitive information (payment details) through a suspicious link, which is a common tactic in phishing emails. additionally, the statement that \"netflix will never ask for your personal information via email\" is contradicted by the request in the email, indicating potential deception.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "bank_account_suspension_bank_of_america_v1_20250714_192056_097583.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 80,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by stating that the account has been temporarily suspended due to suspicious activity. it then requests the recipient to verify their account information by clicking on a suspicious link. this is a common tactic used in phishing emails to steal login credentials. additionally, the email impersonates bank of america, a trusted brand, which is another red flag.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "bank_account_suspension_bank_of_america_v2_20250714_192058_696728.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 80,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the account within 24 hours if action is not taken. it requests the recipient to click on a suspicious link to verify their identity, which is a common phishing tactic to steal login credentials. additionally, the email impersonates bank of america, a trusted brand, to deceive the recipient.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "bank_account_suspension_bank_of_america_v3_20250714_192101_633872.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 85,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the account within 24 hours if the recipient does not click on the provided link. it also requests the recipient to verify their account information, which is a common tactic used in phishing emails to steal sensitive data. additionally, the email impersonates bank of america, a trusted brand, and contains a suspicious link that could lead to a phishing website.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "bank_account_suspension_bank_of_america_v4_20250714_192105_098200.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 80,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening permanent account suspension within 24 hours if the recipient does not verify their identity. it also requests sensitive information through a suspicious link, which is a common tactic used in phishing attacks. additionally, the email impersonates bank of america, a trusted brand, and provides a fake customer support number, indicating malicious intent.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "bank_account_suspension_bank_of_america_v5_20250714_192108_064923.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 92,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening account suspension and loss of funds if action is not taken within 24 hours. it requests verification of account information through a suspicious link, which is a common tactic used in phishing attacks to steal credentials. additionally, the email impersonates bank of america, a trusted brand, to deceive the recipient.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "bank_account_suspension_bank_of_america_v6_20250714_192111_527079.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 88,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening permanent account suspension if action is not taken within 24 hours. it requests the recipient to click on a suspicious link to verify their identity, which is a common tactic used in phishing attacks to steal login credentials. additionally, the email impersonates bank of america, a trusted brand, which is another red flag for phishing.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "bank_account_suspension_bank_of_america_v7_20250714_192115_270446.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 92,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by stating that the account has been suspended due to unusual activity, and requests the recipient to click on a suspicious link to reactivate the account. this is a common tactic used in phishing emails to steal login credentials or personal information. additionally, the email does not address the recipient by name, uses a generic salutation (\"dear valued customer\"), and lacks specific details that a legitimate bank communication would typically include.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "bank_account_suspension_bank_of_america_v8_20250714_192117_830089.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 70,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening a permanent suspension of the account and potential loss of funds if verification is not completed within 24 hours. it also requests the recipient to click on a suspicious link to verify their identity, which is a common tactic used in phishing attacks to steal login credentials. additionally, the email impersonates bank of america, a trusted brand, which is another red flag for phishing.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "ceo_fraud_internal_hr_v1_20250714_191909_627979.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 68,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by requesting an immediate funds transfer without following usual procedures. additionally, the ceo's name is not specified, and there is a lack of personalization in the email. these are red flags commonly seen in phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "ceo_fraud_internal_hr_v2_20250714_191912_943846.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 58,
+        "llm_explanation": "label: benign\nexplanation: while the email requests a wire transfer, it is coming from the ceo to the hr manager, which is a common and legitimate request in a corporate setting. there are no clear red flags such as urgent threats, requests for login credentials, suspicious links, or poor grammar.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "ceo_fraud_internal_hr_v3_20250714_191915_700517.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 73,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by stating the need for an immediate wire transfer to avoid disruptions to business operations. it requests a significant amount of money to be transferred without prior verification. additionally, the email does not follow standard protocols for financial transactions, such as providing proper documentation or approval processes. this combination of urgency and financial request without proper verification raises red flags for phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "ceo_fraud_internal_hr_v4_20250714_191920_016575.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 80,
+        "llm_explanation": "label: benign\nexplanation: this email does not exhibit clear red flags commonly associated with phishing emails. while it does request a fund transfer, it is coming from the ceo to the hr manager, which is a common business practice. there are no urgent threats, requests for login credentials, suspicious links, or impersonation of trusted entities. the email appears to be a legitimate request for a fund transfer within the company's normal operations.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "ceo_fraud_internal_hr_v5_20250714_191922_650490.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 80,
+        "llm_explanation": "label: benign\nexplanation: the email does not contain any clear red flags typically associated with phishing emails. while it does request a wire transfer, it is a common business practice and does not contain urgent threats, requests for login credentials, suspicious links, or impersonation of trusted entities. the email also maintains a professional tone and does not exhibit poor grammar or spelling.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "ceo_fraud_internal_hr_v6_20250714_191925_418538.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 85,
+        "llm_explanation": "label: benign\nexplanation: while the email requests a wire transfer, it is coming from the ceo to the hr manager, which is a common business practice. there are no clear red flags such as urgent threats, requests for login credentials, suspicious links, or poor grammar. the tone is professional and the request for confidentiality is also common in business transactions.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "ceo_fraud_internal_hr_v7_20250714_191928_002083.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 58,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by requesting an immediate wire transfer without prior notice. the ceo's name could be easily impersonated, and there is pressure to act quickly without verifying the request in person. this could be a phishing attempt to steal money or sensitive financial information.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "ceo_fraud_internal_hr_v8_20250714_191930_914791.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 58,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by requesting an immediate wire transfer to avoid late fees. it also asks for a financial transaction to be completed without verifying the request through other means. this could be a phishing attempt to steal money or sensitive financial information.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "covid-19_relief_scam_us_government_v1_20250714_192230_667257.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 37,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by mentioning \"covid-19 relief assistance\" and requests personal and financial information through an attached form. the email also asks for prompt response and uses a fake email address for submission, which are common tactics used in phishing attempts to steal sensitive information.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "covid-19_relief_scam_us_government_v2_20250714_192233_912808.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 22,
+        "llm_explanation": "label: benign\nexplanation: this email appears to be offering legitimate covid-19 relief funds from the department of health and human services. there are no clear red flags such as urgent threats, requests for sensitive information, suspicious links, or impersonation of trusted entities. the language is professional and there are no obvious signs of phishing behavior.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "covid-19_relief_scam_us_government_v3_20250714_192236_966713.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 37,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by mentioning relief assistance for covid-19, requests personal and financial information, and includes an attachment for a form. this is a common tactic used in phishing emails to steal sensitive data. additionally, the email does not specify the government agency's name or provide a legitimate contact number, which are red flags for impersonation.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "covid-19_relief_scam_us_government_v4_20250714_192241_509877.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 22,
+        "llm_explanation": "label: benign\nexplanation: this email appears to be a legitimate message from a government agency offering covid-19 relief funds. there are no clear red flags such as urgent threats, requests for sensitive information, suspicious links, or impersonation of trusted entities. the language is professional and there are no obvious signs of phishing attempts.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "covid-19_relief_scam_us_government_v5_20250714_192244_334841.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 57,
+        "llm_explanation": "label: benign\nexplanation: the email appears to be offering legitimate covid-19 relief funds without any clear red flags. it does not request sensitive information like login credentials or financial details. the language is professional and there are no urgent threats or suspicious links.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "covid-19_relief_scam_us_government_v6_20250714_192247_394360.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 32,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by stating \"time is of the essence\" and requests sensitive personal information such as social security number and bank account details. this is a common tactic used in phishing emails to steal personal information. additionally, the email does not specify which government agency it is from, and the attachment could potentially contain malware.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "covid-19_relief_scam_us_government_v7_20250714_192250_906871.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 49,
+        "llm_explanation": "label: benign\nexplanation: the email is from a government relief assistance program providing information about accessing funds for those affected by the covid-19 pandemic. there are no clear red flags such as urgent requests for sensitive information, suspicious links, or impersonation of trusted entities. the email appears to be a legitimate communication offering support during challenging times.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "covid-19_relief_scam_us_government_v8_20250714_192254_648767.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "phishing",
+        "rule_score": 20,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by mentioning a fast-approaching deadline to apply for relief funds. it also requests the recipient to click on a link to access an application form, which could potentially lead to a phishing website designed to steal personal information. the sender's identity as a \"government agency for covid-19 relief\" could be impersonated to deceive recipients.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credential_harvesting_paypal_v1_20250714_191844_752017.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 98,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening the temporary suspension of the account if not verified within 24 hours. it also requests the recipient to click on a suspicious link to verify their account, which is a common tactic used in phishing attacks to steal login credentials. additionally, the email impersonates paypal, a trusted brand, to deceive the recipient into providing sensitive information.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credential_harvesting_paypal_v2_20250714_191847_952317.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 90,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening temporary suspension of the account, requests account verification through a suspicious link, and impersonates the paypal security team. these are clear red flags commonly seen in phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credential_harvesting_paypal_v3_20250714_191850_502026.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 65,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the account if not verified within 24 hours. it requests account information through a suspicious link, which is a common tactic used in phishing emails. additionally, the email impersonates the paypal security team, a trusted brand, to deceive the recipient.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credential_harvesting_paypal_v4_20250714_191854_730957.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 98,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by stating that failure to verify the account within 24 hours may result in a temporary suspension. it also requests the recipient to click on a suspicious link to verify their account, which is a common tactic used in phishing emails to steal login credentials. additionally, the email impersonates paypal, a trusted brand, and asks for account information, which is a red flag for phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credential_harvesting_paypal_v5_20250714_191857_827179.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 90,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening temporary suspension of the paypal account if not verified within 24 hours. it requests the recipient to click on a suspicious link to verify their account, which is a common tactic used in phishing attacks to steal login credentials. additionally, the email is impersonating the paypal security team, a trusted brand, to deceive the recipient into taking action.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credential_harvesting_paypal_v6_20250714_191901_049849.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 100,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the paypal account if not verified within 24 hours. it requests account information through a suspicious link, which is a common tactic used in phishing emails. additionally, the email impersonates the paypal security team, a trusted brand, to deceive recipients into providing personal information.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credential_harvesting_paypal_v7_20250714_191904_034705.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 100,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening temporary account suspension, requests account verification through a suspicious link, and impersonates the paypal security team. additionally, the disclaimer about not asking for passwords or personal information in emails is a common tactic used by phishing emails to appear legitimate.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credential_harvesting_paypal_v8_20250714_191906_988969.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 90,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the account within 24 hours if not verified. it also requests the recipient to click on a suspicious link to verify their account, which is a common tactic used in phishing emails. additionally, the email claims that paypal will never ask for sensitive information via email, which is contradictory to the request made in the email.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credit_card_update_amazon_v1_20250714_192320_802854.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 40,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening to suspend the amazon account within 24 hours if the credit card information is not updated. it also requests sensitive information (credit card details) through a suspicious link, which is a common tactic used in phishing emails to steal credentials. additionally, the email impersonates amazon's customer support team, which is a red flag for phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credit_card_update_amazon_v2_20250714_192323_598158.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 50,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the account within 48 hours if the payment information is not updated. it also requests sensitive information (credit card details) through a suspicious link, which is a common tactic used in phishing emails to steal credentials. additionally, the email impersonates amazon, a trusted brand, and lacks personalization by addressing the recipient as \"dear valued amazon customer\" instead of using their actual name.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credit_card_update_amazon_v3_20250714_192326_510947.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 60,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening to suspend the account if payment information is not updated within 48 hours. it also requests sensitive information (credit card details) through a suspicious link, which is a common tactic used in phishing attacks. additionally, the email impersonates amazon, a trusted brand, which is another red flag for phishing.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credit_card_update_amazon_v4_20250714_192328_819246.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 35,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by mentioning potential account suspension and order delays if payment information is not updated. it requests sensitive information (credit card details) through a suspicious link that is not directly associated with amazon. additionally, the email does not address the recipient by name, which is a common tactic in phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credit_card_update_amazon_v5_20250714_192331_580965.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 50,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening a temporary suspension of the account if payment information is not updated within 48 hours. it also requests for credit card details through a suspicious link to a fake amazon login page. additionally, the email impersonates amazon, a trusted brand, which is a common tactic used in phishing attacks.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credit_card_update_amazon_v6_20250714_192334_024826.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 57,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening the suspension or closure of the amazon account if payment information is not updated. it requests sensitive information (credit card details) through a suspicious link, which is a common tactic used in phishing attacks. additionally, the email does not address the recipient by name, indicating a lack of personalization often seen in phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credit_card_update_amazon_v7_20250714_192336_751601.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 45,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by stating \"urgent action required\" and requests for updating payment information by clicking on a suspicious link. additionally, the note at the end mentioning that amazon will never ask for personal information via email raises red flags.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "credit_card_update_amazon_v8_20250714_192339_738939.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 45,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening to cancel the order within 24 hours if payment information is not updated. it requests sensitive information (credit card details) through a suspicious link, which is a common tactic used in phishing emails. additionally, the email impersonates amazon, a trusted brand, which is another red flag for phishing.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "crypto_investment_scam_coinbase_v1_20250714_192415_023576.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 67,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by mentioning a limited and time-sensitive opportunity, which is a common tactic used in phishing emails to pressure recipients into taking immediate action. additionally, the email requests the recipient to click on a link to invest in a cryptocurrency project, which could potentially lead to a phishing website designed to steal login credentials or financial information. the email also impersonates coinbase, a trusted cryptocurrency platform, to gain the recipient's trust. the use of a fake link further raises suspicion about the legitimacy of the email.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "crypto_investment_scam_coinbase_v2_20250714_192419_073571.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 40,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by offering an exclusive investment opportunity with the promise of massive returns in a short period of time. it requests a minimum transfer of $1000 to a provided wallet address, which is a common tactic used in phishing scams to steal money. additionally, the email impersonates coinbase, a trusted cryptocurrency platform, to gain credibility and deceive recipients. these red flags indicate that this email is likely a phishing attempt.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "crypto_investment_scam_coinbase_v3_20250714_192421_958442.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 52,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by mentioning a limited and time-sensitive opportunity, requests for contact information which could lead to further personal details being shared, and impersonates coinbase, a trusted brand in the cryptocurrency industry. additionally, the promise of high returns in a short period of time is a common tactic used in phishing schemes to lure victims into sharing sensitive information.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "crypto_investment_scam_coinbase_v4_20250714_192424_643748.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 35,
+        "llm_explanation": "label: benign\nexplanation: the email is promoting an investment opportunity from coinbase, a well-known cryptocurrency exchange platform. there are no urgent threats or requests for sensitive information. while the link provided is labeled as a \"fake link,\" the content of the email itself does not exhibit clear red flags typically associated with phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "crypto_investment_scam_coinbase_v5_20250714_192427_342657.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 25,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by offering an exclusive investment opportunity with the potential for huge returns, which is a common tactic used in phishing emails. additionally, the email requests the recipient to click on a suspicious link to invest in the project, which could lead to a phishing website designed to steal credentials or sensitive information. the email also impersonates a trusted brand, coinbase, to gain the recipient's trust. these red flags indicate that this email is likely a phishing attempt.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "crypto_investment_scam_coinbase_v6_20250714_192430_083178.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 35,
+        "llm_explanation": "label: benign\nexplanation: the email does not exhibit clear red flags commonly associated with phishing emails. while it promotes a cryptocurrency investment opportunity, it does not create urgency, request sensitive information, or contain suspicious links. additionally, the email is signed by the coinbase team, which is a known and trusted brand in the cryptocurrency industry.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "crypto_investment_scam_coinbase_v7_20250714_192433_501217.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 72,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by mentioning a limited exclusive investment opportunity with high returns within a short period of time. it requests the recipient to click on a suspicious link to participate, which is a common tactic used in phishing emails to steal sensitive information. additionally, the email impersonates coinbase, a trusted brand in the cryptocurrency industry, which is another red flag.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "crypto_investment_scam_coinbase_v8_20250714_192436_484252.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 37,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by mentioning \"exclusive investment opportunity\" and \"the early bird catches the worm\", pressuring the recipient to act quickly. it also requests the recipient to click on a suspicious link to invest money, which is a common tactic used in phishing emails to steal sensitive information or money. additionally, the email impersonates a trusted brand, coinbase, to gain credibility and deceive the recipient. these red flags indicate that this email is likely a phishing attempt.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "delivery_scam_fedex_v1_20250714_192142_773594.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 35,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by claiming a missed delivery, requests the recipient to click on a suspicious tracking link, and impersonates fedex. these are common red flags for phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "delivery_scam_fedex_v2_20250714_192145_927836.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 43,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening additional fees or return of the package if not rescheduled within 24 hours. it also requests the recipient to click on a suspicious link to track the package, which could potentially lead to phishing or malware attacks. the email impersonates fedex, a trusted brand, but the fake tracking link is a red flag.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "delivery_scam_fedex_v3_20250714_192148_394985.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 45,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by stating that failure to reschedule delivery within the next 24 hours may result in the package being returned. the email also contains a suspicious link that does not lead to the official fedex website (http://fedextracking-update.com). this mismatched link is a clear red flag for phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "delivery_scam_fedex_v4_20250714_192151_578770.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 25,
+        "llm_explanation": "label: phishing\nexplanation: the email contains red flags such as urgency (\"reschedule within 24 hours\"), a suspicious link to track the shipment, and impersonation of a trusted brand (fedex). additionally, the email does not address the recipient by name, which is a common tactic in phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "delivery_scam_fedex_v5_20250714_192154_050841.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 25,
+        "llm_explanation": "label: benign\nexplanation: this email appears to be benign. although it mentions a missed delivery and provides a link to reschedule, there are no urgent threats or requests for sensitive information. the email is signed by the fedex customer service team and does not exhibit any clear red flags commonly associated with phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "delivery_scam_fedex_v6_20250714_192157_237377.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 25,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by stating that a delivery driver attempted to deliver a package but the recipient was not available. it then requests the recipient to click on a suspicious link to track the package, which could potentially lead to a phishing website. additionally, the email does not provide specific details about the package or the recipient, and the sender address is not from an official fedex domain.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "delivery_scam_fedex_v7_20250714_192200_357240.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 33,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by mentioning additional charges if the delivery is not rescheduled within 24 hours. it also contains a suspicious link that could potentially lead to a phishing website. the email impersonates fedex, a trusted brand, which is a common tactic used in phishing attacks.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "delivery_scam_fedex_v8_20250714_192203_287616.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 45,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by stating that a delivery attempt was unsuccessful and requires immediate action to reschedule. the link provided is suspicious as it directs to a fake domain \"fedexdeliveryreschedule.com\" instead of the official fedex website. this could be a phishing attempt to steal personal information or credentials.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "fake_job_offer_linkedin_v1_20250714_192029_013877.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 27,
+        "llm_explanation": "label: benign\nexplanation: the email is offering a job opportunity and does not contain any clear red flags typically associated with phishing emails. it does not request sensitive information, create urgency, or contain suspicious links. the language and formatting are professional, and the sender appears to be a legitimate recruiter from a known company.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "fake_job_offer_linkedin_v2_20250714_192032_006764.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it does not exhibit any clear red flags commonly associated with phishing emails. it is a standard job opportunity email that compliments the recipient's skills and experience, provides a job description and application form, and invites the recipient to apply. the language used is professional and there are no requests for sensitive information or urgent actions.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "fake_job_offer_linkedin_v3_20250714_192037_110159.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 20,
+        "llm_explanation": "label: benign\nexplanation: the email is a standard job opportunity message that does not exhibit any clear red flags for phishing. it does not contain urgent requests for action, solicit login credentials or money, or use suspicious links. the language, grammar, and formatting are professional, and the sender appears to be a legitimate recruiter from a company.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "fake_job_offer_linkedin_v4_20250714_192040_435379.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it appears to be a legitimate job opportunity from a recruiter at a top company in the tech industry. there are no clear red flags such as urgency, requests for sensitive information, suspicious links, or poor grammar. the email does not exhibit typical phishing characteristics.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "fake_job_offer_linkedin_v5_20250714_192044_393485.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: the email is a standard job opportunity message from a recruiter. there are no urgent requests, threats, or pressure to act. it does not ask for login credentials, account access, or money. the language is professional, and there are no suspicious links or impersonation of trusted brands. the sender's address and domain appear legitimate.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "fake_job_offer_linkedin_v6_20250714_192047_314983.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: the email is offering a job opportunity and does not contain any clear red flags typically associated with phishing emails. it does not request sensitive information, create urgency, or contain suspicious links. the language and formatting are professional, and the sender appears to be a recruiter reaching out based on the recipient's linkedin profile.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "fake_job_offer_linkedin_v7_20250714_192050_205901.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it does not contain any clear red flags typically associated with phishing emails. the sender is a recruiter from a known company, there are no urgent requests for sensitive information, and the attachment is a job description and application form, which is common in recruitment emails.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "fake_job_offer_linkedin_v8_20250714_192052_964274.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: the email is offering a job opportunity and does not contain any clear red flags typically associated with phishing emails. it does not request sensitive information, create urgency, or contain suspicious links. the language and formatting are professional, and the sender appears to be a legitimate recruiter from a known company.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "fake_security_alert_microsoft_v1_20250714_192001_616152.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 85,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by mentioning a suspicious login attempt and threatens the temporary suspension of the account if not confirmed. it requests the recipient to click on a suspicious link to verify their identity, which is a common tactic used in phishing attacks to steal login credentials. additionally, the email is impersonating microsoft, a trusted brand, to deceive the recipient.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "fake_security_alert_microsoft_v2_20250714_192005_971324.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 100,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening to suspend the account within 24 hours, requests the recipient to click on a suspicious link to confirm login attempt, and impersonates a trusted brand (microsoft). these are clear red flags commonly seen in phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "fake_security_alert_microsoft_v3_20250714_192009_218975.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 78,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by stating that a suspicious login attempt was detected and threatens the temporary suspension of the account if not confirmed within 24 hours. it requests the recipient to click on a link to confirm the login attempt, which is a common phishing tactic to steal login credentials. additionally, the email impersonates microsoft's security team, a trusted brand, to deceive the recipient into believing it is legitimate.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "fake_security_alert_microsoft_v4_20250714_192013_400038.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 97,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by mentioning a suspicious login attempt and requests the recipient to click on a link to verify their identity. this is a common tactic used in phishing emails to trick users into providing their login credentials or personal information. additionally, the email does not provide specific details about the suspicious login attempt, uses a generic salutation (\"dear valued microsoft user\"), and contains a suspicious link without a clear indication of where it leads to. these are all red flags commonly associated with phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "fake_security_alert_microsoft_v5_20250714_192016_810937.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 85,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the account if not confirmed within 24 hours. it requests the recipient to click on a suspicious link to verify their identity, which is a common tactic used in phishing attacks to steal login credentials. additionally, the email impersonates microsoft, a trusted brand, and the sender address may not be legitimate.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "fake_security_alert_microsoft_v6_20250714_192019_771496.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 85,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by claiming a suspicious login attempt, requests for immediate action to click on a link to confirm identity, and impersonates a trusted brand (microsoft). additionally, the email asks for sensitive information and contains a suspicious link that could lead to phishing.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "fake_security_alert_microsoft_v7_20250714_192022_532635.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 100,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by mentioning a suspicious login attempt and requests the recipient to click on a link to verify their account. the email also asks for personal information without providing a clear reason for doing so. additionally, the sender address is not from an official microsoft domain, indicating potential impersonation.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "fake_security_alert_microsoft_v8_20250714_192025_568641.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 100,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by stating a \"suspicious login attempt\" and pressures the recipient to act immediately. it requests the recipient to click on a suspicious link to confirm their identity, which is a common phishing tactic to steal login credentials. additionally, the email contains a fake support email address and warns of potential consequences if the recipient does not comply, all red flags commonly found in phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "invoice_scam_accounts_payable_v1_20250714_191934_093690.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 10,
+        "llm_explanation": "label: benign\nexplanation: this email does not exhibit any clear red flags commonly associated with phishing emails. it is a standard communication regarding an overdue invoice, with no urgent threats or requests for sensitive information. the language is professional, and there are no suspicious links or unusual sender addresses.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "invoice_scam_accounts_payable_v2_20250714_191936_924199.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 22,
+        "llm_explanation": "label: benign\nexplanation: the email is a standard reminder about an overdue invoice, with no urgent threats or requests for sensitive data. it does not contain any clear red flags typically associated with phishing emails.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "invoice_scam_accounts_payable_v3_20250714_191941_103430.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 42,
+        "llm_explanation": "label: benign\nexplanation: this email is a standard accounts receivable message regarding an overdue invoice. it does not contain any clear red flags typically associated with phishing emails, such as urgent threats, requests for sensitive information, suspicious links, or impersonation of trusted entities. the email simply requests payment for an outstanding invoice and provides a secure payment link for convenience.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "invoice_scam_accounts_payable_v4_20250714_191943_907045.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 22,
+        "llm_explanation": "label: benign\nexplanation: this email is a standard reminder about an overdue invoice, with no urgent threats or requests for sensitive information. it does not exhibit any clear red flags commonly associated with phishing emails.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "invoice_scam_accounts_payable_v5_20250714_191948_077885.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 25,
+        "llm_explanation": "label: benign\nexplanation: this email is a standard payment reminder from a vendor, requesting payment for an overdue invoice. there are no clear red flags indicating phishing behavior such as urgent threats, requests for login credentials, suspicious links, or impersonation of trusted entities. the email is well-written and does not exhibit poor grammar or spelling. it appears to be a legitimate communication regarding a business transaction.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "invoice_scam_accounts_payable_v6_20250714_191950_959256.json",
+        "true_label": "phishing",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 10,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it does not contain any clear red flags typically associated with phishing emails. it is a standard follow-up regarding an overdue invoice, with no urgent threats or requests for sensitive information. the language is professional and there are no suspicious links or impersonation attempts.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "invoice_scam_accounts_payable_v7_20250714_191954_662544.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 32,
+        "llm_explanation": "label: benign\nexplanation: this email is a standard reminder about an overdue invoice with no urgent threats or requests for sensitive information. the language is professional, and the links provided are related to payment methods, which is expected in such communications. no clear red flags indicating phishing behavior are present.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "invoice_scam_accounts_payable_v8_20250714_191958_976507.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 44,
+        "llm_explanation": "label: benign\nexplanation: this email is a standard reminder about an overdue invoice, which is a common business practice. there are no urgent threats or requests for sensitive information. the language is professional, and there are no clear red flags indicating phishing behavior.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "mfa_reset_scam_google_v1_20250714_192205_644931.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 35,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the google account within 24 hours if the 2fa is not reset. it also requests the recipient to click on a suspicious link to reset the 2fa, which is a common tactic used in phishing attacks to steal login credentials. additionally, the email impersonates the google security team, which is a red flag for phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "mfa_reset_scam_google_v2_20250714_192208_051860.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 35,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening temporary suspension of the account if the 2fa is not reset within 24 hours. it also requests the recipient to click on a suspicious link to reset the 2fa, which is a common tactic used in phishing attacks to steal login credentials. additionally, the email impersonates the google security team, which is a red flag for phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "mfa_reset_scam_google_v3_20250714_192211_327440.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 53,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by claiming unusual activity on the google account and requests the immediate reset of two-factor authentication (2fa). the email contains a suspicious link that could potentially lead to a phishing website designed to steal login credentials. additionally, the email impersonates the google security team, which is a red flag for phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "mfa_reset_scam_google_v4_20250714_192214_123321.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 50,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by stating there is unusual activity on the google account and requests the recipient to reset their 2fa immediately. the email contains a suspicious link that could potentially lead to a phishing website designed to steal login credentials. additionally, the email does not address the recipient by name, which is a common tactic used in phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "mfa_reset_scam_google_v5_20250714_192216_777925.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 70,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the account within 24 hours if the 2fa is not reset. it also requests the recipient to click on a link to reset the 2fa, which could lead to a fake phishing website. additionally, the email impersonates the google security team, which is a red flag for phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "mfa_reset_scam_google_v6_20250714_192219_920927.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 35,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by stating that there is unusual activity on the account and threatens a temporary suspension if the 2fa settings are not reset. additionally, the email requests the recipient to click on a suspicious link to reset their 2fa settings, which is a common tactic used in phishing attacks to steal login credentials. the email also impersonates the google security team, a trusted brand, which is another red flag.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "mfa_reset_scam_google_v7_20250714_192223_552270.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 80,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to suspend the account if 2fa is not reset within 24 hours. it requests sensitive information (2fa reset) and contains a suspicious link. additionally, the email impersonates google's security team, which is a red flag for phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "mfa_reset_scam_google_v8_20250714_192227_310796.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 62,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by claiming unusual activity on the google account and threatens suspension or termination if the 2fa is not reset. it requests sensitive information (2fa reset) through a suspicious link and provides a fake google support email address. these are clear red flags commonly seen in phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "social_media_violation_instagram_v1_20250714_192438_827805.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 43,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening the suspension or termination of the account within 24 hours if action is not taken. it requests the recipient to click on a suspicious link to fill out an appeal form, which is a common phishing tactic to steal login credentials. additionally, the email impersonates instagram, a trusted brand, and lacks personalization by addressing the recipient as \"instagram user\" instead of using their actual name.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "social_media_violation_instagram_v2_20250714_192441_672302.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 68,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening permanent suspension of the account within 24 hours if the appeal form is not completed. it also requests the user to click on a suspicious link to verify their account, which is a common tactic used in phishing attacks to steal login credentials. additionally, the email impersonates the trusted brand of instagram, which is a red flag for phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "social_media_violation_instagram_v3_20250714_192444_035733.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 35,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening permanent suspension of the account within 24 hours if action is not taken. it requests the recipient to click on a suspicious link to appeal the decision, which is a common tactic used in phishing emails to steal login credentials. additionally, the email impersonates the instagram support team, a trusted brand, which is a red flag for phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "social_media_violation_instagram_v4_20250714_192446_451261.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 55,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening the permanent suspension of the account if the appeal form is not submitted within 24 hours. it also requests the recipient to click on a suspicious link, which is a common tactic used in phishing emails to steal login credentials. additionally, the email impersonates a trusted brand, instagram, which adds to the suspicious nature of the message.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "social_media_violation_instagram_v5_20250714_192449_166719.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 60,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by stating that the account has been flagged for violating guidelines and could be permanently disabled. it requests the recipient to verify their account by filling out an appeal form through a suspicious link. the email also impersonates the trusted brand, instagram.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "social_media_violation_instagram_v6_20250714_192452_438950.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 35,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to disable the account within 48 hours if action is not taken. it requests the user to click on a suspicious link to fill out an appeal form, which could potentially lead to phishing for login credentials. the email also contains poor grammar and lacks personalization, indicating it may be a phishing attempt.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "social_media_violation_instagram_v7_20250714_192455_182997.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 37,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by stating that the account has violated policies and threatens suspension or removal if not addressed. it requests the user to submit an appeal through a suspicious link, which is a common tactic used in phishing emails to steal login credentials. additionally, the email impersonates the trusted brand of instagram, but the poor grammar and lack of specific details are red flags.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "social_media_violation_instagram_v8_20250714_192457_737828.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 25,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening account suspension or removal, requests the recipient to click on a suspicious link to complete an appeal form, and impersonates a trusted brand (instagram). these are clear red flags commonly seen in phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "student_loan_forgiveness_doe_v1_20250714_192344_024378.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 40,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by mentioning a limited time offer, requests for personal information through a link, and impersonates the department of education. these are common tactics used in phishing emails to trick individuals into giving away sensitive information.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "student_loan_forgiveness_doe_v2_20250714_192347_467918.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 30,
+        "llm_explanation": "label: phishing\nexplanation: the email creates a sense of urgency by offering loan forgiveness and requests for personal information to verify identity and loan details. the link provided is suspicious and could lead to a phishing website. additionally, the email does not provide specific details about the loan forgiveness program or mention any official website for verification, which are common red flags in phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "student_loan_forgiveness_doe_v3_20250714_192351_759550.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 47,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by mentioning a \"limited-time offer\" and encourages the recipient to act quickly. it requests the recipient to click on a link to provide personal information about their student loans, which is a common tactic used in phishing emails to steal sensitive data. additionally, the email does not provide a direct contact method or official website for verification, and the sender address could potentially be spoofed.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "student_loan_forgiveness_doe_v4_20250714_192354_812973.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 47,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by mentioning limited spaces and time-sensitive nature of the program. it requests sensitive information (financial and personal details) through a link, which is a common tactic used in phishing emails to steal credentials. additionally, the email impersonates a trusted entity, the department of education, to deceive recipients. these are clear red flags indicating a phishing attempt.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "student_loan_forgiveness_doe_v5_20250714_192357_807547.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 32,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by offering an opportunity for loan forgiveness and encourages the recipient to act quickly. it requests sensitive information by asking the recipient to click on a suspicious link to apply for loan forgiveness. the email also impersonates the department of education, a trusted entity, which is a common tactic used in phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "student_loan_forgiveness_doe_v6_20250714_192401_824050.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 35,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by stating that the forgiveness program is only available for a limited time, which is a common tactic used in phishing emails to pressure recipients into acting quickly. additionally, the email requests sensitive information about the recipient's loans through a suspicious link, which is a red flag for phishing attempts. the email also contains fake contact information, further indicating malicious intent.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "student_loan_forgiveness_doe_v7_20250714_192406_610370.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 35,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by stating that the offer is only available for a limited time, requests sensitive information (clicking on the provided link to complete an online application form), and uses a suspicious link that could potentially lead to a phishing website. additionally, the email impersonates the department of education, a trusted entity, which is a common tactic used in phishing attacks.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "student_loan_forgiveness_doe_v8_20250714_192411_251067.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 32,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by mentioning a \"limited-time offer\" and encourages the recipient to act quickly to secure their spot in the program. it also requests the recipient to click on a suspicious link to enter personal information, which is a common tactic used in phishing emails to steal sensitive data. additionally, the email impersonates the department of education, a trusted entity, which is another red flag for phishing.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "tech_support_scam_apple_v1_20250714_192120_429631.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 50,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by threatening permanent lockout of the account within 24 hours if action is not taken. it also requests the recipient to click on a suspicious link to reset their apple id, which is a common tactic used in phishing emails to steal login credentials. additionally, the email impersonates apple support team, a trusted brand, which is another red flag.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "tech_support_scam_apple_v2_20250714_192123_611545.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 65,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by stating that the apple id has been locked and threatens permanent suspension if action is not taken within 24 hours. it also requests the recipient to click on a link to reset their password, which is a common tactic used in phishing emails to steal login credentials. additionally, the email impersonates apple support, a trusted brand, to deceive the recipient.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "tech_support_scam_apple_v3_20250714_192126_327946.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 65,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening a permanent lockout of the apple id account if the password is not reset within 24 hours. it requests the recipient to click on a suspicious link to reset the password, which could lead to credential theft. the email also impersonates apple support, a trusted brand, to deceive the recipient.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "tech_support_scam_apple_v4_20250714_192129_182833.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 75,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening a permanent lockout of the apple id if action is not taken within 24 hours. it requests the recipient to click on a suspicious link to reset their account, which is a common tactic used in phishing attacks to steal login credentials. additionally, the email asks for personal information to verify identity, which is a red flag for phishing attempts. the sender address is also not from an official apple domain, further indicating that this email is likely a phishing scam.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "tech_support_scam_apple_v5_20250714_192132_082486.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 65,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening permanent lockout of the account if action is not taken within 24 hours. it requests the recipient to click on a suspicious link to reset their apple id password, which is a common tactic used in phishing attacks to steal login credentials. additionally, the email impersonates apple support team, a trusted brand, which is another red flag for phishing.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "tech_support_scam_apple_v6_20250714_192134_761769.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 65,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening a permanent lockout of the apple id account if the password is not reset within 24 hours. it requests the recipient to click on a link to reset the password, which is a common phishing tactic to steal login credentials. additionally, the email impersonates apple support, a trusted brand, to deceive the recipient into believing it is legitimate.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "tech_support_scam_apple_v7_20250714_192137_394007.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 50,
+        "llm_explanation": "label: phishing\nexplanation: the email creates urgency by stating that failure to reset the apple id within 24 hours may result in permanent account lockout. it requests the recipient to click on a suspicious link to reset the apple id, which is a common tactic used in phishing attacks to steal login credentials. additionally, the email impersonates apple support, a trusted brand, to deceive the recipient.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "tech_support_scam_apple_v8_20250714_192140_595950.json",
+        "true_label": "phishing",
+        "rule_label": "phishing",
+        "llm_label": "phishing",
+        "rule_score": 65,
+        "llm_explanation": "label: phishing  \nexplanation: the email creates urgency by threatening a permanent lockout of the apple id account if the password is not reset within 24 hours. it requests the recipient to click on a suspicious link to reset the password, which is a common phishing tactic to steal login credentials. additionally, the email impersonates apple support, a trusted brand, to deceive the recipient into believing the message is legitimate.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "account_activity_alert_microsoft_v1_20250714_195209_869983.json",
+        "true_label": "benign",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 30,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it informs the recipient of a successful sign-in on their microsoft account and provides details for verification. there are no urgent threats, requests for sensitive data, or suspicious links. the email is signed by the microsoft security team and does not exhibit any clear red flags commonly associated with phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "account_activity_alert_microsoft_v2_20250714_195212_286600.json",
+        "true_label": "benign",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 35,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a legitimate security alert from microsoft informing the user of a successful sign-in from a new location. it provides details about the location and ip address, advises on securing the account, and offers support if needed. there are no clear red flags indicating phishing activity such as requests for login credentials, threats, or suspicious links.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "account_activity_alert_microsoft_v3_20250714_195215_433235.json",
+        "true_label": "benign",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 40,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it informs the recipient of a successful sign-in to their microsoft account from a new location and provides recommendations to secure the account. there are no urgent threats or requests for sensitive information. the email is signed by the microsoft security team and does not exhibit any clear red flags commonly associated with phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "account_activity_alert_microsoft_v4_20250714_195219_178013.json",
+        "true_label": "benign",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 35,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it informs the recipient of a sign-in to their microsoft account from a new location and provides guidance on securing the account. there are no urgent threats, requests for sensitive data, or suspicious links. the email is signed by the microsoft security team and does not exhibit any clear red flags typically associated with phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "account_activity_alert_microsoft_v5_20250714_195222_024890.json",
+        "true_label": "benign",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 30,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it informs the recipient of a successful sign-in to their microsoft account from a new location and provides details for verification. there are no urgent requests for action, demands for sensitive data, or suspicious links. the email is signed by the microsoft security team and does not exhibit any clear red flags typically associated with phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "event_reminder_zoom_v1_20250714_195142_761738.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 0,
+        "llm_explanation": "label: benign\nexplanation: this email is benign as it is a standard reminder for a team meeting with no requests for sensitive information or actions that raise suspicion. the language is professional, and the meeting link provided is for a common platform like zoom.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "event_reminder_zoom_v2_20250714_195146_637484.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 0,
+        "llm_explanation": "label: benign\nexplanation: this email is benign as it is a standard reminder for a scheduled zoom meeting with a clear agenda and meeting details. there are no requests for sensitive information, no urgency or threats, and the sender's information is consistent with a typical internal communication.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "event_reminder_zoom_v3_20250714_195149_176825.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 0,
+        "llm_explanation": "label: benign\nexplanation: this email is benign as it is a standard reminder for a team meeting with no requests for sensitive information or suspicious behavior. the language is professional, and the sender address appears to be legitimate.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "event_reminder_zoom_v4_20250714_195152_713327.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 0,
+        "llm_explanation": "label: benign\nexplanation: this email is a standard reminder for a team meeting, with no requests for sensitive information or actions that raise suspicion. the language is professional, and the meeting details provided are typical for a corporate setting. no clear red flags indicating phishing behavior are present.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "event_reminder_zoom_v5_20250714_195155_279480.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 0,
+        "llm_explanation": "label: benign\nexplanation: this email is a standard meeting reminder with no requests for sensitive information or urgent actions. the language is professional, and the sender address appears legitimate. no clear red flags indicating phishing activity are present.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "hr_update_internal_hr_v1_20250714_195239_668226.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 0,
+        "llm_explanation": "label: benign\nexplanation: this email is a standard announcement about a company holiday/wellness day, with no requests for sensitive information or actions that raise suspicion. the language is professional, and there are no red flags indicating phishing behavior.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "hr_update_internal_hr_v2_20250714_195242_120560.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 12,
+        "llm_explanation": "label: benign\nexplanation: the email is a standard announcement about a company wellness day event. there are no requests for sensitive information, no urgency or threats, and the language is professional. the email does not exhibit any clear red flags associated with phishing attempts.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "hr_update_internal_hr_v3_20250714_195244_944226.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 12,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it does not contain any red flags commonly associated with phishing emails. it focuses on promoting a company wellness event and does not request any sensitive information or credentials. the language is professional, and there are no suspicious links or urgent requests.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "hr_update_internal_hr_v4_20250714_195249_347555.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 12,
+        "llm_explanation": "label: benign\nexplanation: the email is a standard announcement about a company wellness day event, with no requests for sensitive information or actions that raise suspicion. the content is focused on promoting employee well-being and does not exhibit any red flags commonly seen in phishing emails.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "hr_update_internal_hr_v5_20250714_195252_073170.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 12,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard announcement about a company wellness day with no requests for sensitive information, no urgency to act, and no suspicious links or behavior. the language is professional and there are no red flags indicating phishing activity.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "monthly_bill_verizon_v1_20250714_195254_976520.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 10,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard monthly bill notification from verizon, with no urgent requests, threats, or pressure to act. the email does not ask for login credentials, account access, or money. the language is professional, and there are no suspicious or mismatched links. the sender address is from verizon, a trusted brand, and the email does not contain poor grammar, spelling, or formatting.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "monthly_bill_verizon_v2_20250714_195257_610922.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 20,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard monthly bill notification from verizon, providing information about the bill and offering assistance if needed. there are no urgent requests, threats, or suspicious links. the email does not ask for login credentials or personal information, and it is well-written with no obvious red flags.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "monthly_bill_verizon_v3_20250714_195300_900710.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 20,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard notification from verizon about the monthly bill, providing information such as account number, amount due, and due date. there are no urgent requests for action, sensitive data, or suspicious links. the email is well-written and does not exhibit any red flags commonly associated with phishing attempts.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "monthly_bill_verizon_v4_20250714_195303_440146.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 20,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard monthly bill notification from verizon, a trusted service provider. there are no urgent requests for action, threats, or requests for sensitive data. the email does not contain any suspicious links, poor grammar, or unusual sender addresses.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "monthly_bill_verizon_v5_20250714_195305_926102.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 20,
+        "llm_explanation": "label: benign\nexplanation: this email is benign as it is a standard notification from verizon about the monthly bill. there are no urgent threats, requests for sensitive information, or suspicious links. the language is professional, and the sender address is from verizon's customer service team.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "newsletter_google_v1_20250714_195123_195252.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 0,
+        "llm_explanation": "label: benign\nexplanation: this email is a standard newsletter from google workspace, providing updates and tips to enhance user experience. there are no requests for sensitive information, no urgency to act, and no suspicious links or behaviors. the sender address is legitimate and the content is well-written without any red flags indicating phishing activity.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "newsletter_google_v2_20250714_195128_604900.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 0,
+        "llm_explanation": "label: benign\nexplanation: this email is a standard newsletter from google workspace, providing updates and tips for users. there are no requests for sensitive information, no urgency to act, and no suspicious links or behaviors. the language is professional, and the sender address is from a legitimate domain.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "newsletter_google_v3_20250714_195132_639555.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 22,
+        "llm_explanation": "label: benign\nexplanation: the email is a standard newsletter from google workspace, providing tips, updates, and news to enhance the user experience. there are no requests for sensitive data, no urgency to act, and no suspicious links or behaviors present. the content is informative and relevant to the recipient's use of google workspace.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "newsletter_google_v4_20250714_195136_261644.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is a standard newsletter from google workspace, providing updates, tips, and tricks for users. there are no requests for sensitive information, no urgency to act, and no suspicious links or behaviors. the sender address is from the google workspace team, which is a trusted source.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "newsletter_google_v5_20250714_195140_301086.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 0,
+        "llm_explanation": "label: benign\nexplanation: this email is a standard newsletter from google workspace, providing updates and tips for users. there are no requests for sensitive information, no urgency to act, and no suspicious links or behaviors. the email is well-written and comes from a legitimate sender address, making it appear safe and legitimate.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "order_confirmation_amazon_v1_20250714_195104_416629.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard order confirmation from amazon with no urgent requests, threats, or pressure to act. it does not ask for any sensitive information like login credentials or payment details. the language, formatting, and sender address are all consistent with legitimate amazon communications.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "order_confirmation_amazon_v2_20250714_195108_641536.json",
+        "true_label": "benign",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 40,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard order confirmation from amazon with no urgent requests, threats, or pressure to act. it does not ask for any sensitive information like login credentials or payment details. the email is well-formatted, contains no suspicious links, and is sent from a legitimate amazon customer service team email address.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "order_confirmation_amazon_v3_20250714_195113_012915.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is benign as it is a standard order confirmation from amazon. there are no urgent requests, threats, or pressure to act. the email does not ask for any login credentials, account access, or money. the language, formatting, and sender address are all consistent with legitimate amazon communications.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "order_confirmation_amazon_v4_20250714_195116_642630.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard order confirmation from amazon, providing details about a recent purchase without requesting any sensitive information or urging immediate action. the language, formatting, and sender address are all consistent with legitimate amazon communications.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "order_confirmation_amazon_v5_20250714_195119_795612.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard confirmation email from amazon regarding a recent purchase. there are no urgent requests for action, no solicitation of sensitive data, and the email is well-formatted with no suspicious links or poor grammar. the sender address is from amazon, a trusted brand, and the content is typical of a legitimate order confirmation email.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "password_change_confirmation_linkedin_v1_20250714_195157_628903.json",
+        "true_label": "benign",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 25,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it simply notifies the recipient of a password change on their linkedin account and provides a contact option in case the change was not initiated by them. there are no urgent requests for action, demands for sensitive data, or suspicious links. the email is written professionally and does not exhibit any clear red flags typically associated with phishing attempts.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "password_change_confirmation_linkedin_v2_20250714_195159_878650.json",
+        "true_label": "benign",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 47,
+        "llm_explanation": "label: benign  \nexplanation: this email is benign. it is a standard password change confirmation from linkedin, with no urgent requests for action, login credentials, or money. the email provides general security advice and does not contain any clear red flags typically associated with phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "password_change_confirmation_linkedin_v3_20250714_195202_376316.json",
+        "true_label": "benign",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 35,
+        "llm_explanation": "label: benign  \nexplanation: this email is benign. it informs the recipient about a password change on their linkedin account and provides a contact option in case the change was not initiated by them. there are no urgent requests for sensitive information, threats, or suspicious links. the email is written in a professional manner and does not exhibit any clear red flags typically associated with phishing emails.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "password_change_confirmation_linkedin_v4_20250714_195204_735019.json",
+        "true_label": "benign",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 25,
+        "llm_explanation": "label: benign\nexplanation: this email is benign as it is a standard confirmation email for a password change on linkedin. it does not contain any urgent requests for action, threats, requests for sensitive data, suspicious links, or impersonation of trusted brands. the language and formatting are professional, and the sender address appears to be from the linkedin security team.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "password_change_confirmation_linkedin_v5_20250714_195207_203488.json",
+        "true_label": "benign",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 25,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it simply confirms a password change on linkedin and provides contact information for support if needed. there are no urgent requests for action, demands for sensitive data, or suspicious links. the sender is identified as \"the linkedin team,\" which is a trusted brand.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "shipping_notification_fedex_v1_20250714_195224_448160.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it does not contain any urgent requests, threats, or pressure to act. it simply provides tracking information for a fedex package and includes a legitimate fedex customer service number for inquiries. there are no red flags indicating phishing behavior.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "shipping_notification_fedex_v2_20250714_195227_693162.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is benign as it does not contain any clear red flags typically associated with phishing emails. it does not request any sensitive information, create urgency, or contain suspicious links. the email simply provides tracking information for a fedex package and offers customer service contact information.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "shipping_notification_fedex_v3_20250714_195230_973952.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is benign as it simply provides information about a package being dispatched by fedex. there are no urgent requests for action, no solicitation of sensitive data, and the language used is professional and appropriate for a legitimate shipping notification.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "shipping_notification_fedex_v4_20250714_195233_477481.json",
+        "true_label": "benign",
+        "rule_label": "phishing",
+        "llm_label": "benign",
+        "rule_score": 25,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard shipping notification from fedex, providing a tracking number and information about the package. there are no requests for sensitive information, no urgent actions required, and the email is well-written with no suspicious links or sender addresses.",
+        "hybrid_label": "phishing"
+    },
+    {
+        "filename": "shipping_notification_fedex_v5_20250714_195236_546203.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it appears to be a standard shipment notification from fedex, providing tracking information and contact details for customer service. there are no urgent requests for action, no solicitation of sensitive data, and the language is professional with no obvious red flags.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "subscription_renewal_spotify_v1_20250714_195326_302607.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 20,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it does not contain any urgent requests, threats, or pressure to act. it simply confirms the renewal of a spotify premium subscription and provides billing details. there are no requests for login credentials, account access, or money. the email is well-written, with no suspicious links or impersonation of trusted brands. the sender address is from spotify's official domain.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "subscription_renewal_spotify_v2_20250714_195329_121819.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 15,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard renewal confirmation from spotify, with no urgent requests for action, sensitive data, or suspicious links. the email is well-written, and the sender address is from a legitimate domain (spotify.com).",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "subscription_renewal_spotify_v3_20250714_195332_785745.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 0,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it does not contain any urgent requests, threats, or pressure to act. it does not ask for any login credentials, account access, or money. the email is well-written, with no poor grammar or spelling errors. the sender address is from a legitimate domain (spotify.com) and matches the sender (the spotify team). overall, there are no clear red flags indicating phishing activity.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "subscription_renewal_spotify_v4_20250714_195335_235372.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 0,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it does not contain any urgent requests, threats, or pressure to act. it simply provides information about the renewal of a spotify premium subscription and includes standard billing details. there are no red flags indicating phishing activity.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "subscription_renewal_spotify_v5_20250714_195338_148074.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 0,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard renewal confirmation for a spotify premium subscription, providing details of the transaction and offering customer support contact information. there are no urgent requests, threats, or attempts to obtain sensitive data. the sender address is from spotify's official domain, and the overall tone and content are consistent with legitimate communication from a trusted brand like spotify.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "travel_itinerary_delta_airlines_v1_20250714_195309_459697.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 10,
+        "llm_explanation": "label: benign\nexplanation: this email is benign as it is a standard flight itinerary confirmation from delta airlines. it does not contain any urgent requests, threats, or pressure to act. it does not ask for login credentials, account access, or money. the language, formatting, and sender address are all typical of a legitimate email from an airline company.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "travel_itinerary_delta_airlines_v2_20250714_195312_065914.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 10,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard confirmation email for a flight booking with delta airlines. there are no requests for sensitive information, no urgency or threats, and the language is professional. the email also does not contain any suspicious links or sender addresses.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "travel_itinerary_delta_airlines_v3_20250714_195315_043421.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 10,
+        "llm_explanation": "label: benign\nexplanation: this email is benign. it is a standard flight confirmation email from delta airlines providing itinerary details and a link for check-in. there are no urgent requests, threats, or attempts to obtain sensitive information. the sender is legitimate (delta airlines) and the email does not contain any red flags commonly associated with phishing emails.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "travel_itinerary_delta_airlines_v4_20250714_195319_342465.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 10,
+        "llm_explanation": "label: benign\nexplanation: this email is benign as it is a standard itinerary confirmation from delta airlines. there are no urgent requests, threats, or pressure to act. the email does not ask for any sensitive information like login credentials or money. the language, formatting, and sender address are all typical of a legitimate communication from an airline.",
+        "hybrid_label": "benign"
+    },
+    {
+        "filename": "travel_itinerary_delta_airlines_v5_20250714_195323_660994.json",
+        "true_label": "benign",
+        "rule_label": "benign",
+        "llm_label": "benign",
+        "rule_score": 20,
+        "llm_explanation": "label: benign\nexplanation: this email is benign as it is a standard itinerary confirmation from delta air lines with no requests for sensitive information, no urgency or threats, and no suspicious links. the sender address matches the company name and the email is well-formatted with no red flags indicating phishing.",
+        "hybrid_label": "benign"
+    }
+]

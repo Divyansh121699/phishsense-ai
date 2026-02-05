@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:21:48.394985",
+    "category": "Delivery Scam",
+    "target_brand": "FedEx",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 3,
+    "email_text": "Subject: Important Notification: Missed Delivery from FedEx\n\nDear valued customer,\n\nWe regret to inform you that our delivery driver attempted to deliver a package to your address today but unfortunately, no one was available to sign for it. To reschedule delivery and ensure you receive your package as soon as possible, please click on the link below to track your shipment and provide us with further instructions:\n\n[Fake Tracking Link: http://fedextracking-update.com]\n\nPlease note that failure to reschedule delivery within the next 24 hours may result in your package being returned to the sender. We apologize for any inconvenience this may have caused and appreciate your prompt attention to this matter.\n\nThank you for choosing FedEx for your shipping needs.\n\nSincerely,\nThe FedEx Team"
+}

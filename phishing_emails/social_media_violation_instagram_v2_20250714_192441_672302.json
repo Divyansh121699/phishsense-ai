@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:24:41.672302",
+    "category": "Social Media Violation",
+    "target_brand": "Instagram",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 2,
+    "email_text": "Subject: Urgent: Your Instagram Account has Violated Our Policy\n\nDear Instagram User,\n\nWe regret to inform you that your Instagram account has been found to be in violation of our community guidelines. Our system has detected suspicious activity on your account, including the posting of inappropriate content and engaging in spammy behavior.\n\nIn order to ensure the safety and security of our platform, we kindly ask you to verify your account by filling out the appeal form linked below. By doing so, you can provide us with additional information to help us investigate this matter further and potentially restore access to your account.\n\nPlease click on the following link to access the appeal form: [Fake link]\n\nPlease note that failure to complete the appeal form within 24 hours may result in permanent suspension of your account. We appreciate your cooperation in helping us maintain a safe and enjoyable experience for all users on Instagram.\n\nThank you for your understanding.\n\nSincerely,\nThe Instagram Team"
+}

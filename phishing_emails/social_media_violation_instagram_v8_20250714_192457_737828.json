@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:24:57.737828",
+    "category": "Social Media Violation",
+    "target_brand": "Instagram",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 8,
+    "email_text": "Subject: Action Required: Policy Violation Notice from Instagram\n\nDear Instagram User,\n\nWe are writing to inform you that your account has been flagged for a policy violation. Our system has detected suspicious activity that goes against our community guidelines. This violation may result in the suspension or permanent removal of your account.\n\nTo avoid any further action, we urge you to click on the link below to complete an appeal form and provide us with additional information regarding this issue. It is important that you do this as soon as possible to prevent any disruptions to your account.\n\n[Insert fake link to appeal form]\n\nPlease be assured that we take these matters seriously and are committed to ensuring a safe and secure environment for all our users. Your cooperation in resolving this matter is greatly appreciated.\n\nThank you for your attention to this matter.\n\nSincerely,\nThe Instagram Team"
+}

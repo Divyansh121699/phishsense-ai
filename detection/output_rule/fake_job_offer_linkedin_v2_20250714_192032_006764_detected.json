@@ -1,0 +1,20 @@
+{
+    "source_file": "fake_job_offer_linkedin_v2_20250714_192032_006764.json",
+    "score": 15,
+    "is_phishing": false,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "brand_mention:linkedin",
+        "brand_domain_mismatch:linkedin"
+    ],
+    "contains_link": false,
+    "num_words": 200,
+    "num_links": 0,
+    "num_suspicious_keywords": 0,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [
+        "linkedin"
+    ],
+    "filename": "fake_job_offer_linkedin_v2_20250714_192032_006764.json",
+    "predicted_label": "benign"
+}

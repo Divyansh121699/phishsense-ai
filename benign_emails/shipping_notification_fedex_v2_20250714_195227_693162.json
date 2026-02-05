@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:52:27.693162",
+    "category": "Shipping Notification",
+    "brand": "FedEx",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 2,
+    "email_text": "Subject: Your FedEx Package is on the Way!\n\nDear [Recipient],\n\nWe are excited to inform you that your package is now in transit and on its way to you! Your FedEx tracking number is: 1234567890.\n\nEstimated delivery date: [Insert estimated delivery date]\n\nPackage contents: [Brief description of contents]\n\nPlease note that a signature may be required upon delivery. You can track the status of your package in real-time by visiting the FedEx website and entering your tracking number.\n\nIf you have any questions or concerns about your shipment, please do not hesitate to contact our customer service team at 1-800-GO-FEDEX.\n\nThank you for choosing FedEx for your shipping needs. We appreciate your business and look forward to delivering your package to you soon.\n\nWarm regards,\nThe FedEx Team"
+}

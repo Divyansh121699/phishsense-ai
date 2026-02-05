@@ -1,0 +1,6 @@
+{
+    "source_file": "fake_security_alert_microsoft_v8_20250714_192025_568641.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by stating a \"suspicious login attempt\" and pressures the recipient to act immediately. it requests the recipient to click on a suspicious link to confirm their identity, which is a common phishing tactic to steal login credentials. additionally, the email contains a fake support email address and warns of potential consequences if the recipient does not comply, all red flags commonly found in phishing emails."
+}

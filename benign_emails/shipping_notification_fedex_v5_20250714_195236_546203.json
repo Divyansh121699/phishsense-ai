@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:52:36.546203",
+    "category": "Shipping Notification",
+    "brand": "FedEx",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 5,
+    "email_text": "Subject: Your FedEx Shipment Notification\n\nDear [Recipient's Name],\n\nWe are pleased to inform you that your package with tracking number 123456789 has been successfully processed and is on its way to you via FedEx. \n\nEstimated Delivery Date: [insert estimated delivery date]\n\nPlease find below the shipment details for your reference:\n\n- Sender: [Sender's Name]\n- Destination: [Recipient's Address]\n- Weight: [Weight of the Package]\n- Service: FedEx Express\n- Tracking Number: 123456789\n\nFor real-time tracking updates, please visit the FedEx website and enter the tracking number provided above.\n\nIf you have any questions or concerns regarding your shipment, please do not hesitate to contact our customer service team at 1-800-123-4567.\n\nThank you for choosing FedEx for your shipping needs.\n\nSincerely,\nFedEx Team"
+}

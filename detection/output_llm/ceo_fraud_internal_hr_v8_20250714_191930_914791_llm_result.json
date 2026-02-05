@@ -1,0 +1,6 @@
+{
+    "source_file": "ceo_fraud_internal_hr_v8_20250714_191930_914791.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by requesting an immediate wire transfer to avoid late fees. it also asks for a financial transaction to be completed without verifying the request through other means. this could be a phishing attempt to steal money or sensitive financial information."
+}

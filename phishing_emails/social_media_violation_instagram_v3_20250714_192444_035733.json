@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:24:44.035733",
+    "category": "Social Media Violation",
+    "target_brand": "Instagram",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 3,
+    "email_text": "Subject: Urgent: Your Instagram account has been flagged for policy violation\n\nDear Instagram User,\n\nWe are writing to inform you that your Instagram account has been flagged for violating our community guidelines. Our system has detected suspicious activity on your account, including potential spamming and inappropriate content.\n\nTo avoid permanent suspension of your account, we urge you to click on the link below to appeal this decision and provide any necessary information to prove your innocence:\n\n[Link to Fake Appeal Form]\n\nPlease note that failure to appeal within the next 24 hours may result in the permanent suspension of your account. We take these matters seriously and want to ensure the safety and integrity of our community.\n\nThank you for your cooperation.\n\nSincerely,\nInstagram Support Team"
+}

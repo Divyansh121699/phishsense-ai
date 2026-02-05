@@ -1,0 +1,6 @@
+{
+    "source_file": "bank_account_suspension_bank_of_america_v7_20250714_192115_270446.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by stating that the account has been suspended due to unusual activity, and requests the recipient to click on a suspicious link to reactivate the account. this is a common tactic used in phishing emails to steal login credentials or personal information. additionally, the email does not address the recipient by name, uses a generic salutation (\"dear valued customer\"), and lacks specific details that a legitimate bank communication would typically include."
+}

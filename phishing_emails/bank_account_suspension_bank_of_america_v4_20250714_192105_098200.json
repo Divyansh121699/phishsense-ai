@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:21:05.098200",
+    "category": "Bank Account Suspension",
+    "target_brand": "Bank of America",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 4,
+    "email_text": "Subject: Urgent Action Required: Temporary Account Suspension Notice\n\nDear Valued Customer,\n\nThis is to notify you that your Bank of America account has been temporarily suspended due to suspicious activity detected on your account. To protect your account from unauthorized access and potential fraud, we have taken this precautionary measure.\n\nIn order to restore access to your account, we kindly ask you to verify your identity by clicking on the link below and providing the necessary information:\n\n[Phishing link]\n\nPlease note that failure to verify your identity within the next 24 hours may result in permanent account suspension. We take the security of our customers very seriously and appreciate your prompt attention to this matter.\n\nIf you have any questions or concerns, please contact our customer support team immediately at [fake customer support number].\n\nThank you for your cooperation in maintaining the security of your account.\n\nSincerely,\nBank of America Security Team"
+}

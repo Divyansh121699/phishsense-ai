@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:21:37.394007",
+    "category": "Tech Support Scam",
+    "target_brand": "Apple",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 7,
+    "email_text": "Subject: Urgent Action Required: Your Apple ID has been locked\n\nDear Apple user,\n\nWe regret to inform you that your Apple ID has been locked due to suspicious activity detected on your account. In order to secure your account and prevent any unauthorized access, we kindly ask you to reset your Apple ID immediately.\n\nTo reset your Apple ID, please click on the link provided below and follow the instructions carefully:\n\n[Phishing link]\n\nPlease note that failure to reset your Apple ID within the next 24 hours may result in permanent account lockout and loss of access to all your Apple services and devices.\n\nIf you believe this lockout is a mistake or have any concerns regarding your account security, please contact Apple Support immediately for further assistance.\n\nThank you for your cooperation in keeping your Apple account safe and secure.\n\nSincerely,\nApple Support Team"
+}

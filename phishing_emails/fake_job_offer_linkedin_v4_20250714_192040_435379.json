@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:20:40.435379",
+    "category": "Fake Job Offer",
+    "target_brand": "LinkedIn",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 4,
+    "email_text": "Subject: Exciting Job Opportunity at Top Company\n\nDear [Name],\n\nI hope this message finds you well. My name is Sarah and I am a recruiter at a leading company in the tech industry. I came across your profile on LinkedIn and I was impressed by your skills and experience. I believe you would be a great fit for a position we have available at our company.\n\nWe are currently looking for a talented individual to join our team as a Senior Software Engineer. This is a fantastic opportunity to work on cutting-edge projects and collaborate with some of the best minds in the industry. The salary and benefits package are highly competitive, and there is plenty of room for growth and advancement within the company.\n\nI have attached the job description and application form for your review. If you are interested in applying for this position, please fill out the form and send it back to me as soon as possible. We are looking to fill this role quickly, so don't miss out on this amazing opportunity.\n\nI look forward to hearing from you and hopefully welcoming you to our team soon. If you have any questions or need further information, please feel free to reach out to me.\n\nBest regards,\n\nSarah\nRecruiter\nTop Company"
+}

@@ -1,0 +1,6 @@
+{
+    "source_file": "student_loan_forgiveness_doe_v7_20250714_192406_610370.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by stating that the offer is only available for a limited time, requests sensitive information (clicking on the provided link to complete an online application form), and uses a suspicious link that could potentially lead to a phishing website. additionally, the email impersonates the department of education, a trusted entity, which is a common tactic used in phishing attacks."
+}

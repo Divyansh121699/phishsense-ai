@@ -1,0 +1,6 @@
+{
+    "source_file": "ceo_fraud_internal_hr_v7_20250714_191928_002083.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by requesting an immediate wire transfer without prior notice. the ceo's name could be easily impersonated, and there is pressure to act quickly without verifying the request in person. this could be a phishing attempt to steal money or sensitive financial information."
+}

@@ -1,0 +1,6 @@
+{
+    "source_file": "hr_update_internal_hr_v2_20250714_195242_120560.json",
+    "llm_label": "benign",
+    "true_label": "benign",
+    "explanation": "label: benign\nexplanation: the email is a standard announcement about a company wellness day event. there are no requests for sensitive information, no urgency or threats, and the language is professional. the email does not exhibit any clear red flags associated with phishing attempts."
+}

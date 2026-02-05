@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:24:55.182997",
+    "category": "Social Media Violation",
+    "target_brand": "Instagram",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 7,
+    "email_text": "Subject: Urgent Action Required: Your Instagram Account has Violated Policies\n\nDear Instagram User,\n\nWe regret to inform you that your Instagram account has been found to be in violation of our community guidelines. Our system has flagged several posts and activities on your account that go against our policies on inappropriate content and behavior.\n\nIn order to prevent any further action being taken against your account, we urge you to review the violations and submit an appeal through the following link: [Fake link to appeal form]. Please note that failure to address these violations may result in the suspension or permanent removal of your account.\n\nWe understand that mistakes can happen unintentionally, and we are here to help you rectify the situation. By submitting an appeal, you will have the opportunity to explain your actions and request a review of the violations.\n\nThank you for your attention to this matter and prompt action in resolving the policy violations on your Instagram account.\n\nSincerely,\nThe Instagram Team"
+}

@@ -1,0 +1,6 @@
+{
+    "source_file": "social_media_violation_instagram_v7_20250714_192455_182997.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by stating that the account has violated policies and threatens suspension or removal if not addressed. it requests the user to submit an appeal through a suspicious link, which is a common tactic used in phishing emails to steal login credentials. additionally, the email impersonates the trusted brand of instagram, but the poor grammar and lack of specific details are red flags."
+}

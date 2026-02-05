@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:23:26.510947",
+    "category": "Credit Card Update",
+    "target_brand": "Amazon",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 3,
+    "email_text": "Subject: Urgent: Update Your Payment Information Now!\n\nDear Valued Amazon Customer,\n\nWe have noticed that there is an issue with the payment information linked to your Amazon account. In order to avoid any disruption to your services and to ensure that your orders can be processed without any delays, we kindly ask you to update your credit card details as soon as possible.\n\nPlease click on the following link to securely update your payment information: [Phishing link]\n\nIf you do not update your details within the next 48 hours, your account may be temporarily suspended until the issue is resolved. We value your business and want to make sure that your shopping experience with Amazon is seamless and hassle-free.\n\nThank you for your attention to this matter and we appreciate your prompt action in resolving this issue.\n\nSincerely,\nAmazon Customer Service Team"
+}

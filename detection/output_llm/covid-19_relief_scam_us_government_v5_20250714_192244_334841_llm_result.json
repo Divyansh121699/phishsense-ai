@@ -1,0 +1,6 @@
+{
+    "source_file": "covid-19_relief_scam_us_government_v5_20250714_192244_334841.json",
+    "llm_label": "benign",
+    "true_label": "phishing",
+    "explanation": "label: benign\nexplanation: the email appears to be offering legitimate covid-19 relief funds without any clear red flags. it does not request sensitive information like login credentials or financial details. the language is professional and there are no urgent threats or suspicious links."
+}

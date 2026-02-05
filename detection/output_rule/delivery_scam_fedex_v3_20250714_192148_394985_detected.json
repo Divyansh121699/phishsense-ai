@@ -1,0 +1,22 @@
+{
+    "source_file": "delivery_scam_fedex_v3_20250714_192148_394985.json",
+    "score": 45,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "link_detected",
+        "brand_mention:fedex",
+        "obfuscated_pattern",
+        "brand_domain_mismatch:fedex"
+    ],
+    "contains_link": true,
+    "num_words": 123,
+    "num_links": 1,
+    "num_suspicious_keywords": 0,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [
+        "fedex"
+    ],
+    "filename": "delivery_scam_fedex_v3_20250714_192148_394985.json",
+    "predicted_label": "phishing"
+}

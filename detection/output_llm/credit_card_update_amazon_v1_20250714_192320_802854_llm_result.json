@@ -1,0 +1,6 @@
+{
+    "source_file": "credit_card_update_amazon_v1_20250714_192320_802854.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by threatening to suspend the amazon account within 24 hours if the credit card information is not updated. it also requests sensitive information (credit card details) through a suspicious link, which is a common tactic used in phishing emails to steal credentials. additionally, the email impersonates amazon's customer support team, which is a red flag for phishing attempts."
+}

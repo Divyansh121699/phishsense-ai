@@ -1,0 +1,6 @@
+{
+    "source_file": "credit_card_update_amazon_v5_20250714_192331_580965.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by threatening a temporary suspension of the account if payment information is not updated within 48 hours. it also requests for credit card details through a suspicious link to a fake amazon login page. additionally, the email impersonates amazon, a trusted brand, which is a common tactic used in phishing attacks."
+}

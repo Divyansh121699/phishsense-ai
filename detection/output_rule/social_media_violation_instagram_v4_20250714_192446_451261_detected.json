@@ -1,0 +1,23 @@
+{
+    "source_file": "social_media_violation_instagram_v4_20250714_192446_451261.json",
+    "score": 55,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "urgent",
+        "immediate attention",
+        "within 24 hours",
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "repeated:account",
+        "time_pressure_phrase"
+    ],
+    "contains_link": false,
+    "num_words": 132,
+    "num_links": 0,
+    "num_suspicious_keywords": 1,
+    "num_social_engineering_hits": 1,
+    "brand_mentions": [],
+    "filename": "social_media_violation_instagram_v4_20250714_192446_451261.json",
+    "predicted_label": "phishing"
+}

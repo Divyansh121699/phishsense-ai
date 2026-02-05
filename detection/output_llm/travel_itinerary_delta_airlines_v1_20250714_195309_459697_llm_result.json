@@ -1,0 +1,6 @@
+{
+    "source_file": "travel_itinerary_delta_airlines_v1_20250714_195309_459697.json",
+    "llm_label": "benign",
+    "true_label": "benign",
+    "explanation": "label: benign\nexplanation: this email is benign as it is a standard flight itinerary confirmation from delta airlines. it does not contain any urgent requests, threats, or pressure to act. it does not ask for login credentials, account access, or money. the language, formatting, and sender address are all typical of a legitimate email from an airline company."
+}

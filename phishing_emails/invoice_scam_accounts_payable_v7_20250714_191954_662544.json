@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:19:54.662544",
+    "category": "Invoice Scam",
+    "target_brand": "Accounts Payable",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 7,
+    "email_text": "Subject: Urgent Payment Required for Overdue Invoice\n\nDear [Recipient],\n\nI hope this email finds you well. We are writing to remind you that your invoice #123456 for the purchase of [Product/Service] from our company is now overdue. We kindly request immediate payment to avoid any further delays or penalties.\n\nAs a valued customer, we understand that oversights can happen, but we kindly ask for your prompt attention to this matter. Your payment will help us continue to provide you with the quality products and services that you have come to expect from us.\n\nPlease find attached a copy of the invoice for your reference. You can make the payment through the following methods:\n\n- Bank Transfer: [Account Number and Details]\n- Online Payment: [Link to Payment Portal]\n- Check: [Mailing Address]\n\nIf you have already made the payment, please disregard this message. However, if you have any questions or concerns regarding this invoice, please do not hesitate to contact us immediately.\n\nWe appreciate your prompt attention to this matter and look forward to your payment.\n\nThank you for your continued business and support.\n\nBest regards,\n\n[Vendor Name]\n[Vendor Contact Information]"
+}

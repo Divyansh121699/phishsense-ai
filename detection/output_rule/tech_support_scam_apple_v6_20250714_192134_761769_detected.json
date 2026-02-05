@@ -1,0 +1,23 @@
+{
+    "source_file": "tech_support_scam_apple_v6_20250714_192134_761769.json",
+    "score": 65,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "unauthorized",
+        "urgent",
+        "reset your password",
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "repeated:account",
+        "repeated:password"
+    ],
+    "contains_link": false,
+    "num_words": 162,
+    "num_links": 0,
+    "num_suspicious_keywords": 3,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [],
+    "filename": "tech_support_scam_apple_v6_20250714_192134_761769.json",
+    "predicted_label": "phishing"
+}

@@ -1,0 +1,18 @@
+{
+    "source_file": "monthly_bill_verizon_v5_20250714_195305_926102.json",
+    "score": 20,
+    "is_phishing": false,
+    "actual_label": "benign",
+    "flagged_keywords": [
+        "obfuscated_pattern",
+        "obfuscated_pattern"
+    ],
+    "contains_link": false,
+    "num_words": 127,
+    "num_links": 0,
+    "num_suspicious_keywords": 0,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [],
+    "filename": "monthly_bill_verizon_v5_20250714_195305_926102.json",
+    "predicted_label": "benign"
+}

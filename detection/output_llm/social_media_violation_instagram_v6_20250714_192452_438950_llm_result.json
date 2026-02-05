@@ -1,0 +1,6 @@
+{
+    "source_file": "social_media_violation_instagram_v6_20250714_192452_438950.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by threatening to disable the account within 48 hours if action is not taken. it requests the user to click on a suspicious link to fill out an appeal form, which could potentially lead to phishing for login credentials. the email also contains poor grammar and lacks personalization, indicating it may be a phishing attempt."
+}

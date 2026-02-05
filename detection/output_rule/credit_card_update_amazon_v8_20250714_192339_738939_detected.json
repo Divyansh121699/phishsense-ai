@@ -1,0 +1,23 @@
+{
+    "source_file": "credit_card_update_amazon_v8_20250714_192339_738939.json",
+    "score": 45,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "urgent",
+        "brand_mention:amazon",
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "brand_domain_mismatch:amazon"
+    ],
+    "contains_link": false,
+    "num_words": 129,
+    "num_links": 0,
+    "num_suspicious_keywords": 1,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [
+        "amazon"
+    ],
+    "filename": "credit_card_update_amazon_v8_20250714_192339_738939.json",
+    "predicted_label": "phishing"
+}

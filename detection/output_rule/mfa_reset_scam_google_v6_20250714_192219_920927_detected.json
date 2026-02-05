@@ -1,0 +1,20 @@
+{
+    "source_file": "mfa_reset_scam_google_v6_20250714_192219_920927.json",
+    "score": 35,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "urgent",
+        "obfuscated_pattern",
+        "obfuscated_pattern",
+        "repeated:account"
+    ],
+    "contains_link": false,
+    "num_words": 117,
+    "num_links": 0,
+    "num_suspicious_keywords": 1,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [],
+    "filename": "mfa_reset_scam_google_v6_20250714_192219_920927.json",
+    "predicted_label": "phishing"
+}

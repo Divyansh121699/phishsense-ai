@@ -1,0 +1,6 @@
+{
+    "source_file": "bank_account_suspension_bank_of_america_v1_20250714_192056_097583.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing  \nexplanation: the email creates urgency by stating that the account has been temporarily suspended due to suspicious activity. it then requests the recipient to verify their account information by clicking on a suspicious link. this is a common tactic used in phishing emails to steal login credentials. additionally, the email impersonates bank of america, a trusted brand, which is another red flag."
+}

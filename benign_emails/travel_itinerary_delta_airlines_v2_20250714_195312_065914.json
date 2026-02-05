@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:53:12.065914",
+    "category": "Travel Itinerary",
+    "brand": "Delta Airlines",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 2,
+    "email_text": "Dear [Passenger Name],\n\nThank you for booking your upcoming flight with Delta Airlines. Below is your itinerary confirmation with the flight details:\n\nFlight Details:\n- Booking Reference: ABC123\n- Flight Number: DL456\n- Departure City: New York (JFK)\n- Arrival City: Los Angeles (LAX)\n- Departure Date: January 15th, 2023\n- Departure Time: 9:00 AM\n- Arrival Time: 12:00 PM\n- Seat Number: 15A\n- Baggage Allowance: 1 checked bag, 1 carry-on bag\n\nPlease click on the following link to check-in for your flight: [Check-in Link]\n\nWe look forward to welcoming you onboard and wish you a pleasant flight experience with Delta Airlines. If you have any questions or need further assistance, please do not hesitate to contact us.\n\nSafe travels,\n\nDelta Airlines Team"
+}

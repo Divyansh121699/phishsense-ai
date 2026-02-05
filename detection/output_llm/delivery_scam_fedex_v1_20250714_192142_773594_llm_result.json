@@ -1,0 +1,6 @@
+{
+    "source_file": "delivery_scam_fedex_v1_20250714_192142_773594.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by claiming a missed delivery, requests the recipient to click on a suspicious tracking link, and impersonates fedex. these are common red flags for phishing attempts."
+}

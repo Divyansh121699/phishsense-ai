@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:51:46.637484",
+    "category": "Event Reminder",
+    "brand": "Zoom",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 2,
+    "email_text": "Subject: Reminder: Zoom Meeting Tomorrow - Agenda Attached\n\nDear Team,\n\nI hope this email finds you well. This is a friendly reminder that our weekly team meeting will be taking place tomorrow via Zoom. Please see below for the meeting details:\n\nDate: [Date]\nTime: [Time]\nMeeting Link: [Zoom Meeting Link]\n\nAgenda:\n1. Review of last week's progress\n2. Updates on current projects\n3. Discussion on upcoming deadlines\n4. Any other business\n\nPlease review the agenda and come prepared to provide updates on your respective areas. If you have any additional items to add to the agenda, please let me know by the end of today.\n\nIf you encounter any technical difficulties accessing the meeting tomorrow, please reach out to our IT support team at [IT Support Email/Phone Number].\n\nThank you in advance for your participation and collaboration. Looking forward to our productive meeting tomorrow.\n\nBest regards,\n\n[Your Name]\n[Your Title]"
+}

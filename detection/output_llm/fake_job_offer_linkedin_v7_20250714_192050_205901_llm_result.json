@@ -1,0 +1,6 @@
+{
+    "source_file": "fake_job_offer_linkedin_v7_20250714_192050_205901.json",
+    "llm_label": "benign",
+    "true_label": "phishing",
+    "explanation": "label: benign\nexplanation: this email is benign. it does not contain any clear red flags typically associated with phishing emails. the sender is a recruiter from a known company, there are no urgent requests for sensitive information, and the attachment is a job description and application form, which is common in recruitment emails."
+}

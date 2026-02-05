@@ -1,0 +1,19 @@
+{
+    "source_file": "covid-19_relief_scam_us_government_v3_20250714_192236_966713.json",
+    "score": 37,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "urgent",
+        "confidential",
+        "confidential"
+    ],
+    "contains_link": false,
+    "num_words": 185,
+    "num_links": 0,
+    "num_suspicious_keywords": 2,
+    "num_social_engineering_hits": 1,
+    "brand_mentions": [],
+    "filename": "covid-19_relief_scam_us_government_v3_20250714_192236_966713.json",
+    "predicted_label": "phishing"
+}

@@ -1,0 +1,6 @@
+{
+    "source_file": "credit_card_update_amazon_v7_20250714_192336_751601.json",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nexplanation: the email creates urgency by stating \"urgent action required\" and requests for updating payment information by clicking on a suspicious link. additionally, the note at the end mentioning that amazon will never ask for personal information via email raises red flags."
+}

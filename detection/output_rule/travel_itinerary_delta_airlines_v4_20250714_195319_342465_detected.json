@@ -1,0 +1,17 @@
+{
+    "source_file": "travel_itinerary_delta_airlines_v4_20250714_195319_342465.json",
+    "score": 10,
+    "is_phishing": false,
+    "actual_label": "benign",
+    "flagged_keywords": [
+        "obfuscated_pattern"
+    ],
+    "contains_link": false,
+    "num_words": 151,
+    "num_links": 0,
+    "num_suspicious_keywords": 0,
+    "num_social_engineering_hits": 0,
+    "brand_mentions": [],
+    "filename": "travel_itinerary_delta_airlines_v4_20250714_195319_342465.json",
+    "predicted_label": "benign"
+}

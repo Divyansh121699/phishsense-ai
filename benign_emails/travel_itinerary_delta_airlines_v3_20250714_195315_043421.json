@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-07-14T19:53:15.043421",
+    "category": "Travel Itinerary",
+    "brand": "Delta Airlines",
+    "source_model": "gpt-3.5-turbo",
+    "variation": 3,
+    "email_text": "Dear [Passenger Name],\n\nThank you for booking your flight with Delta. Below is your itinerary confirmation:\n\n- Flight 1:\n   - Departure: Atlanta Hartsfield-Jackson International Airport (ATL)\n   - Destination: Los Angeles International Airport (LAX)\n   - Date: [Date]\n   - Departure Time: [Time]\n   - Arrival Time: [Time]\n   - Flight Number: DL1234\n\n- Flight 2:\n   - Departure: Los Angeles International Airport (LAX)\n   - Destination: Seattle-Tacoma International Airport (SEA)\n   - Date: [Date]\n   - Departure Time: [Time]\n   - Arrival Time: [Time]\n   - Flight Number: DL5678\n\nTo check-in for your flight, please click on the following link: [Check-in Link]\n\nPlease make sure to arrive at the airport at least 2 hours before your scheduled departure time. If you have any questions or need assistance, feel free to contact us at [Delta Customer Service Phone Number].\n\nThank you for choosing Delta. We look forward to welcoming you on board.\n\nSincerely,\nDelta Airlines"
+}

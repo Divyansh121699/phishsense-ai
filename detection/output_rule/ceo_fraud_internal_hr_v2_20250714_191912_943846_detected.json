@@ -1,0 +1,21 @@
+{
+    "source_file": "ceo_fraud_internal_hr_v2_20250714_191912_943846.json",
+    "score": 58,
+    "is_phishing": true,
+    "actual_label": "phishing",
+    "flagged_keywords": [
+        "urgent",
+        "CEO",
+        "HR",
+        "urgent request",
+        "wire transfer"
+    ],
+    "contains_link": false,
+    "num_words": 127,
+    "num_links": 0,
+    "num_suspicious_keywords": 1,
+    "num_social_engineering_hits": 4,
+    "brand_mentions": [],
+    "filename": "ceo_fraud_internal_hr_v2_20250714_191912_943846.json",
+    "predicted_label": "phishing"
+}

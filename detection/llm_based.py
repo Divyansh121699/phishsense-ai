@@ -4,6 +4,11 @@ from pathlib import Path
 from openai import OpenAI
 from dotenv import load_dotenv
 
+try:
+    from detection.schema_utils import normalize_email_record
+except ImportError:
+    from schema_utils import normalize_email_record
+
 load_dotenv()
 
 # ========== CONFIG ==========
@@ -24,45 +29,76 @@ client = OpenAI(api_key=api_key)
 
 # ========== LLM SCORING FUNCTION ==========
 
-def get_llm_prediction(email_text):
-    prompt = f"""
+def get_llm_prediction(email_text, email_meta=None):
+    """Classify an email using the LLM.
+
+    email_meta can be a full record from the expanded schema. It is normalized
+    and added as structured context so the model can consider URLs, headers,
+    authentication results, attachments, category, and generation type.
+    """
+    context = ""
+    if email_meta:
+        normalized = normalize_email_record(email_meta)
+        email_text = normalized.get("email_text", email_text)
+        context = f"""
+Metadata:
+- Source dataset: {normalized.get('source_dataset', '')}
+- Source file: {normalized.get('source_file', '')}
+- High-level category, if labeled: {normalized.get('high_level_category', '')}
+- Subcategory, if labeled: {normalized.get('subcategory', '')}
+- Sender: {normalized.get('sender', '')}
+- Receiver: {normalized.get('receiver', '')}
+- Subject: {normalized.get('subject', '')}
+- URL count: {normalized.get('url_count', 0)}
+- URLs: {normalized.get('urls', [])}
+- Has attachment: {normalized.get('has_attachment', False)}
+- Attachment count: {normalized.get('attachment_count', 0)}
+- Has image: {normalized.get('has_image', False)}
+- Image count: {normalized.get('image_count', 0)}
+- Authentication results: {normalized.get('authentication_results', '')}
+- Generation type: {normalized.get('generation_type', '')}
+- Is HTML: {normalized.get('is_html', False)}
+- Is plain text: {normalized.get('is_plain_text', False)}
+"""
+
+    prompt = f'''
 You are a strict cybersecurity analyst responsible for detecting phishing emails in a high-risk corporate environment.
 
 Classify the email as either:
-- **phishing**: a deceptive attempt to steal credentials or sensitive data
-- **benign**: a normal, legitimate message
+- phishing: a deceptive attempt to steal credentials, money, account access, or sensitive data
+- benign: a normal, legitimate message
 
-🛑 Avoid false positives — only label as phishing if **clear red flags** are found.
+Important: spam/marketing emails may be unwanted, but only label phishing when there are clear phishing indicators.
 
 When analyzing, consider:
-- Urgency, threats, or pressure to act
-- Requests for login credentials, account access, or money
-- Suspicious or mismatched links
-- Impersonation of trusted brands or individuals
-- Poor grammar, spelling, or formatting
-- Unusual sender addresses or fake domains
+- Urgency, threats, pressure, or suspicious requests
+- Requests for login credentials, account access, payment, gift cards, or wire transfers
+- Suspicious, mismatched, shortened, or high-risk URLs
+- Sender/domain mismatch or impersonation of trusted brands
+- SPF/DKIM/DMARC failures in authentication results
+- Suspicious routing headers
+- Attachments, HTML-only content, embedded images, or image-heavy emails
+- Whether the email is human-generated or LLM-generated
 
 ---
 
-📄 Email to analyze:
-\"\"\"
-{email_text}
-\"\"\"
-
----
-
-🎯 Respond **only** in this exact format:
-Label: <phishing or benign>  
-Explanation: <clear reason for your decision. Highlight suspicious words, behaviors, or patterns>
-
-🔍 Example 1:
-Label: phishing  
-Explanation: The email creates urgency ("verify in 24 hours"), asks for account credentials, and impersonates a bank.
-
-🔍 Example 2:
-Label: benign  
-Explanation: The email is a standard newsletter with no requests for action or sensitive data. Language and links are normal.
+Email metadata and content to analyze:
+{context}
 """
+{email_text}
+"""
+
+---
+
+Respond only in this exact format:
+Label: <phishing or benign>
+Confidence: <0.00 to 1.00>
+Intent: <credential theft, financial fraud, spam/marketing, legitimate communication, or unknown>
+Sender Trust: <low, medium, or high>
+URL Risk: <low, medium, or high>
+Social Engineering Risk: <low, medium, or high>
+Explanation: <clear reason for your decision, including the strongest indicators>
+'''
 
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
@@ -84,12 +120,16 @@ def scan_directory(directory, true_label):
 
     for file in files:
         with open(file, "r", encoding="utf-8") as f:
-            data = json.load(f)
+            data = normalize_email_record(json.load(f))
         email_text = data.get("email_text", "")
-        llm_label, explanation = get_llm_prediction(email_text)
+        llm_label, explanation = get_llm_prediction(email_text, data)
 
         result = {
             "source_file": file.name,
+            "email_id": data.get("email_id", ""),
+            "source_dataset": data.get("source_dataset", ""),
+            "subcategory": data.get("subcategory", ""),
+            "generation_type": data.get("generation_type", ""),
             "llm_label": llm_label,
             "true_label": true_label,
             "explanation": explanation,
@@ -110,11 +150,9 @@ def run_llm_scan():
     benign_results = scan_directory(BENIGN_DIR, "benign")
     all_results = phishing_results + benign_results
 
-    # Save combined results
     with open(DETAILS_DIR / "llm_scan_results.json", "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=4)
 
-    # Confusion matrix
     TP = FP = TN = FN = 0
     false_positives = []
     false_negatives = []
@@ -142,8 +180,8 @@ def run_llm_scan():
         "false_negatives": FN,
         "precision": round(TP / (TP + FP), 3) if (TP + FP) else 0,
         "recall": round(TP / (TP + FN), 3) if (TP + FN) else 0,
-        "accuracy": round((TP + TN) / len(all_results), 3),
-        "f1_score": round(2 * TP / (2 * TP + FP + FN), 3) if (2 * TP + FP + FN) else 0
+        "accuracy": round((TP + TN) / len(all_results), 3) if all_results else 0,
+        "f1_score": round(2 * TP / (2 * TP + FP + FN), 3) if (2 * TP + FP + FN) else 0,
     }
 
     with open(DETAILS_DIR / "summary_metrics.json", "w", encoding="utf-8") as f:

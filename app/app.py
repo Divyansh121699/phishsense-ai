@@ -11,7 +11,7 @@ st.markdown("""
 /* Main background */
 .stApp {
     background:
-        linear-gradient(rgba(5, 12, 28, 0.82), rgba(5, 12, 28, 0.88)),
+        linear-gradient(rgba(5, 12, 28, 0.82), rgba(5, 12, 28, 0.85)),
         url("https://images.unsplash.com/photo-1563986768609-322da13575f3");
     background-size: cover;
     background-position: center;
@@ -194,6 +194,33 @@ footer {
     color: #ffffff !important;
     background-color: #0f172a !important;
 }
+            
+/* ===== File Uploader Text Fix ===== */
+
+/* Drag & Drop text */
+[data-testid="stFileUploaderDropzone"] span,
+[data-testid="stFileUploaderDropzone"] small,
+[data-testid="stFileUploaderDropzone"] p,
+[data-testid="stFileUploaderDropzone"] div {
+    color: #ffffff !important;
+}
+
+/* "Limit 200MB..." text */
+[data-testid="stFileUploader"] {
+    color: #ffffff !important;
+}
+
+/* Uploaded filename */
+[data-testid="stFileUploader"] label,
+[data-testid="stFileUploader"] span {
+    color: #111827 !important;
+}
+
+/* Force uploader instructions to white */
+section[data-testid="stFileUploaderDropzone"] * {
+    color: white !important;
+}
+            
 </style>
 """, unsafe_allow_html=True)
 st.title("🛡️ PhishSense AI")

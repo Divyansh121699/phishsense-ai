@@ -39,7 +39,7 @@ h2, h3, h4 {
     font-weight: 700 !important;
 }
 
-p, label, span, div {
+p, label {
     color: #111827;
 }
 
@@ -48,24 +48,46 @@ p, label, span, div {
     color: #334155 !important;
 }
 
-/* Tabs */
+/* ======================================================
+   CYBERSECURITY TABS
+   ====================================================== */
+
 .stTabs [data-baseweb="tab-list"] {
-    gap: 10px;
-    border-bottom: 1px solid #cbd5e1;
+    gap: 8px;
+    border-bottom: none !important;
 }
 
+/* Normal tabs */
+
 .stTabs [data-baseweb="tab"] {
-    background: #f1f5f9;
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #334155 !important;
     border-radius: 10px 10px 0 0;
     padding: 10px 18px;
-    color: #0f172a;
     font-weight: 600;
 }
 
+/* Hover */
+
+.stTabs [data-baseweb="tab"]:hover {
+    background: #1e293b !important;
+    color: #ffffff !important;
+}
+
+/* Active tab */
+
 .stTabs [aria-selected="true"] {
-    background: #dbeafe !important;
-    color: #1d4ed8 !important;
-    border-bottom: 3px solid #2563eb;
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-bottom: 3px solid #60a5fa !important;
+}
+
+/* Force tab text white */
+
+.stTabs [data-baseweb="tab"] *,
+.stTabs [aria-selected="true"] * {
+    color: #ffffff !important;
 }
 
 /* Buttons */
@@ -220,7 +242,108 @@ footer {
 section[data-testid="stFileUploaderDropzone"] * {
     color: white !important;
 }
-            
+
+/* =======================================================
+   CYBER THEME FIXES
+   Keep dark background, make text readable
+   ======================================================= */
+
+/* ---------- Select boxes ---------- */
+
+[data-baseweb="select"] * {
+    color: #ffffff !important;
+}
+
+[data-baseweb="select"] svg {
+    fill: #ffffff !important;
+}
+
+/* Dropdown menu */
+
+[role="listbox"] {
+    background: #0f172a !important;
+}
+
+[role="option"] {
+    background: #0f172a !important;
+    color: #ffffff !important;
+}
+
+[role="option"]:hover {
+    background: #1e293b !important;
+}
+
+/* ---------- Code blocks ---------- */
+
+pre,
+code,
+[data-testid="stCodeBlock"] {
+    color: #ffffff !important;
+}
+
+/* ---------- JSON ---------- */
+
+[data-testid="stJson"] * {
+    color: #ffffff !important;
+}
+
+/* ---------- Architecture Formula ---------- */
+
+pre code {
+    color: #ffffff !important;
+}
+
+/* ---------- Schema text ---------- */
+
+.stCodeBlock span {
+    color: #ffffff !important;
+}        
+
+/* ======================================================
+   DARK TABLES (System Architecture / DataFrames)
+   ====================================================== */
+
+/* Entire dataframe/table */
+[data-testid="stTable"] table,
+[data-testid="stDataFrame"] table {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Header */
+[data-testid="stTable"] thead tr th,
+[data-testid="stDataFrame"] thead tr th {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+    border: 1px solid #334155 !important;
+    font-weight: 700 !important;
+}
+
+/* Rows */
+[data-testid="stTable"] tbody tr td,
+[data-testid="stDataFrame"] tbody tr td {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Alternate row color */
+[data-testid="stTable"] tbody tr:nth-child(even) td,
+[data-testid="stDataFrame"] tbody tr:nth-child(even) td {
+    background-color: #172033 !important;
+}
+
+/* Hover */
+[data-testid="stTable"] tbody tr:hover td,
+[data-testid="stDataFrame"] tbody tr:hover td {
+    background-color: #243447 !important;
+}
+
+/* Make dataframe text white */
+[data-testid="stDataFrame"] * {
+    color: #ffffff !important;
+}
 </style>
 """, unsafe_allow_html=True)
 st.title("🛡️ PhishSense AI")
@@ -606,14 +729,30 @@ with tab3:
 with tab4:
     st.subheader("Architecture Alignment")
     st.write("This implementation assumes email preprocessing is completed before upload, so the app begins from the normalized CSV/JSON dataset.")
-    st.table(pd.DataFrame(ARCHITECTURE_MODULES))
+    architecture_df = pd.DataFrame(ARCHITECTURE_MODULES)
+
+    st.dataframe(
+        architecture_df,
+        use_container_width=True,
+        hide_index=True
+    )
 
     st.markdown("#### Current Hybrid Fusion Formula")
     st.code("hybrid_score = 0.35 * heuristic_confidence + 0.65 * llm_phishing_probability")
 
     st.markdown("#### Risk Mapping")
-    st.dataframe(pd.DataFrame({
-        "hybrid_score": ["0-39", "40-69", "70-100"],
-        "risk_level": ["Low", "Medium", "High"],
-        "interpretation": ["Likely benign", "Needs analyst review", "High phishing likelihood"],
-    }), use_container_width=True)
+    risk_df = pd.DataFrame({
+    "hybrid_score": ["0-39", "40-69", "70-100"],
+    "risk_level": ["Low", "Medium", "High"],
+    "interpretation": [
+        "Likely benign",
+        "Needs analyst review",
+        "High phishing likelihood",
+    ],
+})
+
+    st.dataframe(
+        risk_df,
+        use_container_width=True,
+        hide_index=True,
+    )

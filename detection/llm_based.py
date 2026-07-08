@@ -1,6 +1,7 @@
 import os
 import json
 from pathlib import Path
+from urllib import response
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -15,7 +16,7 @@ load_dotenv()
 
 PHISHING_DIR = Path("phishing_emails/")
 BENIGN_DIR = Path("benign_emails/")
-OUTPUT_BASE = Path("detection/output_llm/")
+OUTPUT_BASE = Path("detection/output_llm_gpt5/")
 DETAILS_DIR = OUTPUT_BASE / "details"
 
 OUTPUT_BASE.mkdir(parents=True, exist_ok=True)
@@ -100,16 +101,18 @@ Social Engineering Risk: <low, medium, or high>
 Explanation: <clear reason for your decision, including the strongest indicators>
 '''
 
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.2,
-    )
+    response = client.responses.create(
+    model="gpt-5",
+    input=prompt,
+    reasoning={"effort": "low"},
+    text={"verbosity": "low"},
+    max_output_tokens=1200,
+)
 
-    content = response.choices[0].message.content.strip().lower()
+    content = response.output_text.strip().lower()
     label = "phishing" if "label: phishing" in content else "benign"
 
-    print(f"🔢 Tokens used: {response.usage.total_tokens}")
+    print(f"🔢 Tokens used: {response.usage.total_tokens if response.usage else 'N/A'}")
     return label, content
 
 # ========== SCANNING FUNCTION ==========

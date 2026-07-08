@@ -1,0 +1,10 @@
+{
+    "source_file": "account_verification_scam_netflix_v3_20250714_192302_480683.json",
+    "email_id": "",
+    "source_dataset": "",
+    "subcategory": "",
+    "generation_type": "not applicable",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nconfidence: 0.99\nintent: credential theft\nsender trust: low\nurl risk: high\nsocial engineering risk: high\nexplanation: impersonates netflix with generic greeting, urgent 24-hour suspension threat, and request to \u201cverify billing information\u201d via a link labeled as a phishing link. lacks authentication results and sender details. classic payment-verification lure aimed at harvesting credentials/payment data."
+}

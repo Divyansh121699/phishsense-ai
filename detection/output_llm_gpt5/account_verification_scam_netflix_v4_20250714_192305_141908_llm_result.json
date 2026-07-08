@@ -1,0 +1,10 @@
+{
+    "source_file": "account_verification_scam_netflix_v4_20250714_192305_141908.json",
+    "email_id": "",
+    "source_dataset": "",
+    "subcategory": "",
+    "generation_type": "not applicable",
+    "llm_label": "phishing",
+    "true_label": "phishing",
+    "explanation": "label: phishing\nconfidence: 0.98\nintent: financial fraud\nsender trust: low\nurl risk: high\nsocial engineering risk: high\nexplanation: urgent threat of account suspension, request to click a link and submit payment details, generic greeting, brand impersonation (netflix), and absent authentication/headers. clear phishing indicators targeting payment data."
+}

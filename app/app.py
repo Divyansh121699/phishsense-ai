@@ -34,8 +34,8 @@ h1 {
     font-weight: 800 !important;
 }
 
-h2, h3, h4 {
-    color: #1e293b !important;
+h2, h3, h4, h5, h6 {
+    color: #0f172a !important;
     font-weight: 700 !important;
 }
 

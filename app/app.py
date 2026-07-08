@@ -380,22 +380,107 @@ ARCHITECTURE_MODULES = [
 
 
 def load_uploaded_records(uploaded_file):
-    if uploaded_file.name.lower().endswith(".json"):
-        payload = json.load(uploaded_file)
-        if isinstance(payload, list):
-            return payload
-        return [payload]
+    """
+    Supports:
+    - JSON
+    - CSV (UTF-8, UTF-8 BOM, Windows, Latin1, ISO-8859-1)
+    - Excel (.xlsx/.xls)
 
-    if uploaded_file.name.lower().endswith(".csv"):
-        try:
-            df = pd.read_csv(uploaded_file)
-        except pd.errors.ParserError:
+    Automatically handles encoding issues and malformed rows.
+    """
+
+    file_name = uploaded_file.name.lower()
+
+    try:
+
+        # ---------------- JSON ----------------
+        if file_name.endswith(".json"):
             uploaded_file.seek(0)
-            df = pd.read_csv(uploaded_file, engine="python", on_bad_lines="skip")
-            st.warning("Some malformed CSV rows were skipped. Check commas/quotes in body_text, body_html, urls, or headers.")
-        return df.fillna("").to_dict(orient="records")
 
-    return []
+            payload = json.load(uploaded_file)
+
+            if isinstance(payload, list):
+                return payload
+
+            return [payload]
+
+        # ---------------- CSV ----------------
+        elif file_name.endswith(".csv"):
+
+            encodings = [
+                "utf-8",
+                "utf-8-sig",
+                "cp1252",
+                "latin1",
+                "iso-8859-1"
+            ]
+
+            for enc in encodings:
+
+                try:
+                    uploaded_file.seek(0)
+
+                    df = pd.read_csv(
+                        uploaded_file,
+                        encoding=enc
+                    )
+
+                    return df.fillna("").to_dict(orient="records")
+
+                except UnicodeDecodeError:
+                    continue
+
+                except pd.errors.ParserError:
+
+                    try:
+
+                        uploaded_file.seek(0)
+
+                        df = pd.read_csv(
+                            uploaded_file,
+                            encoding=enc,
+                            engine="python",
+                            on_bad_lines="skip"
+                        )
+
+                        st.warning(
+                            "Some malformed CSV rows were skipped."
+                        )
+
+                        return df.fillna("").to_dict(orient="records")
+
+                    except Exception:
+                        continue
+
+            st.error(
+                "Unable to read CSV. Unsupported encoding or corrupted file."
+            )
+
+            return []
+
+        # ---------------- Excel ----------------
+        elif file_name.endswith((".xlsx", ".xls")):
+
+            uploaded_file.seek(0)
+
+            df = pd.read_excel(uploaded_file)
+
+            return df.fillna("").to_dict(orient="records")
+
+        # ---------------- Unsupported ----------------
+        else:
+
+            st.error(
+                "Unsupported file type. Please upload CSV, Excel, or JSON."
+            )
+
+            return []
+
+    except Exception as e:
+
+        st.error(f"Error reading uploaded file: {e}")
+
+        return []
 
 
 def indicator_dataframe(indicators):
@@ -551,7 +636,10 @@ with tab2:
     st.subheader("Paste or Upload Email for Detection")
     st.info("Upload a single JSON file, a JSON list, or a CSV using your expanded schema. You can also paste raw email text.")
 
-    uploaded_file = st.file_uploader("Upload email JSON or CSV", type=["json", "csv"])
+    uploaded_file = st.file_uploader(
+    "Upload Email Dataset",
+    type=["json", "csv", "xlsx", "xls"]
+)
     text_input = st.text_area("Or paste raw email text here")
 
     records = []

@@ -2,6 +2,8 @@ import json
 import time
 import pandas as pd
 import streamlit as st
+from utils import run_combined_detection
+from detection.llm_based import reset_token_counter, get_total_tokens_used
 
 from utils import run_combined_detection
 
@@ -551,52 +553,107 @@ def show_results(results):
 def build_output_row(results):
     rule_result = results["rule_result"]
     normalized = results["normalized_email"]
-    top_rules = [i.get("rule", "") for i in results.get("top_indicators", [])]
 
     return {
         "email_id": normalized.get("email_id", ""),
         "source_dataset": normalized.get("source_dataset", ""),
-        "true_category": normalized.get("high_level_category", ""),
+        "source_file": normalized.get("source_file", ""),
+        "high_level_category": normalized.get("high_level_category", ""),
         "subcategory": normalized.get("subcategory", ""),
+        "true_category": normalized.get("high_level_category", ""),
+
         "rule_score": rule_result.get("score", 0),
         "rule_confidence": rule_result.get("rule_confidence", 0),
         "rule_label": "phishing" if rule_result.get("is_phishing") else "benign",
-        "llm_label": results["llm_label"],
-        "llm_confidence": results["llm_confidence"],
-        "hybrid_score": results["hybrid_score"],
-        "risk_level": results["risk_level"],
-        "hybrid_label": results["hybrid_label"],
-        "top_indicators": ", ".join(top_rules),
-        "triggered_rules": ", ".join(rule_result.get("flagged_keywords", [])),
+
+        "llm_label": results.get("llm_label", ""),
+        "llm_confidence": results.get("llm_confidence", ""),
+
+        "hybrid_score": results.get("hybrid_score", ""),
+        "risk_level": results.get("risk_level", ""),
+        "hybrid_label": results.get("hybrid_label", ""),
     }
 
 def build_detailed_indicator_rows(results):
     rule_result = results["rule_result"]
     normalized = results["normalized_email"]
 
-    rows = []
-    for indicator in rule_result.get("indicators", []):
-        rows.append({
-            "email_id": normalized.get("email_id", ""),
-            "source_dataset": normalized.get("source_dataset", ""),
-            "true_category": normalized.get("high_level_category", ""),
-            "subcategory": normalized.get("subcategory", ""),
-            "rule_score": rule_result.get("score", 0),
-            "rule_confidence": rule_result.get("rule_confidence", 0),
-            "rule_label": "phishing" if rule_result.get("is_phishing") else "benign",
-            "llm_label": results.get("llm_label", ""),
-            "llm_confidence": results.get("llm_confidence", ""),
-            "hybrid_score": results.get("hybrid_score", ""),
-            "risk_level": results.get("risk_level", ""),
-            "hybrid_label": results.get("hybrid_label", ""),
-            "indicator_category": indicator.get("category", ""),
-            "indicator_rule": indicator.get("rule", ""),
-            "indicator_weight": indicator.get("weight", 0),
-            "indicator_strength": indicator.get("strength", ""),
-            "indicator_evidence": indicator.get("evidence", ""),
-        })
+    indicators = rule_result.get("indicators", []) or []
 
-    return rows
+    top_rules = [i.get("rule", "") for i in results.get("top_indicators", [])]
+    triggered_rules = rule_result.get("flagged_keywords", [])
+
+    indicator_categories = [i.get("category", "") for i in indicators]
+    indicator_rules = [i.get("rule", "") for i in indicators]
+    indicator_weights = [str(i.get("weight", 0)) for i in indicators]
+    indicator_strengths = [i.get("strength", "") for i in indicators]
+    indicator_evidence = [i.get("evidence", "") for i in indicators]
+
+    true_category = normalized.get("high_level_category", "").lower()
+    rule_label = "phishing" if rule_result.get("is_phishing") else "benign"
+    llm_label = results.get("llm_label", "").lower()
+    hybrid_label = results.get("hybrid_label", "").lower()
+
+    rule_correct = rule_label == true_category
+    llm_correct = llm_label == true_category
+    hybrid_correct = hybrid_label == true_category
+
+    if rule_label == llm_label:
+        agreement_status = "Rule & LLM Agree"
+    elif rule_label == "phishing" and llm_label == "benign":
+        agreement_status = "Rule Only"
+    elif rule_label == "benign" and llm_label == "phishing":
+        agreement_status = "LLM Only"
+    else:
+        agreement_status = "Mismatch"
+
+    true_mismatch = (
+        rule_label != llm_label
+        and rule_correct != llm_correct
+    )
+
+    analysis_report = results.get("analysis_report", {})
+    hybrid_decision_reason = analysis_report.get("decision_reason", "")
+
+    return [{
+        "email_id": normalized.get("email_id", ""),
+        "source_dataset": normalized.get("source_dataset", ""),
+        "source_file": normalized.get("source_file", ""),
+        "high_level_category": normalized.get("high_level_category", ""),
+        "subcategory": normalized.get("subcategory", ""),
+        "true_category": normalized.get("high_level_category", ""),
+
+        "rule_score": rule_result.get("score", 0),
+        "rule_confidence": rule_result.get("rule_confidence", 0),
+        "rule_label": rule_label,
+        "rule_correct": rule_correct,
+
+        "llm_label": llm_label,
+        "llm_confidence": results.get("llm_confidence", ""),
+        "llm_correct": llm_correct,
+        "llm_intent": results.get("llm_intent", ""),
+        "llm_sender_trust": results.get("llm_sender_trust", ""),
+        "llm_url_risk": results.get("llm_url_risk", ""),
+        "llm_social_engineering_risk": results.get("llm_social_engineering_risk", ""),
+        "llm_explanation": results.get("llm_explanation", ""),
+
+        "hybrid_score": results.get("hybrid_score", ""),
+        "risk_level": results.get("risk_level", ""),
+        "hybrid_label": hybrid_label,
+        "hybrid_correct": hybrid_correct,
+        "hybrid_decision_reason": hybrid_decision_reason,
+
+        "top_indicators": ", ".join(top_rules),
+        "triggered_rules": ", ".join(triggered_rules),
+        "agreement_status": agreement_status,
+        "true_mismatch": true_mismatch,
+
+        "indicator_categories": " | ".join(indicator_categories),
+        "indicator_rules": " | ".join(indicator_rules),
+        "indicator_weights": " | ".join(indicator_weights),
+        "indicator_strengths": " | ".join(indicator_strengths),
+        "indicator_evidence": " | ".join(indicator_evidence),
+    }]
 
 tab1, tab2, tab3, tab4 = st.tabs([
     "📨 Email Generator",
@@ -681,6 +738,11 @@ with tab2:
             st.error("Could not read any records from the uploaded file.")
 
     if st.button("Run Detection"):
+        reset_token_counter()
+        print("\n" + "=" * 70)
+        print("🚀 New detection run started")
+        print("=" * 70)
+
         if uploaded_file:
             if not records:
                 st.error("Could not read any records from the uploaded file.")
@@ -716,6 +778,25 @@ with tab2:
                     f"✅ Detection completed successfully! "
                     f"Analyzed {len(output_rows)} email(s) in {elapsed_time:.2f} seconds."
                 )
+
+                # ================= TOKEN SUMMARY =================
+
+                total_tokens = get_total_tokens_used()
+                avg_tokens = round(total_tokens / len(output_rows), 2) if output_rows else 0
+
+                print("\n" + "=" * 70)
+                print("📊 Detection Run Summary")
+                print("=" * 70)
+                print(f"📧 Emails analyzed        : {len(output_rows)}")
+                print(f"🔢 Total tokens used     : {total_tokens:,}")
+                print(f"📈 Average tokens/email  : {avg_tokens:,}")
+                print("=" * 70)
+
+                st.info(
+                    f"📊 Total Tokens Used: **{total_tokens:,}** | "
+                    f"Average per Email: **{avg_tokens:,}**"
+                )
+
                 st.session_state["result_df"] = pd.DataFrame(output_rows)
                 st.session_state["detailed_results"] = detailed_results
 
@@ -765,7 +846,7 @@ with tab2:
         st.download_button(
             "📥 Download Detection Results",
             st.session_state["result_df"].to_csv(index=False).encode("utf-8"),
-            file_name="phishsense_detection_results.csv",
+            file_name="detection_results.csv",
             mime="text/csv",
             key="download_summary",
         )
@@ -774,7 +855,7 @@ with tab2:
         st.download_button(
             "📥 Download Detailed Analysis Report",
             st.session_state["detailed_indicator_df"].to_csv(index=False).encode("utf-8"),
-            file_name="phishsense_detailed_indicator_report.csv",
+            file_name="detailed_analysis_report.csv",
             mime="text/csv",
             key="download_details",
         )

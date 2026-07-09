@@ -1,7 +1,6 @@
 import os
 import json
 from pathlib import Path
-from urllib import response
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -28,19 +27,30 @@ if not api_key:
 
 client = OpenAI(api_key=api_key)
 
+# ========== TOKEN TRACKING ==========
+
+TOTAL_TOKENS_USED = 0
+
+
+def reset_token_counter():
+    global TOTAL_TOKENS_USED
+    TOTAL_TOKENS_USED = 0
+
+
+def get_total_tokens_used():
+    return TOTAL_TOKENS_USED
+
 # ========== LLM SCORING FUNCTION ==========
 
 def get_llm_prediction(email_text, email_meta=None):
-    """Classify an email using the LLM.
+    """Classify an email using the LLM."""
 
-    email_meta can be a full record from the expanded schema. It is normalized
-    and added as structured context so the model can consider URLs, headers,
-    authentication results, attachments, category, and generation type.
-    """
     context = ""
+
     if email_meta:
         normalized = normalize_email_record(email_meta)
         email_text = normalized.get("email_text", email_text)
+
         context = f"""
 Metadata:
 - Source dataset: {normalized.get('source_dataset', '')}
@@ -62,58 +72,108 @@ Metadata:
 - Is plain text: {normalized.get('is_plain_text', False)}
 """
 
-    prompt = f'''
+    prompt = f"""
 You are a strict cybersecurity analyst responsible for detecting phishing emails in a high-risk corporate environment.
 
 Classify the email as either:
-- phishing: a deceptive attempt to steal credentials, money, account access, or sensitive data
-- benign: a normal, legitimate message
 
-Important: spam/marketing emails may be unwanted, but only label phishing when there are clear phishing indicators.
+- phishing: an email whose primary purpose is deception or fraud, including credential theft, impersonation, malware delivery, financial scams, fake products or services, malicious links, or any attempt to manipulate the recipient into unsafe actions. Credential theft is one common form of phishing but is not the only form.
+
+- benign: a legitimate email that does not contain deceptive, fraudulent, scam-like, or malicious intent.
+
+Important:
+- Some phishing emails resemble advertisements, newsletters, promotional offers, or commercial emails. Evaluate the underlying intent rather than the writing style alone.
+- Classify an email as phishing if its primary purpose is to deceive, impersonate, conduct fraud, distribute malware, promote fake or fraudulent products/services, or manipulate the recipient into unsafe actions.
+- Legitimate newsletters, advertisements, and promotional emails from trusted organizations should be labeled benign.
+- Do not classify an email as phishing based solely on the presence of a URL.
+- Consider all available evidence, including sender identity, domain reputation, authentication results, URLs, attachments, HTML content, and overall intent.
+- Classify an email as phishing whenever its primary purpose is deception, fraud, impersonation, malware delivery, financial scams, fake products or services, malicious links, or manipulation of the recipient, even if it does not explicitly request credentials or payment.
 
 When analyzing, consider:
 - Urgency, threats, pressure, or suspicious requests
-- Requests for login credentials, account access, payment, gift cards, or wire transfers
-- Suspicious, mismatched, shortened, or high-risk URLs
+- Requests for login credentials, account access, payment, gift cards, wire transfers, or sensitive data
+- Suspicious, mismatched, shortened, obfuscated, or high-risk URLs
 - Sender/domain mismatch or impersonation of trusted brands
 - SPF/DKIM/DMARC failures in authentication results
 - Suspicious routing headers
 - Attachments, HTML-only content, embedded images, or image-heavy emails
 - Whether the email is human-generated or LLM-generated
+- Whether the email attempts to exploit trust, curiosity, fear, urgency, or financial incentives to influence the recipient's behavior.
+- Whether the overall purpose of the email is deceptive, fraudulent, or intended to manipulate the recipient, even if it does not explicitly request credentials
 
 ---
 
 Email metadata and content to analyze:
 {context}
-"""
+
+Email body:
+\"\"\"
 {email_text}
-"""
+\"\"\"
 
 ---
 
 Respond only in this exact format:
 Label: <phishing or benign>
 Confidence: <0.00 to 1.00>
-Intent: <credential theft, financial fraud, spam/marketing, legitimate communication, or unknown>
+Intent: <credential theft, financial fraud, impersonation, malware delivery, scam/fraud, legitimate communication, marketing, or unknown>
 Sender Trust: <low, medium, or high>
 URL Risk: <low, medium, or high>
 Social Engineering Risk: <low, medium, or high>
-Explanation: <clear reason for your decision, including the strongest indicators>
-'''
-
+Explanation: <maximum 2-3 sentences summarizing the strongest evidence supporting the classification. Reference the most influential phishing indicators such as impersonation, malicious intent, suspicious sender behavior, risky URLs, scam techniques, fraudulent offers, authentication failures, or social engineering tactics.>
+"""
     response = client.responses.create(
-    model="gpt-5",
-    input=prompt,
-    reasoning={"effort": "low"},
-    text={"verbosity": "low"},
-    max_output_tokens=1200,
-)
+        model="gpt-5",
+        input=prompt,
+        reasoning={"effort": "low"},
+        text={"verbosity": "low"},
+        max_output_tokens=1200,
+    )
 
-    content = response.output_text.strip().lower()
-    label = "phishing" if "label: phishing" in content else "benign"
+    content = response.output_text.strip()
 
-    print(f"🔢 Tokens used: {response.usage.total_tokens if response.usage else 'N/A'}")
-    return label, content
+    def extract_field(text, field_name, default=""):
+        for line in text.splitlines():
+            if line.lower().startswith(field_name.lower() + ":"):
+                return line.split(":", 1)[1].strip()
+        return default
+
+    label = extract_field(content, "Label", "benign").lower()
+    confidence = extract_field(content, "Confidence", "0.80")
+    intent = extract_field(content, "Intent", "unknown")
+    sender_trust = extract_field(content, "Sender Trust", "unknown")
+    url_risk = extract_field(content, "URL Risk", "unknown")
+    social_engineering_risk = extract_field(content, "Social Engineering Risk", "unknown")
+    explanation = extract_field(content, "Explanation", "")
+
+    try:
+        confidence = float(confidence)
+    except ValueError:
+        confidence = 0.80
+
+    if label not in ["phishing", "benign"]:
+        label = "benign"
+
+    llm_result = {
+        "label": label,
+        "confidence": confidence,
+        "intent": intent,
+        "sender_trust": sender_trust,
+        "url_risk": url_risk,
+        "social_engineering_risk": social_engineering_risk,
+        "explanation": explanation,
+        "raw_response": content,
+    }
+
+    global TOTAL_TOKENS_USED
+
+    tokens_used = response.usage.total_tokens if response.usage else 0
+    TOTAL_TOKENS_USED += tokens_used
+
+    print(f"🔢 Tokens used for this email: {tokens_used}")
+    print(f"📊 Total tokens used in current detection run: {TOTAL_TOKENS_USED}")
+
+    return llm_result
 
 # ========== SCANNING FUNCTION ==========
 
@@ -125,7 +185,9 @@ def scan_directory(directory, true_label):
         with open(file, "r", encoding="utf-8") as f:
             data = normalize_email_record(json.load(f))
         email_text = data.get("email_text", "")
-        llm_label, explanation = get_llm_prediction(email_text, data)
+        llm_result = get_llm_prediction(email_text, data)
+        llm_label = llm_result["label"]
+        explanation = llm_result["explanation"]
 
         result = {
             "source_file": file.name,

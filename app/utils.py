@@ -54,7 +54,10 @@ def run_combined_detection(email_text: str, email_meta: dict):
     rule_confidence = float(rule_result.get("rule_confidence", rule_result.get("score", 0) / 100))
 
     # 4B. LLM semantic reasoning
-    llm_label, llm_explanation = get_llm_prediction(email_text, normalized)
+    llm_result = get_llm_prediction(email_text, normalized)
+    llm_label = llm_result.get("label", "benign")
+    llm_confidence = float(llm_result.get("confidence", 0.80))
+    llm_explanation = llm_result.get("explanation", "")
     llm_confidence = _extract_llm_confidence(llm_explanation, llm_label)
     llm_phishing_probability = llm_confidence if llm_label == "phishing" else 1 - llm_confidence
 
@@ -122,4 +125,9 @@ def run_combined_detection(email_text: str, email_meta: dict):
             "fusion_formula": "0.35 * heuristic_confidence + 0.65 * llm_phishing_probability",
             "top_indicators": top_indicators,
         },
+        "llm_intent": llm_result.get("intent", ""),
+        "llm_sender_trust": llm_result.get("sender_trust", ""),
+        "llm_url_risk": llm_result.get("url_risk", ""),
+        "llm_social_engineering_risk": llm_result.get("social_engineering_risk", ""),
+        "llm_explanation": llm_explanation,
     }

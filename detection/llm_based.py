@@ -46,31 +46,45 @@ def get_llm_prediction(email_text, email_meta=None):
     """Classify an email using the LLM."""
 
     context = ""
-
+    normalized = {}
     if email_meta:
         normalized = normalize_email_record(email_meta)
         email_text = normalized.get("email_text", email_text)
 
-        context = f"""
-Metadata:
-- Source dataset: {normalized.get('source_dataset', '')}
-- Source file: {normalized.get('source_file', '')}
-- High-level category, if labeled: {normalized.get('high_level_category', '')}
-- Subcategory, if labeled: {normalized.get('subcategory', '')}
-- Sender: {normalized.get('sender', '')}
-- Receiver: {normalized.get('receiver', '')}
-- Subject: {normalized.get('subject', '')}
-- URL count: {normalized.get('url_count', 0)}
-- URLs: {normalized.get('urls', [])}
-- Has attachment: {normalized.get('has_attachment', False)}
-- Attachment count: {normalized.get('attachment_count', 0)}
-- Has image: {normalized.get('has_image', False)}
-- Image count: {normalized.get('image_count', 0)}
-- Authentication results: {normalized.get('authentication_results', '')}
-- Generation type: {normalized.get('generation_type', '')}
-- Is HTML: {normalized.get('is_html', False)}
-- Is plain text: {normalized.get('is_plain_text', False)}
-"""
+        # Prevent very large emails from exceeding the model context window
+        MAX_EMAIL_CHARS = 12000
+
+        if email_text and len(email_text) > MAX_EMAIL_CHARS:
+            print(f"⚠️ Email truncated from {len(email_text):,} to {MAX_EMAIL_CHARS:,} characters.")
+            email_text = email_text[:MAX_EMAIL_CHARS]
+
+    urls = normalized.get("urls", [])
+
+    if isinstance(urls, list):
+        urls = urls[:10]
+    else:
+        urls = str(urls)[:1000]
+
+    context = f"""
+    Metadata:
+    - Source dataset: {normalized.get('source_dataset', '')}
+    - Source file: {normalized.get('source_file', '')}
+    - High-level category, if labeled: {normalized.get('high_level_category', '')}
+    - Subcategory, if labeled: {normalized.get('subcategory', '')}
+    - Sender: {normalized.get('sender', '')}
+    - Receiver: {normalized.get('receiver', '')}
+    - Subject: {normalized.get('subject', '')}
+    - URL count: {normalized.get('url_count', 0)}
+    - URLs: {urls}
+    - Has attachment: {normalized.get('has_attachment', False)}
+    - Attachment count: {normalized.get('attachment_count', 0)}
+    - Has image: {normalized.get('has_image', False)}
+    - Image count: {normalized.get('image_count', 0)}
+    - Authentication results: {str(normalized.get('authentication_results', ''))[:1000]}
+    - Generation type: {normalized.get('generation_type', '')}
+    - Is HTML: {normalized.get('is_html', False)}
+    - Is plain text: {normalized.get('is_plain_text', False)}
+    """
 
     prompt = f"""
 You are a strict cybersecurity analyst responsible for detecting phishing emails in a high-risk corporate environment.
@@ -122,13 +136,62 @@ URL Risk: <low, medium, or high>
 Social Engineering Risk: <low, medium, or high>
 Explanation: <maximum 2-3 sentences summarizing the strongest evidence supporting the classification. Reference the most influential phishing indicators such as impersonation, malicious intent, suspicious sender behavior, risky URLs, scam techniques, fraudulent offers, authentication failures, or social engineering tactics.>
 """
-    response = client.responses.create(
-        model="gpt-5",
-        input=prompt,
-        reasoning={"effort": "low"},
-        text={"verbosity": "low"},
-        max_output_tokens=1200,
-    )
+    try:
+        response = client.responses.create(
+            model="gpt-5",
+            input=prompt,
+            reasoning={"effort": "low"},
+            text={"verbosity": "low"},
+            max_output_tokens=1200,
+        )
+
+    except Exception as e:
+        error_text = str(e)
+
+        if "context_length_exceeded" in error_text or "context window" in error_text:
+
+            print("⚠️ Context window exceeded. Retrying with smaller prompt...")
+
+            # Further reduce email body
+            shortened_email_text = email_text[:3000]
+
+            # Reduce metadata as well
+            shortened_context = context[:2000]
+
+            retry_prompt = f"""
+    You are a cybersecurity analyst.
+
+    Classify the email as phishing or benign.
+
+    Metadata:
+    {shortened_context}
+
+    Email:
+    \"\"\"
+    {shortened_email_text}
+    \"\"\"
+
+    Respond only:
+
+    Label:
+    Confidence:
+    Intent:
+    Sender Trust:
+    URL Risk:
+    Social Engineering Risk:
+    Explanation:
+    """
+
+            response = client.responses.create(
+                model="gpt-5",
+                input=retry_prompt,
+                reasoning={"effort": "low"},
+                text={"verbosity": "low"},
+                max_output_tokens=500,
+            )
+
+        else:
+            raise
 
     content = response.output_text.strip()
 

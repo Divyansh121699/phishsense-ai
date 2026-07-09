@@ -1,11 +1,11 @@
 import json
 import time
+from pathlib import Path
 import pandas as pd
 import streamlit as st
 from utils import run_combined_detection
 from detection.llm_based import reset_token_counter, get_total_tokens_used
 
-from utils import run_combined_detection
 
 st.set_page_config(page_title="PhishSense AI", layout="wide")
 st.markdown("""
@@ -380,6 +380,13 @@ ARCHITECTURE_MODULES = [
     {"layer": "7. Explainability", "implementation": "Triggered indicators, weighted indicator table, category scores, and LLM explanation"},
 ]
 
+# ======================================================
+# OUTPUT DIRECTORY
+# ======================================================
+
+OUTPUT_DIR = Path("output")
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 
 def load_uploaded_records(uploaded_file):
     """
@@ -699,8 +706,21 @@ with tab2:
 )
     text_input = st.text_area("Or paste raw email text here")
 
+    resume_previous = st.checkbox(
+    "Resume previous interrupted analysis",
+    value=True
+)
+
     records = []
     max_records = 1
+
+    checkpoint = None
+
+    checkpoint_file = Path("output/checkpoint.json")
+
+    if checkpoint_file.exists():
+        with open(checkpoint_file, "r") as f:
+            checkpoint = json.load(f)
 
     if uploaded_file:
         records = load_uploaded_records(uploaded_file)
@@ -738,7 +758,19 @@ with tab2:
             st.error("Could not read any records from the uploaded file.")
 
     if st.button("Run Detection"):
+        checkpoint_file = OUTPUT_DIR / "checkpoint.json"
+        checkpoint = None
+
+        if checkpoint_file.exists():
+            with open(checkpoint_file, "r", encoding="utf-8") as f:
+                checkpoint = json.load(f)
+
+        # Always reset current-session token counter.
+        # Previous tokens are restored separately from checkpoint during resume.
         reset_token_counter()
+
+        if not resume_previous:
+            st.session_state.pop("last_runtime_summary", None)
         print("\n" + "=" * 70)
         print("🚀 New detection run started")
         print("=" * 70)
@@ -755,33 +787,120 @@ with tab2:
                 st.session_state["single_result"] = results
 
             else:
+                partial_summary_path = OUTPUT_DIR / "detection_results_partial.csv"
+                partial_detail_path = OUTPUT_DIR / "detailed_analysis_report_partial.csv"
+                checkpoint_path = OUTPUT_DIR / "checkpoint.json"
+
                 output_rows = []
                 detailed_results = []
                 detailed_indicator_rows = []
-                progress = st.progress(0)
 
+                start_index = 0
+                previous_elapsed_seconds = 0
+                previous_total_tokens = 0
+
+                if resume_previous and checkpoint:
+                    if checkpoint.get("source_file") != uploaded_file.name:
+                        st.error(
+                            "Checkpoint belongs to a different dataset. "
+                            "Upload the same file used in the interrupted run, or uncheck resume."
+                        )
+                        st.stop()
+
+                    start_index = checkpoint.get("last_processed", 0)
+                    st.info(f"Resuming from record {start_index + 1}")
+                    previous_elapsed_seconds = checkpoint.get("elapsed_seconds", 0)
+                    previous_total_tokens = checkpoint.get("total_tokens_used", 0)
+
+                    if partial_summary_path.exists():
+                        output_rows = pd.read_csv(partial_summary_path).to_dict(orient="records")
+
+                    if partial_detail_path.exists():
+                        detailed_indicator_rows = pd.read_csv(partial_detail_path).to_dict(orient="records")
+                else:
+                    for path in [partial_summary_path, partial_detail_path, checkpoint_path]:
+                        if path.exists():
+                            path.unlink()
+
+                progress = st.progress(start_index / max_records)
+                progress_text = st.empty()
                 start_time = time.time()
 
-                for idx, record in enumerate(records[:max_records]):
+                for idx in range(start_index, max_records):
+                    record = records[idx]
                     email_text = record.get("email_text") or record.get("body_text") or record.get("body_html") or ""
-                    results = run_combined_detection(email_text, record)
 
-                    detailed_results.append(results)
-                    output_rows.append(build_output_row(results))
-                    detailed_indicator_rows.extend(build_detailed_indicator_rows(results))
+                    try:
+                        results = run_combined_detection(email_text, record)
 
-                    progress.progress((idx + 1) / max_records)
+                        detailed_results.append(results)
+                        output_rows.append(build_output_row(results))
+                        detailed_indicator_rows.extend(build_detailed_indicator_rows(results))
 
-                elapsed_time = time.time() - start_time
+                        pd.DataFrame(output_rows).to_csv(
+                            partial_summary_path,
+                            index=False
+                        )
+
+                        pd.DataFrame(detailed_indicator_rows).to_csv(
+                            partial_detail_path,
+                            index=False
+                        )
+
+                        with open(checkpoint_path, "w", encoding="utf-8") as f:
+                            json.dump(
+                                {
+                                    "last_processed": idx + 1,
+                                    "total_requested": max_records,
+                                    "source_file": uploaded_file.name,
+                                    "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                                    "elapsed_seconds": previous_elapsed_seconds + (time.time() - start_time),
+                                    "total_tokens_used": previous_total_tokens + get_total_tokens_used()
+                                },
+                                f,
+                                indent=4
+                            )
+
+                        current_progress = (idx + 1) / max_records
+
+                        progress.progress(current_progress)
+
+                        progress_text.write(
+                            f"**Progress:** {idx + 1:,}/{max_records:,} emails ({current_progress * 100:.1f}%)"
+                        )
+
+                    except Exception as e:
+                        st.error(
+                            f"Analysis stopped at record {idx + 1}. "
+                            f"Fix the issue, then rerun using the same dataset with resume checked. "
+                            f"Error: {e}"
+                        )
+
+                        if partial_summary_path.exists():
+                            st.session_state["result_df"] = pd.read_csv(partial_summary_path)
+
+                        if partial_detail_path.exists():
+                            st.session_state["detailed_indicator_df"] = pd.read_csv(partial_detail_path)
+
+                        st.stop()
+
+                elapsed_time = previous_elapsed_seconds + (time.time() - start_time)
+
+                if checkpoint_path.exists():
+                    checkpoint_path.unlink()
+                
+                if partial_summary_path.exists():
+                    partial_summary_path.unlink()
+
+                if partial_detail_path.exists():
+                    partial_detail_path.unlink()
 
                 st.success(
                     f"✅ Detection completed successfully! "
                     f"Analyzed {len(output_rows)} email(s) in {elapsed_time:.2f} seconds."
                 )
 
-                # ================= TOKEN SUMMARY =================
-
-                total_tokens = get_total_tokens_used()
+                total_tokens = previous_total_tokens + get_total_tokens_used()
                 avg_tokens = round(total_tokens / len(output_rows), 2) if output_rows else 0
 
                 print("\n" + "=" * 70)
@@ -797,11 +916,16 @@ with tab2:
                     f"Average per Email: **{avg_tokens:,}**"
                 )
 
-                st.session_state["result_df"] = pd.DataFrame(output_rows)
-                st.session_state["detailed_results"] = detailed_results
+                st.session_state["last_runtime_summary"] = {
+                    "emails_analyzed": len(output_rows),
+                    "elapsed_time": elapsed_time,
+                    "total_tokens": total_tokens,
+                    "avg_tokens": avg_tokens,
+                }
 
-                if detailed_indicator_rows:
-                    st.session_state["detailed_indicator_df"] = pd.DataFrame(detailed_indicator_rows)
+                st.session_state["result_df"] = pd.DataFrame(output_rows)
+                st.session_state["detailed_indicator_df"] = pd.DataFrame(detailed_indicator_rows)
+                st.session_state["detailed_results"] = detailed_results
 
         elif text_input:
             data = {"email_text": text_input, "body_text": text_input}
@@ -870,6 +994,16 @@ with tab2:
                     indicator_dataframe(result["rule_result"].get("indicators", [])),
                     use_container_width=True,
                 )
+    if "last_runtime_summary" in st.session_state:
+        summary = st.session_state["last_runtime_summary"]
+
+        st.success(
+            f"⏱️ Last Run Summary: "
+            f"{summary['emails_analyzed']:,} emails analyzed in "
+            f"{summary['elapsed_time']:.2f} seconds | "
+            f"Total tokens: {summary['total_tokens']:,} | "
+            f"Avg tokens/email: {summary['avg_tokens']:,}"
+        )
 
 with tab3:
     st.subheader("Schema Columns Supported")

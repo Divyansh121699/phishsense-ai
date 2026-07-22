@@ -5,13 +5,21 @@ from openai import OpenAI
 from dotenv import load_dotenv
 
 try:
-    from detection.schema_utils import normalize_email_record
+    from detection.schema_utils import (
+        normalize_email_record,
+        get_true_label,
+    )
 except ImportError:
-    from schema_utils import normalize_email_record
+    from schema_utils import (
+        normalize_email_record,
+        get_true_label,
+    )
 
 load_dotenv()
 
 # ========== CONFIG ==========
+
+MODEL_NAME = "gpt-5"
 
 PHISHING_DIR = Path("phishing_emails/")
 BENIGN_DIR = Path("benign_emails/")
@@ -67,10 +75,6 @@ def get_llm_prediction(email_text, email_meta=None):
 
     context = f"""
     Metadata:
-    - Source dataset: {normalized.get('source_dataset', '')}
-    - Source file: {normalized.get('source_file', '')}
-    - High-level category, if labeled: {normalized.get('high_level_category', '')}
-    - Subcategory, if labeled: {normalized.get('subcategory', '')}
     - Sender: {normalized.get('sender', '')}
     - Receiver: {normalized.get('receiver', '')}
     - Subject: {normalized.get('subject', '')}
@@ -81,7 +85,7 @@ def get_llm_prediction(email_text, email_meta=None):
     - Has image: {normalized.get('has_image', False)}
     - Image count: {normalized.get('image_count', 0)}
     - Authentication results: {str(normalized.get('authentication_results', ''))[:1000]}
-    - Generation type: {normalized.get('generation_type', '')}
+    - Received headers: {str(normalized.get('received_headers', ''))[:1000]}
     - Is HTML: {normalized.get('is_html', False)}
     - Is plain text: {normalized.get('is_plain_text', False)}
     """
@@ -111,7 +115,6 @@ When analyzing, consider:
 - SPF/DKIM/DMARC failures in authentication results
 - Suspicious routing headers
 - Attachments, HTML-only content, embedded images, or image-heavy emails
-- Whether the email is human-generated or LLM-generated
 - Whether the email attempts to exploit trust, curiosity, fear, urgency, or financial incentives to influence the recipient's behavior.
 - Whether the overall purpose of the email is deceptive, fraudulent, or intended to manipulate the recipient, even if it does not explicitly request credentials
 
@@ -138,7 +141,7 @@ Explanation: <maximum 2-3 sentences summarizing the strongest evidence supportin
 """
     try:
         response = client.responses.create(
-            model="gpt-5",
+            model=MODEL_NAME,
             input=prompt,
             reasoning={"effort": "low"},
             text={"verbosity": "low"},
@@ -183,7 +186,7 @@ Explanation: <maximum 2-3 sentences summarizing the strongest evidence supportin
     """
 
             response = client.responses.create(
-                model="gpt-5",
+                model=MODEL_NAME,
                 input=retry_prompt,
                 reasoning={"effort": "low"},
                 text={"verbosity": "low"},
@@ -201,30 +204,89 @@ Explanation: <maximum 2-3 sentences summarizing the strongest evidence supportin
                 return line.split(":", 1)[1].strip()
         return default
 
-    label = extract_field(content, "Label", "benign").lower()
-    confidence = extract_field(content, "Confidence", "0.80")
-    intent = extract_field(content, "Intent", "unknown")
-    sender_trust = extract_field(content, "Sender Trust", "unknown")
-    url_risk = extract_field(content, "URL Risk", "unknown")
-    social_engineering_risk = extract_field(content, "Social Engineering Risk", "unknown")
-    explanation = extract_field(content, "Explanation", "")
+    label = extract_field(
+        content,
+        "Label",
+        "benign",
+    ).strip().lower()
 
-    try:
-        confidence = float(confidence)
-    except ValueError:
-        confidence = 0.80
+    confidence_text = extract_field(
+        content,
+        "Confidence",
+        "0.80",
+    ).strip()
 
-    if label not in ["phishing", "benign"]:
+    intent = extract_field(
+        content,
+        "Intent",
+        "unknown",
+    ).strip().lower()
+
+    sender_trust = extract_field(
+        content,
+        "Sender Trust",
+        "unknown",
+    ).strip().lower()
+
+    url_risk = extract_field(
+        content,
+        "URL Risk",
+        "unknown",
+    ).strip().lower()
+
+    social_engineering_risk = extract_field(
+        content,
+        "Social Engineering Risk",
+        "unknown",
+    ).strip().lower()
+
+    explanation = extract_field(
+        content,
+        "Explanation",
+        "",
+    ).strip()
+
+    # Normalize the label.
+    if label not in {"phishing", "benign"}:
         label = "benign"
 
+    # Normalize confidence to the range 0.0–1.0.
+    try:
+        confidence = float(
+            confidence_text.replace("%", "")
+        )
+    except (TypeError, ValueError):
+        confidence = 0.80
+
+    # Handle responses such as 85 or 85%.
+    if confidence > 1:
+        confidence = confidence / 100
+
+    confidence = round(
+        max(0.0, min(confidence, 1.0)),
+        3,
+    )
+
     llm_result = {
-        "label": label,
+        "method": "llm",
+        "model": MODEL_NAME,
+
+        # Standardized detector output.
+        "prediction": label,
         "confidence": confidence,
+        "is_phishing": label == "phishing",
+
+        # Keep the old key temporarily for backward compatibility.
+        "label": label,
+
+        # LLM-specific analysis.
         "intent": intent,
         "sender_trust": sender_trust,
         "url_risk": url_risk,
         "social_engineering_risk": social_engineering_risk,
         "explanation": explanation,
+
+        # Useful for debugging response-format problems.
         "raw_response": content,
     }
 
@@ -238,6 +300,28 @@ Explanation: <maximum 2-3 sentences summarizing the strongest evidence supportin
 
     return llm_result
 
+def normalize_evaluation_label(true_label):
+    """
+    Normalize the ground-truth label for evaluation.
+
+    Spam is currently treated as malicious to remain consistent
+    with the weighted heuristic evaluation.
+    """
+
+    if true_label is None:
+        return "unknown", None
+
+    normalized_label = str(true_label).strip().lower()
+
+    if normalized_label == "spam":
+        expected_prediction = "phishing"
+    elif normalized_label in {"phishing", "benign"}:
+        expected_prediction = normalized_label
+    else:
+        expected_prediction = None
+
+    return normalized_label, expected_prediction
+
 # ========== SCANNING FUNCTION ==========
 
 def scan_directory(directory, true_label):
@@ -248,28 +332,245 @@ def scan_directory(directory, true_label):
         with open(file, "r", encoding="utf-8") as f:
             data = normalize_email_record(json.load(f))
         email_text = data.get("email_text", "")
-        llm_result = get_llm_prediction(email_text, data)
-        llm_label = llm_result["label"]
-        explanation = llm_result["explanation"]
+        llm_result = get_llm_prediction(
+            email_text,
+            data,
+        )
+
+        prediction = llm_result["prediction"]
+
+        actual_label, expected_prediction = (
+            normalize_evaluation_label(true_label)
+        )
+
+        correct = (
+            prediction == expected_prediction
+            if expected_prediction is not None
+            else None
+        )
 
         result = {
+            # Common detector fields.
+            "method": "llm",
+            "model": MODEL_NAME,
             "source_file": file.name,
             "email_id": data.get("email_id", ""),
             "source_dataset": data.get("source_dataset", ""),
+            "high_level_category": data.get(
+                "high_level_category",
+                "",
+            ),
             "subcategory": data.get("subcategory", ""),
-            "generation_type": data.get("generation_type", ""),
-            "llm_label": llm_label,
-            "true_label": true_label,
-            "explanation": explanation,
+            "generation_type": data.get(
+                "generation_type",
+                "",
+            ),
+
+            # Standardized prediction fields.
+            "prediction": prediction,
+            "confidence": llm_result["confidence"],
+            "is_phishing": llm_result["is_phishing"],
+
+            # Ground-truth evaluation fields.
+            "actual_label": actual_label,
+            "correct": correct,
+
+            # LLM-specific fields.
+            "intent": llm_result["intent"],
+            "sender_trust": llm_result["sender_trust"],
+            "url_risk": llm_result["url_risk"],
+            "social_engineering_risk": (
+                llm_result["social_engineering_risk"]
+            ),
+            "explanation": llm_result["explanation"],
+            "raw_response": llm_result["raw_response"],
+
+            # Temporary backward-compatible fields.
+            "llm_label": prediction,
+            "true_label": actual_label,
         }
 
         results.append(result)
 
-        print(f"🤖 {file.name} → LLM: {llm_label} | Actual: {true_label}")
+        if correct is True:
+            status = "Correct"
+        elif correct is False:
+            status = "Incorrect"
+        else:
+            status = "Not evaluated"
+
+        print(
+            f"🤖 {file.name} "
+            f"→ LLM: {prediction} "
+            f"| Confidence: {llm_result['confidence']:.3f} "
+            f"| Actual: {actual_label} "
+            f"| Result: {status}"
+        )
         with open(OUTPUT_BASE / f"{file.stem}_llm_result.json", "w", encoding="utf-8") as out_f:
             json.dump(result, out_f, indent=4)
 
     return results
+
+def analyze_email_llm(
+        
+    file_path,
+    true_label=None,
+):
+    """
+    Analyze one JSON email file using the LLM detector.
+
+    This function will later be used by the detection controller.
+    """
+
+    file_path = Path(file_path)
+
+    with open(file_path, "r", encoding="utf-8") as file:
+        data = normalize_email_record(
+            json.load(file)
+        )
+    if true_label is None:
+        true_label = get_true_label(data)
+
+    email_text = data.get("email_text", "")
+
+    llm_result = get_llm_prediction(
+        email_text,
+        data,
+    )
+
+    prediction = llm_result["prediction"]
+
+    actual_label, expected_prediction = (
+        normalize_evaluation_label(true_label)
+    )
+
+    correct = (
+        prediction == expected_prediction
+        if expected_prediction is not None
+        else None
+    )
+
+    return {
+        "method": "llm",
+        "model": MODEL_NAME,
+        "source_file": file_path.name,
+        "email_id": data.get("email_id", ""),
+        "source_dataset": data.get(
+            "source_dataset",
+            "",
+        ),
+        "high_level_category": data.get(
+            "high_level_category",
+            "",
+        ),
+        "subcategory": data.get(
+            "subcategory",
+            "",
+        ),
+        "generation_type": data.get(
+            "generation_type",
+            "",
+        ),
+
+        "prediction": prediction,
+        "confidence": llm_result["confidence"],
+        "is_phishing": llm_result["is_phishing"],
+
+        "actual_label": actual_label,
+        "correct": correct,
+
+        "intent": llm_result["intent"],
+        "sender_trust": llm_result["sender_trust"],
+        "url_risk": llm_result["url_risk"],
+        "social_engineering_risk": (
+            llm_result["social_engineering_risk"]
+        ),
+        "explanation": llm_result["explanation"],
+        "raw_response": llm_result["raw_response"],
+
+        # Backward compatibility.
+        "llm_label": prediction,
+        "true_label": actual_label,
+    }
+
+def analyze_email_dict_llm(
+        
+    email_data,
+    true_label="unknown",
+    filename="uploaded_email.json",
+):
+    """
+    Analyze an email dictionary using the LLM detector.
+
+    This function is intended for Streamlit uploads.
+    """
+
+    data = normalize_email_record(email_data)
+
+    if true_label == "unknown":
+        true_label = get_true_label(data)
+
+    email_text = data.get("email_text", "")
+
+    llm_result = get_llm_prediction(
+        email_text,
+        data,
+    )
+
+    prediction = llm_result["prediction"]
+
+    actual_label, expected_prediction = (
+        normalize_evaluation_label(true_label)
+    )
+
+    correct = (
+        prediction == expected_prediction
+        if expected_prediction is not None
+        else None
+    )
+
+    return {
+        "method": "llm",
+        "model": MODEL_NAME,
+        "source_file": filename,
+        "email_id": data.get("email_id", ""),
+        "source_dataset": data.get(
+            "source_dataset",
+            "",
+        ),
+        "high_level_category": data.get(
+            "high_level_category",
+            "",
+        ),
+        "subcategory": data.get(
+            "subcategory",
+            "",
+        ),
+        "generation_type": data.get(
+            "generation_type",
+            "",
+        ),
+
+        "prediction": prediction,
+        "confidence": llm_result["confidence"],
+        "is_phishing": llm_result["is_phishing"],
+
+        "actual_label": actual_label,
+        "correct": correct,
+
+        "intent": llm_result["intent"],
+        "sender_trust": llm_result["sender_trust"],
+        "url_risk": llm_result["url_risk"],
+        "social_engineering_risk": (
+            llm_result["social_engineering_risk"]
+        ),
+        "explanation": llm_result["explanation"],
+        "raw_response": llm_result["raw_response"],
+
+        # Backward compatibility.
+        "llm_label": prediction,
+        "true_label": actual_label,
+    }
 
 # ========== MAIN ==========
 
@@ -286,8 +587,8 @@ def run_llm_scan():
     false_negatives = []
 
     for r in all_results:
-        pred = r["llm_label"]
-        actual = r["true_label"]
+        pred = r["prediction"]
+        actual = r["actual_label"]
 
         if pred == "phishing" and actual == "phishing":
             TP += 1

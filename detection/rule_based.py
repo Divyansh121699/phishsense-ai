@@ -100,6 +100,7 @@ def _parse_authentication(auth_results: str):
 
 
 def _add_indicator(indicators, category, rule, weight, evidence="", strength="moderate"):
+
     indicators.append({
         "category": category,
         "rule": rule,
@@ -107,6 +108,185 @@ def _add_indicator(indicators, category, rule, weight, evidence="", strength="mo
         "evidence": evidence,
         "strength": strength,
     })
+
+def build_atomic_indicators(
+        
+    data: dict,
+    indicators: list[dict],
+    brands_in_text: list[str],
+    has_link: bool,
+) -> dict[str, bool]:
+    """
+    Convert detailed weighted-rule findings into simple True/False
+    indicators for rule-association analysis.
+
+    This function does not change the weighted heuristic score.
+    """
+
+    triggered_rules = {
+        str(indicator.get("rule", "")).strip().lower()
+        for indicator in indicators
+        if indicator.get("weight", 0) > 0
+    }
+
+    text = str(data.get("email_text", "")).lower()
+
+    credential_terms = [
+        "password",
+        "reset your password",
+        "verify your account",
+        "confirm your account",
+        "login to your account",
+        "sign in to your account",
+        "2fa",
+        "mfa code",
+        "one-time password",
+        "otp",
+    ]
+
+    urgency_terms = [
+        "urgent",
+        "immediate",
+        "immediately",
+        "immediate attention",
+        "action required",
+        "act now",
+        "within 24 hours",
+        "final notice",
+        "account suspended",
+        "account locked",
+        "limited time",
+    ]
+
+    payment_terms = [
+        "wire transfer",
+        "wire funds",
+        "payment",
+        "invoice",
+        "gift card",
+        "bank account",
+        "pay immediately",
+        "payment failed",
+        "invoice overdue",
+    ]
+
+    executive_terms = [
+    "ceo",
+    "chief executive officer",
+    "chief executive",
+    "cfo",
+    "chief financial officer",
+    "company president",
+    "vice president",
+    ]
+
+    immediate_reply_terms = [
+        "reply immediately",
+        "respond immediately",
+        "reply now",
+        "respond now",
+        "reply as soon as possible",
+    ]
+
+    suspicious_url_rules = {
+        "high-risk tld",
+        "shortened url",
+        "url uses ip address",
+        "obfuscated url",
+    }
+
+    dangerous_attachment_rules = {
+        "dangerous attachment reference",
+        "suspicious attachment reference",
+    }
+
+    return {
+        "has_url": bool(has_link),
+
+        "suspicious_url": any(
+            rule in triggered_rules
+            for rule in suspicious_url_rules
+        ),
+
+        "credential_request": any(
+            term in text
+            for term in credential_terms
+        ),
+
+        "urgency": (
+            any(term in text for term in urgency_terms)
+            or "urgent subject" in triggered_rules
+        ),
+
+        "brand_mention": bool(brands_in_text),
+
+        "sender_mismatch": any(
+            rule.startswith("brand domain mismatch:")
+            for rule in triggered_rules
+        ),
+
+        "authentication_failure": any(
+            rule in {
+                "spf fail",
+                "dkim fail",
+                "dmarc fail",
+                "authentication failure",
+            }
+            for rule in triggered_rules
+        ),
+
+        "attachment_present": bool(
+            data.get("has_attachment")
+            or _to_int(data.get("attachment_count")) > 0
+        ),
+
+        "dangerous_attachment": any(
+            rule in triggered_rules
+            for rule in dangerous_attachment_rules
+        ),
+
+        "image_present": bool(
+            data.get("has_image")
+            or _to_int(data.get("image_count")) > 0
+        ),
+
+        "payment_request": any(
+            term in text
+            for term in payment_terms
+        ),
+
+        "executive_reference": any(
+            term in text
+            for term in executive_terms
+        ),
+
+        "immediate_reply_request": any(
+            term in text
+            for term in immediate_reply_terms
+        ),
+
+        "generic_greeting": (
+            "generic greeting" in triggered_rules
+        ),
+
+        "short_email_with_link": (
+            "short email with link" in triggered_rules
+        ),
+
+        "multiple_urls": (
+            "multiple urls" in triggered_rules
+        ),
+
+        "obfuscated_content": (
+            "obfuscated pattern" in triggered_rules
+        ),
+
+        "spam_marketing_language": any(
+            indicator.get("category") == "spam_marketing"
+            and indicator.get("weight", 0) > 0
+            for indicator in indicators
+        ),
+    }
 
 
 # ========== DETECTION FUNCTION ==========
@@ -160,9 +340,13 @@ def analyze_email(file_path, true_label=None):
     for url in urls:
         domain = _domain_from_url(url)
         lower_url = url.lower()
-        if any(tld in lower_url for tld in HIGH_RISK_TLDS):
+        if any(domain.endswith(tld) for tld in HIGH_RISK_TLDS):
             _add_indicator(indicators, "url_routing", "high-risk TLD", 12, url, "moderate")
-        if domain in SHORTENER_DOMAINS:
+        if any(
+            domain == shortener
+            or domain.endswith(f".{shortener}")
+            for shortener in SHORTENER_DOMAINS
+        ):
             _add_indicator(indicators, "url_routing", "shortened URL", 10, url, "moderate")
         if _has_ip_domain(domain):
             _add_indicator(indicators, "url_routing", "URL uses IP address", 18, url, "critical")
@@ -255,26 +439,84 @@ def analyze_email(file_path, true_label=None):
 
     unique_flags = []
     seen = set()
+
     for indicator in indicators:
         rule = indicator["rule"]
+
         if rule not in seen and indicator["weight"] > 0:
             unique_flags.append(rule)
             seen.add(rule)
 
+    # Convert the detailed rule findings into simple binary indicators.
+    # These will later be used by the rule-association method.
+    atomic_indicators = build_atomic_indicators(
+        data=data,
+        indicators=indicators,
+        brands_in_text=brands_in_text,
+        has_link=has_link,
+    )
+
+    # Standardized prediction value used across all detection methods.
+    predicted_label = "phishing" if is_phishing else "benign"
+
+    # The true label is used only after prediction for evaluation.
+    normalized_true_label = (
+        str(true_label).strip().lower()
+        if true_label is not None
+        else "unknown"
+    )
+
+    # Spam is treated as malicious in the current evaluation workflow.
+    if normalized_true_label == "spam":
+        expected_prediction = "phishing"
+    elif normalized_true_label in {"phishing", "benign"}:
+        expected_prediction = normalized_true_label
+    else:
+        expected_prediction = None
+
+    prediction_correct = (
+        predicted_label == expected_prediction
+        if expected_prediction is not None
+        else None
+    )
+
     result = {
+        # Common fields that will also be used by the association and LLM methods.
+        "method": "weighted_heuristic",
         "source_file": str(Path(file_path).name),
         "email_id": data.get("email_id", ""),
         "source_dataset": data.get("source_dataset", ""),
         "high_level_category": data.get("high_level_category", ""),
         "subcategory": data.get("subcategory", ""),
         "generation_type": data.get("generation_type", ""),
+
+        # Original weighted heuristic outputs.
         "score": score,
         "rule_confidence": round(score / 100, 3),
-        "risk_level": "high" if score >= 70 else "medium" if score >= 40 else "low",
+        "risk_level": (
+            "high"
+            if score >= 70
+            else "medium"
+            if score >= 40
+            else "low"
+        ),
         "is_phishing": is_phishing,
-        "actual_label": true_label,
+
+        # Standardized outputs used by every detection method.
+        "prediction": predicted_label,
+        "confidence": round(score / 100, 3),
+
+        # Ground-truth evaluation fields.
+        "actual_label": normalized_true_label,
+        "correct": prediction_correct,
         "flagged_keywords": unique_flags,
+
+        # Detailed weighted-rule findings.
         "indicators": indicators,
+
+        # Simplified findings for the new rule-association method.
+        "atomic_indicators": atomic_indicators,
+
         "category_scores": category_scores,
         "category_score_percentages": category_score_percentages,
         "contains_link": has_link,
@@ -314,8 +556,10 @@ def run_detection():
     false_negatives = []
 
     for result in all_emails:
-        predicted_label = "phishing" if result["is_phishing"] else "benign"
+        predicted_label = result["prediction"]
         actual_label = result["actual_label"]
+
+        # Keep this field temporarily for compatibility with old output files.
         result["predicted_label"] = predicted_label
 
         actual_is_malicious = actual_label in {"phishing", "spam"}
@@ -336,7 +580,23 @@ def run_detection():
         with open(out_file, "w", encoding="utf-8") as f:
             json.dump(result, f, indent=4)
 
-        print(f"✅ {result['source_file']} → Score: {result['score']} | Predicted: {predicted_label} | Actual: {actual_label}")
+        correctness = result.get("correct")
+
+        if correctness is True:
+            status = "Correct"
+        elif correctness is False:
+            status = "Incorrect"
+        else:
+            status = "Not evaluated"
+
+        print(
+            f"✅ {result['source_file']} "
+            f"→ Score: {result['score']} "
+            f"| Predicted: {predicted_label} "
+            f"| Actual: {actual_label} "
+            f"| Result: {status}"
+        )
+
 
     total = TP + TN + FP + FN
     summary = {

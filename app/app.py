@@ -3,8 +3,21 @@ import time
 from pathlib import Path
 import pandas as pd
 import streamlit as st
-from utils import run_combined_detection
-from detection.llm_based import reset_token_counter, get_total_tokens_used
+import sys
+from pathlib import Path
+
+# Add the project root directory to Python's import path.
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+import streamlit as st
+from detection.detection_controller import detect_email_dict
+from detection.llm_based import (
+    reset_token_counter,
+    get_total_tokens_used,
+)
 
 
 st.set_page_config(page_title="PhishSense AI", layout="wide")
@@ -349,9 +362,15 @@ pre code {
 </style>
 """, unsafe_allow_html=True)
 st.title("🛡️ PhishSense AI")
-st.subheader("Hybrid LLM & Heuristic Email Phishing Detection System")
+st.subheader(
+    "Modular Heuristic, Association-Rule, and LLM "
+    "Email Phishing Detection System"
+)
+
 st.caption(
-"Research prototype implementing heuristic analysis, LLM semantic reasoning, hybrid confidence fusion, and explainable phishing detection."
+    "Research prototype supporting weighted heuristic detection, "
+    "association-rule detection, LLM semantic reasoning, configurable "
+    "fusion strategies, and explainable phishing classification."
 )
 
 SCHEMA_COLUMNS = [
@@ -370,14 +389,65 @@ IMPORTANT_COLUMNS = [
 ]
 
 ARCHITECTURE_MODULES = [
-    {"layer": "1. Incoming Emails", "implementation": "CSV, JSON, or pasted raw text input"},
-    {"layer": "2. Dataset Normalization", "implementation": "schema_utils.normalize_email_record() standardizes the preprocessed schema"},
-    {"layer": "3. Feature Extraction & Heuristics", "implementation": "Authentication, sender/domain, URL/routing, attachment, spam/marketing, and social-engineering indicators"},
-    {"layer": "4A. Heuristic Engine", "implementation": "Weighted rule scoring with weak-signal cap and category-level indicators"},
-    {"layer": "4B. LLM Semantic Reasoning", "implementation": "LLM label, confidence, intent, sender trust, URL risk, and explanation"},
-    {"layer": "5. Hybrid Decision Fusion", "implementation": "Hybrid score = 0.35 heuristic confidence + 0.65 LLM phishing probability"},
-    {"layer": "6. Final Output", "implementation": "Prediction, rule score, hybrid score, risk level, and analysis report"},
-    {"layer": "7. Explainability", "implementation": "Triggered indicators, weighted indicator table, category scores, and LLM explanation"},
+    {
+        "layer": "1. Incoming Emails",
+        "implementation": (
+            "CSV, JSON, Excel, or pasted raw-text input"
+        ),
+    },
+    {
+        "layer": "2. Dataset Normalization",
+        "implementation": (
+            "schema_utils.normalize_email_record() standardizes "
+            "the email schema"
+        ),
+    },
+    {
+        "layer": "3. Atomic Indicator Extraction",
+        "implementation": (
+            "Sender, URL, authentication, attachment, urgency, "
+            "credential, payment, and social-engineering indicators"
+        ),
+    },
+    {
+        "layer": "4A. Weighted Heuristic",
+        "implementation": (
+            "Weighted rule scoring and category-level evidence"
+        ),
+    },
+    {
+        "layer": "4B. Rule Association",
+        "implementation": (
+            "Matches combinations of atomic indicators against "
+            "association_patterns.json"
+        ),
+    },
+    {
+        "layer": "4C. LLM Semantic Reasoning",
+        "implementation": (
+            "GPT classification, confidence, intent, sender trust, "
+            "URL risk, and explanation"
+        ),
+    },
+    {
+        "layer": "5. Detection Controller",
+        "implementation": (
+            "Selects one detector or a configurable detector ensemble"
+        ),
+    },
+    {
+        "layer": "6. Decision Fusion",
+        "implementation": (
+            "Weighted probability fusion or majority voting"
+        ),
+    },
+    {
+        "layer": "7. Explainability and Evaluation",
+        "implementation": (
+            "Detector outputs, matched patterns, indicators, "
+            "confidence, actual label, and correctness"
+        ),
+    },
 ]
 
 # ======================================================
@@ -386,6 +456,27 @@ ARCHITECTURE_MODULES = [
 
 OUTPUT_DIR = Path("output")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+DETECTION_MODE_OPTIONS = {
+    "Weighted Heuristic": "weighted_heuristic",
+    "Rule Association": "rule_association",
+    "GPT": "llm",
+    "Weighted Heuristic + GPT": "weighted_heuristic_llm",
+    "Rule Association + GPT": "rule_association_llm",
+    "Full Ensemble": "full_ensemble",
+}
+
+FUSION_OPTIONS = {
+    "Weighted Fusion": "weighted",
+    "Majority Vote": "majority_vote",
+}
+
+LLM_MODES = {
+    "llm",
+    "weighted_heuristic_llm",
+    "rule_association_llm",
+    "full_ensemble",
+}
 
 
 def load_uploaded_records(uploaded_file):
@@ -491,176 +582,918 @@ def load_uploaded_records(uploaded_file):
 
         return []
 
+def normalize_true_label(value):
+
+    """
+    Normalize dataset labels for binary evaluation.
+
+    Spam is treated as phishing.
+    """
+
+    normalized = str(value or "").strip().lower()
+
+    if normalized in {
+        "phishing",
+        "spam",
+        "malicious",
+        "fraud",
+        "scam",
+    }:
+        return "phishing"
+
+    if normalized in {
+        "benign",
+        "legitimate",
+        "safe",
+        "ham",
+    }:
+        return "benign"
+
+    return "unknown"
+
+
+def get_record_true_label(record):
+    """
+    Retrieve ground truth without passing dataset metadata to the LLM.
+    """
+
+    candidate_fields = [
+        "actual_label",
+        "true_label",
+        "label",
+        "high_level_category",
+        "category",
+    ]
+
+    for field in candidate_fields:
+        normalized = normalize_true_label(
+            record.get(field)
+        )
+
+        if normalized != "unknown":
+            return normalized
+
+    return "unknown"
+
+def prepare_record_for_detection(
+    record: dict,
+    fallback_id: str,
+) -> tuple[dict, str]:
+    """
+    Prepare an uploaded CSV/JSON row for dictionary-based detection.
+
+    The original source_file may refer to a temporary path that no longer
+    exists. Preserve it as metadata, but do not allow the detector to treat
+    it as a local file that must be opened.
+    """
+
+    prepared_record = {}
+
+    for key, value in dict(record or {}).items():
+        try:
+            is_missing = pd.isna(value)
+        except (TypeError, ValueError):
+            is_missing = False
+
+        prepared_record[key] = "" if is_missing else value
+
+    original_source_file = str(
+        prepared_record.get("source_file", "") or ""
+    )
+
+    record_id = str(
+        prepared_record.get("email_id")
+        or fallback_id
+    )
+
+    # Preserve the original dataset path for research metadata.
+    prepared_record["original_source_file"] = (
+        original_source_file
+    )
+
+    # Use a safe identifier instead of a nonexistent local path.
+    prepared_record["source_file"] = record_id
+
+    return prepared_record, record_id
 
 def indicator_dataframe(indicators):
+    columns = [
+        "category",
+        "rule",
+        "weight",
+        "strength",
+        "evidence",
+    ]
+
     if not indicators:
-        return pd.DataFrame(columns=["category", "rule", "weight", "strength", "evidence"])
+        return pd.DataFrame(columns=columns)
+
     rows = []
+
     for item in indicators:
-        rows.append({
-            "category": item.get("category", ""),
-            "rule": item.get("rule", ""),
-            "weight": item.get("weight", 0),
-            "strength": item.get("strength", ""),
-            "evidence": item.get("evidence", ""),
-        })
-    return pd.DataFrame(rows).sort_values(by="weight", ascending=False)
+        rows.append(
+            {
+                "category": item.get("category", ""),
+                "rule": item.get(
+                    "rule",
+                    item.get("indicator", ""),
+                ),
+                "weight": item.get("weight", 0),
+                "strength": item.get("strength", ""),
+                "evidence": item.get("evidence", ""),
+            }
+        )
+
+    dataframe = pd.DataFrame(rows)
+
+    if "weight" in dataframe.columns:
+        dataframe = dataframe.sort_values(
+            by="weight",
+            ascending=False,
+        )
+
+    return dataframe
 
 
 def show_results(results):
-    normalized = results["normalized_email"]
-    rule_result = results["rule_result"]
-
-    col1, col2, col3, col4, col5 = st.columns(5)
-    # Final Decision
-    decision = results["hybrid_label"].lower()
-
-    if decision == "phishing":
-        decision_display = "🔴 PHISHING"
-    elif decision == "suspicious":
-        decision_display = "🟡 SUSPICIOUS"
-    else:
-        decision_display = "🟢 BENIGN"
-
-    # Risk Level
-    risk = results["risk_level"].lower()
-
-    if risk == "high":
-        risk_display = "🔴 HIGH"
-    elif risk == "medium":
-        risk_display = "🟡 MEDIUM"
-    else:
-        risk_display = "🟢 LOW"
-
-    col1.metric("Final Decision", decision_display)
-    col2.metric("Risk Level", risk_display)
-    col3.metric("Hybrid Score", f"{results['hybrid_score']}%")
-    col4.metric("Rule Score", rule_result["score"])
-    col5.metric(
-        "LLM",
-        f"{results['llm_label'].upper()} ({results['llm_confidence']})"
+    final_result = results.get(
+        "final_result",
+        results,
     )
 
-    st.markdown("#### 🧠 Hybrid Fusion Report")
-    st.json(results["analysis_report"])
+    prediction = str(
+        results.get("prediction", "unknown")
+    ).lower()
 
-    st.markdown("#### 💬 LLM Semantic Reasoning")
-    st.code(results["llm_explanation"])
+    confidence = float(
+        results.get("confidence", 0.0) or 0.0
+    )
 
-    st.markdown("#### 🔍 Weighted Heuristic Indicators")
-    st.dataframe(indicator_dataframe(rule_result.get("indicators", [])), use_container_width=True)
+    actual_label = results.get(
+        "actual_label",
+        "unknown",
+    )
 
-    with st.expander("📊 Heuristic Category Scores"):
-        st.json(rule_result.get("category_scores", {}))
+    correct = results.get("correct")
+    mode = results.get("detection_mode", "")
+    final_method = results.get("final_method", "")
 
-    with st.expander("📄 Normalized Email Record"):
-        st.json(normalized)
+    if prediction == "phishing":
+        prediction_display = "🔴 PHISHING"
+        risk_display = "🔴 HIGH"
+    elif prediction == "benign":
+        prediction_display = "🟢 BENIGN"
+
+        if confidence >= 0.75:
+            risk_display = "🟢 LOW"
+        else:
+            risk_display = "🟡 REVIEW"
+    else:
+        prediction_display = "🟡 UNKNOWN"
+        risk_display = "🟡 REVIEW"
+
+    if correct is True:
+        correctness_display = "✅ CORRECT"
+    elif correct is False:
+        correctness_display = "❌ INCORRECT"
+    else:
+        correctness_display = "Not evaluated"
+
+    col1, col2, col3, col4, col5 = st.columns(5)
+
+    col1.metric(
+        "Final Decision",
+        prediction_display,
+    )
+    col2.metric(
+        "Confidence",
+        f"{confidence * 100:.1f}%",
+    )
+    col3.metric(
+        "Risk",
+        risk_display,
+    )
+    col4.metric(
+        "Detection Mode",
+        mode.replace("_", " ").title(),
+    )
+    col5.metric(
+        "Evaluation",
+        correctness_display,
+    )
+
+    if actual_label != "unknown":
+        st.caption(
+            f"Actual label: {actual_label.upper()} | "
+            f"Final method: {final_method}"
+        )
+    else:
+        st.caption(
+            f"Final method: {final_method}"
+        )
+
+    if "phishing_score" in final_result:
+        st.markdown("#### ⚖️ Fusion Result")
+
+        fusion_columns = st.columns(3)
+
+        fusion_columns[0].metric(
+            "Phishing Probability",
+            (
+                f"{float(final_result['phishing_score']) * 100:.1f}%"
+            ),
+        )
+
+        fusion_columns[1].metric(
+            "Fusion Threshold",
+            (
+                f"{float(final_result.get('threshold', 0.5)) * 100:.1f}%"
+            ),
+        )
+
+        fusion_columns[2].metric(
+            "Detectors Used",
+            final_result.get(
+                "detector_count",
+                len(results.get("detector_results", {})),
+            ),
+        )
+
+        with st.expander("Fusion Components"):
+            components = final_result.get(
+                "weighted_components",
+                [],
+            )
+
+            if components:
+                st.dataframe(
+                    pd.DataFrame(components),
+                    use_container_width=True,
+                )
+            else:
+                st.json(
+                    final_result.get("votes", {})
+                )
+
+    detector_results = results.get(
+        "detector_results",
+        {},
+    )
+
+    heuristic_result = detector_results.get(
+        "weighted_heuristic"
+    )
+
+    if heuristic_result:
+        st.markdown("#### 🔍 Weighted Heuristic")
+
+        heuristic_columns = st.columns(3)
+
+        heuristic_columns[0].metric(
+            "Prediction",
+            heuristic_result.get(
+                "prediction",
+                "unknown",
+            ).upper(),
+        )
+
+        heuristic_columns[1].metric(
+            "Confidence",
+            (
+                f"{float(heuristic_result.get('confidence', 0)) * 100:.1f}%"
+            ),
+        )
+
+        heuristic_columns[2].metric(
+            "Rule Score",
+            heuristic_result.get("score", 0),
+        )
+
+        indicators = heuristic_result.get(
+            "indicators",
+            heuristic_result.get(
+                "triggered_indicators",
+                [],
+            ),
+        )
+
+        st.dataframe(
+            indicator_dataframe(indicators),
+            use_container_width=True,
+        )
+
+        with st.expander("Atomic Indicators"):
+            st.json(
+                heuristic_result.get(
+                    "atomic_indicators",
+                    {},
+                )
+            )
+
+        with st.expander("Heuristic Category Scores"):
+            st.json(
+                heuristic_result.get(
+                    "category_scores",
+                    {},
+                )
+            )
+
+    association_result = detector_results.get(
+        "rule_association"
+    )
+
+    if association_result:
+        st.markdown("#### 🧩 Rule Association Analysis")
+
+        association_columns = st.columns(3)
+
+        association_columns[0].metric(
+            "Prediction",
+            association_result.get(
+                "prediction",
+                "unknown",
+            ).upper(),
+        )
+
+        association_columns[1].metric(
+            "Confidence",
+            (
+                f"{float(association_result.get('confidence', 0)) * 100:.1f}%"
+            ),
+        )
+
+        association_columns[2].metric(
+            "Matched Patterns",
+            association_result.get(
+                "matched_pattern_count",
+                0,
+            ),
+        )
+
+        matched_patterns = association_result.get(
+            "matched_patterns",
+            [],
+        )
+
+        if matched_patterns:
+            st.dataframe(
+                pd.DataFrame(matched_patterns),
+                use_container_width=True,
+            )
+        else:
+            st.info(
+                "No enabled association pattern matched this email."
+            )
+
+        strongest_pattern = association_result.get(
+            "strongest_pattern"
+        )
+
+        if strongest_pattern:
+            with st.expander("Strongest Association Pattern"):
+                st.json(strongest_pattern)
+
+    llm_result = detector_results.get("llm")
+
+    if llm_result:
+        st.markdown("#### 💬 LLM Semantic Reasoning")
+
+        llm_columns = st.columns(4)
+
+        llm_columns[0].metric(
+            "Prediction",
+            llm_result.get(
+                "prediction",
+                llm_result.get("label", "unknown"),
+            ).upper(),
+        )
+
+        llm_columns[1].metric(
+            "Confidence",
+            (
+                f"{float(llm_result.get('confidence', 0)) * 100:.1f}%"
+            ),
+        )
+
+        llm_columns[2].metric(
+            "Sender Trust",
+            llm_result.get(
+                "sender_trust",
+                "unknown",
+            ),
+        )
+
+        llm_columns[3].metric(
+            "URL Risk",
+            llm_result.get(
+                "url_risk",
+                "unknown",
+            ),
+        )
+
+        st.write(
+            llm_result.get(
+                "explanation",
+                "No explanation returned.",
+            )
+        )
+
+        with st.expander("Complete LLM Result"):
+            st.json(llm_result)
+
+    normalized_email = None
+
+    for detector_result in detector_results.values():
+        normalized_email = detector_result.get(
+            "normalized_email"
+        )
+
+        if normalized_email:
+            break
+
+    if normalized_email:
+        with st.expander("📄 Normalized Email Record"):
+            st.json(normalized_email)
+
+    with st.expander("Complete Controller Result"):
+        st.json(results)
 
 
 def build_output_row(results):
-    rule_result = results["rule_result"]
-    normalized = results["normalized_email"]
+    detector_results = results.get(
+        "detector_results",
+        {},
+    )
+
+    final_result = results.get(
+        "final_result",
+        {},
+    )
+
+    heuristic = detector_results.get(
+        "weighted_heuristic",
+        {},
+    )
+
+    association = detector_results.get(
+        "rule_association",
+        {},
+    )
+
+    llm = detector_results.get(
+        "llm",
+        {},
+    )
 
     return {
-        "email_id": normalized.get("email_id", ""),
-        "source_dataset": normalized.get("source_dataset", ""),
-        "source_file": normalized.get("source_file", ""),
-        "high_level_category": normalized.get("high_level_category", ""),
-        "subcategory": normalized.get("subcategory", ""),
-        "true_category": normalized.get("high_level_category", ""),
+        "email_id": results.get("email_id", ""),
+        "source_dataset": results.get(
+            "source_dataset",
+            "",
+        ),
+        "source_file": results.get(
+            "source_file",
+            "",
+        ),
+        "high_level_category": results.get(
+            "high_level_category",
+            "",
+        ),
+        "subcategory": results.get(
+            "subcategory",
+            "",
+        ),
 
-        "rule_score": rule_result.get("score", 0),
-        "rule_confidence": rule_result.get("rule_confidence", 0),
-        "rule_label": "phishing" if rule_result.get("is_phishing") else "benign",
+        "detection_mode": results.get(
+            "detection_mode",
+            "",
+        ),
+        "final_method": results.get(
+            "final_method",
+            "",
+        ),
+        "fusion_strategy": results.get(
+            "fusion_strategy",
+            "",
+        ),
 
-        "llm_label": results.get("llm_label", ""),
-        "llm_confidence": results.get("llm_confidence", ""),
+        "prediction": results.get(
+            "prediction",
+            "unknown",
+        ),
+        "confidence": results.get(
+            "confidence",
+            0.0,
+        ),
+        "actual_label": results.get(
+            "actual_label",
+            "unknown",
+        ),
+        "correct": results.get("correct"),
 
-        "hybrid_score": results.get("hybrid_score", ""),
-        "risk_level": results.get("risk_level", ""),
-        "hybrid_label": results.get("hybrid_label", ""),
+        "phishing_score": final_result.get(
+            "phishing_score",
+            results.get("phishing_score", ""),
+        ),
+        "fusion_threshold": final_result.get(
+            "threshold",
+            final_result.get("fusion_threshold", ""),
+        ),
+
+        "heuristic_prediction": heuristic.get(
+            "prediction",
+            "",
+        ),
+        "heuristic_confidence": heuristic.get(
+            "confidence",
+            "",
+        ),
+        "heuristic_score": heuristic.get(
+            "score",
+            "",
+        ),
+
+        "association_prediction": association.get(
+            "prediction",
+            "",
+        ),
+        "association_confidence": association.get(
+            "confidence",
+            "",
+        ),
+        "matched_pattern_count": association.get(
+            "matched_pattern_count",
+            "",
+        ),
+        "strongest_pattern": (
+            association.get(
+                "strongest_pattern",
+                {},
+            ).get("pattern_name", "")
+            if isinstance(
+                association.get("strongest_pattern"),
+                dict,
+            )
+            else association.get(
+                "strongest_pattern",
+                "",
+            )
+        ),
+
+        "llm_prediction": llm.get(
+            "prediction",
+            llm.get("label", ""),
+        ),
+        "llm_confidence": llm.get(
+            "confidence",
+            "",
+        ),
+        "llm_intent": llm.get(
+            "intent",
+            "",
+        ),
+        "llm_sender_trust": llm.get(
+            "sender_trust",
+            "",
+        ),
+        "llm_url_risk": llm.get(
+            "url_risk",
+            "",
+        ),
+        "llm_social_engineering_risk": llm.get(
+            "social_engineering_risk",
+            "",
+        ),
+        "llm_explanation": llm.get(
+            "explanation",
+            "",
+        ),
     }
 
 def build_detailed_indicator_rows(results):
-    rule_result = results["rule_result"]
-    normalized = results["normalized_email"]
 
-    indicators = rule_result.get("indicators", []) or []
+    """
+    Build one detailed CSV row from the controller output.
+    """
 
-    top_rules = [i.get("rule", "") for i in results.get("top_indicators", [])]
-    triggered_rules = rule_result.get("flagged_keywords", [])
-
-    indicator_categories = [i.get("category", "") for i in indicators]
-    indicator_rules = [i.get("rule", "") for i in indicators]
-    indicator_weights = [str(i.get("weight", 0)) for i in indicators]
-    indicator_strengths = [i.get("strength", "") for i in indicators]
-    indicator_evidence = [i.get("evidence", "") for i in indicators]
-
-    true_category = normalized.get("high_level_category", "").lower()
-    rule_label = "phishing" if rule_result.get("is_phishing") else "benign"
-    llm_label = results.get("llm_label", "").lower()
-    hybrid_label = results.get("hybrid_label", "").lower()
-
-    rule_correct = rule_label == true_category
-    llm_correct = llm_label == true_category
-    hybrid_correct = hybrid_label == true_category
-
-    if rule_label == llm_label:
-        agreement_status = "Rule & LLM Agree"
-    elif rule_label == "phishing" and llm_label == "benign":
-        agreement_status = "Rule Only"
-    elif rule_label == "benign" and llm_label == "phishing":
-        agreement_status = "LLM Only"
-    else:
-        agreement_status = "Mismatch"
-
-    true_mismatch = (
-        rule_label != llm_label
-        and rule_correct != llm_correct
+    detector_results = results.get(
+        "detector_results",
+        {},
     )
 
-    analysis_report = results.get("analysis_report", {})
-    hybrid_decision_reason = analysis_report.get("decision_reason", "")
+    heuristic = detector_results.get(
+        "weighted_heuristic",
+        {},
+    )
 
-    return [{
-        "email_id": normalized.get("email_id", ""),
-        "source_dataset": normalized.get("source_dataset", ""),
-        "source_file": normalized.get("source_file", ""),
-        "high_level_category": normalized.get("high_level_category", ""),
-        "subcategory": normalized.get("subcategory", ""),
-        "true_category": normalized.get("high_level_category", ""),
+    association = detector_results.get(
+        "rule_association",
+        {},
+    )
 
-        "rule_score": rule_result.get("score", 0),
-        "rule_confidence": rule_result.get("rule_confidence", 0),
-        "rule_label": rule_label,
-        "rule_correct": rule_correct,
+    llm = detector_results.get(
+        "llm",
+        {},
+    )
 
-        "llm_label": llm_label,
-        "llm_confidence": results.get("llm_confidence", ""),
-        "llm_correct": llm_correct,
-        "llm_intent": results.get("llm_intent", ""),
-        "llm_sender_trust": results.get("llm_sender_trust", ""),
-        "llm_url_risk": results.get("llm_url_risk", ""),
-        "llm_social_engineering_risk": results.get("llm_social_engineering_risk", ""),
-        "llm_explanation": results.get("llm_explanation", ""),
+    indicators = heuristic.get(
+        "indicators",
+        heuristic.get(
+            "triggered_indicators",
+            [],
+        ),
+    ) or []
 
-        "hybrid_score": results.get("hybrid_score", ""),
-        "risk_level": results.get("risk_level", ""),
-        "hybrid_label": hybrid_label,
-        "hybrid_correct": hybrid_correct,
-        "hybrid_decision_reason": hybrid_decision_reason,
+    atomic_indicators = heuristic.get(
+        "atomic_indicators",
+        {},
+    )
 
-        "top_indicators": ", ".join(top_rules),
-        "triggered_rules": ", ".join(triggered_rules),
-        "agreement_status": agreement_status,
-        "true_mismatch": true_mismatch,
+    matched_patterns = association.get(
+        "matched_patterns",
+        [],
+    ) or []
 
-        "indicator_categories": " | ".join(indicator_categories),
-        "indicator_rules": " | ".join(indicator_rules),
-        "indicator_weights": " | ".join(indicator_weights),
-        "indicator_strengths": " | ".join(indicator_strengths),
-        "indicator_evidence": " | ".join(indicator_evidence),
-    }]
+    indicator_categories = [
+        str(item.get("category", ""))
+        for item in indicators
+    ]
+
+    indicator_rules = [
+        str(
+            item.get(
+                "rule",
+                item.get("indicator", ""),
+            )
+        )
+        for item in indicators
+    ]
+
+    indicator_weights = [
+        str(item.get("weight", 0))
+        for item in indicators
+    ]
+
+    indicator_strengths = [
+        str(item.get("strength", ""))
+        for item in indicators
+    ]
+
+    indicator_evidence = [
+        str(item.get("evidence", ""))
+        for item in indicators
+    ]
+
+    pattern_names = []
+
+    for pattern in matched_patterns:
+        if isinstance(pattern, dict):
+            pattern_names.append(
+                str(
+                    pattern.get(
+                        "pattern_name",
+                        pattern.get(
+                            "name",
+                            pattern.get("id", ""),
+                        ),
+                    )
+                )
+            )
+        else:
+            pattern_names.append(str(pattern))
+
+    heuristic_prediction = heuristic.get(
+        "prediction",
+        "",
+    )
+
+    association_prediction = association.get(
+        "prediction",
+        "",
+    )
+
+    llm_prediction = llm.get(
+        "prediction",
+        llm.get("label", ""),
+    )
+
+    final_prediction = results.get(
+        "prediction",
+        "unknown",
+    )
+
+    actual_label = results.get(
+        "actual_label",
+        "unknown",
+    )
+
+    detector_predictions = [
+        prediction
+        for prediction in [
+            heuristic_prediction,
+            association_prediction,
+            llm_prediction,
+        ]
+        if prediction
+    ]
+
+    if len(detector_predictions) == 1:
+        agreement_status = "Single Detector"
+
+    elif len(detector_predictions) > 1:
+        unique_predictions = set(
+            detector_predictions
+        )
+
+        agreement_status = (
+            "All Detectors Agree"
+            if len(unique_predictions) == 1
+            else "Detector Disagreement"
+        )
+
+    else:
+        agreement_status = "No Detector Result"
+
+    final_result = results.get(
+    "final_result",
+    {},
+    )
+
+    strongest_pattern = association.get(
+        "strongest_pattern"
+    )
+
+    if isinstance(strongest_pattern, dict):
+        strongest_pattern_name = strongest_pattern.get(
+            "pattern_name",
+            strongest_pattern.get("name", ""),
+        )
+    else:
+        strongest_pattern_name = (
+            strongest_pattern or ""
+        )
+
+    return [
+        {
+            "email_id": results.get(
+                "email_id",
+                "",
+            ),
+            "source_dataset": results.get(
+                "source_dataset",
+                "",
+            ),
+            "source_file": results.get(
+                "source_file",
+                "",
+            ),
+            "high_level_category": results.get(
+                "high_level_category",
+                "",
+            ),
+            "subcategory": results.get(
+                "subcategory",
+                "",
+            ),
+
+            "detection_mode": results.get(
+                "detection_mode",
+                "",
+            ),
+            "fusion_strategy": results.get(
+                "fusion_strategy",
+                "",
+            ),
+            "final_method": results.get(
+                "final_method",
+                "",
+            ),
+
+            "final_prediction": final_prediction,
+            "final_confidence": results.get(
+                "confidence",
+                0.0,
+            ),
+            "actual_label": actual_label,
+            "final_correct": results.get(
+                "correct"
+            ),
+
+            "phishing_score": final_result.get(
+                "phishing_score",
+                "",
+            ),
+            "fusion_threshold": final_result.get(
+                "threshold",
+                "",
+            ),
+
+            "heuristic_prediction": (
+                heuristic_prediction
+            ),
+            "heuristic_confidence": heuristic.get(
+                "confidence",
+                "",
+            ),
+            "heuristic_score": heuristic.get(
+                "score",
+                "",
+            ),
+            "heuristic_correct": heuristic.get(
+                "correct"
+            ),
+
+            "association_prediction": (
+                association_prediction
+            ),
+            "association_confidence": (
+                association.get(
+                    "confidence",
+                    "",
+                )
+            ),
+            "association_correct": association.get(
+                "correct"
+            ),
+            "matched_pattern_count": (
+                association.get(
+                    "matched_pattern_count",
+                    0,
+                )
+            ),
+            "strongest_pattern": (
+                strongest_pattern_name
+            ),
+            "matched_patterns": " | ".join(
+                pattern_names
+            ),
+
+            "llm_prediction": llm_prediction,
+            "llm_confidence": llm.get(
+                "confidence",
+                "",
+            ),
+            "llm_correct": llm.get(
+                "correct"
+            ),
+            "llm_intent": llm.get(
+                "intent",
+                "",
+            ),
+            "llm_sender_trust": llm.get(
+                "sender_trust",
+                "",
+            ),
+            "llm_url_risk": llm.get(
+                "url_risk",
+                "",
+            ),
+            "llm_social_engineering_risk": (
+                llm.get(
+                    "social_engineering_risk",
+                    "",
+                )
+            ),
+            "llm_explanation": llm.get(
+                "explanation",
+                "",
+            ),
+
+            "agreement_status": agreement_status,
+
+            "active_atomic_indicators": (
+                " | ".join(
+                    key
+                    for key, value
+                    in atomic_indicators.items()
+                    if value
+                )
+                if isinstance(atomic_indicators, dict)
+                else " | ".join(
+                    str(item)
+                    for item in atomic_indicators
+                )
+                if isinstance(atomic_indicators, list)
+                else ""
+            ),
+
+            "indicator_categories": " | ".join(
+                indicator_categories
+            ),
+            "indicator_rules": " | ".join(
+                indicator_rules
+            ),
+            "indicator_weights": " | ".join(
+                indicator_weights
+            ),
+            "indicator_strengths": " | ".join(
+                indicator_strengths
+            ),
+            "indicator_evidence": " | ".join(
+                indicator_evidence
+            ),
+        }
+    ]
 
 tab1, tab2, tab3, tab4 = st.tabs([
     "📨 Email Generator",
@@ -705,6 +1538,62 @@ with tab2:
     type=["json", "csv", "xlsx", "xls"]
 )
     text_input = st.text_area("Or paste raw email text here")
+
+    st.markdown("#### Detection Configuration")
+
+    configuration_columns = st.columns(2)
+
+    with configuration_columns[0]:
+        selected_mode_label = st.selectbox(
+            "Detection Mode",
+            options=list(
+                DETECTION_MODE_OPTIONS.keys()
+            ),
+            index=5,
+            help=(
+                "Choose one detector or a combined "
+                "detector configuration."
+            ),
+        )
+
+    selected_mode = DETECTION_MODE_OPTIONS[
+        selected_mode_label
+    ]
+
+    combined_mode = selected_mode in {
+        "weighted_heuristic_llm",
+        "rule_association_llm",
+        "full_ensemble",
+    }
+
+    with configuration_columns[1]:
+        selected_fusion_label = st.selectbox(
+            "Fusion Strategy",
+            options=list(
+                FUSION_OPTIONS.keys()
+            ),
+            index=0,
+            disabled=not combined_mode,
+            help=(
+                "Fusion applies only when two or more "
+                "detectors are selected."
+            ),
+        )
+
+    selected_fusion_strategy = FUSION_OPTIONS[
+        selected_fusion_label
+    ]
+
+    if selected_mode in LLM_MODES:
+        st.warning(
+            "This detection mode uses the OpenAI API "
+            "and will consume tokens."
+        )
+    else:
+        st.info(
+            "This detection mode does not call the "
+            "OpenAI API."
+        )
 
     resume_previous = st.checkbox(
     "Resume previous interrupted analysis",
@@ -781,9 +1670,27 @@ with tab2:
                 st.stop()
 
             if len(records) == 1:
-                data = records[0]
-                email_text = data.get("email_text") or data.get("body_text") or data.get("body_html") or ""
-                results = run_combined_detection(email_text, data)
+                data, record_identifier = (
+                    prepare_record_for_detection(
+                        records[0],
+                        fallback_id=(
+                            f"{Path(uploaded_file.name).stem}_record_1"
+                        ),
+                    )
+                )
+
+                true_label = get_record_true_label(data)
+
+                results = detect_email_dict(
+                    email_data=data,
+                    mode=selected_mode,
+                    true_label=true_label,
+                    filename=record_identifier,
+                    fusion_strategy=(
+                        selected_fusion_strategy
+                    ),
+                )
+
                 st.session_state["single_result"] = results
 
             else:
@@ -800,10 +1707,24 @@ with tab2:
                 previous_total_tokens = 0
 
                 if resume_previous and checkpoint:
-                    if checkpoint.get("source_file") != uploaded_file.name:
+                    checkpoint_mismatch = (
+                        checkpoint.get("source_file")
+                        != uploaded_file.name
+                        or checkpoint.get("detection_mode")
+                        != selected_mode
+                        or checkpoint.get("fusion_strategy")
+                        != selected_fusion_strategy
+                        or checkpoint.get("total_requested")
+                        != max_records
+                    )
+
+                    if checkpoint_mismatch:
                         st.error(
-                            "Checkpoint belongs to a different dataset. "
-                            "Upload the same file used in the interrupted run, or uncheck resume."
+                            "The checkpoint belongs to a different "
+                            "dataset, record count, detection mode, "
+                            "or fusion strategy. Upload the original "
+                            "dataset with the same configuration, or "
+                            "uncheck resume."
                         )
                         st.stop()
 
@@ -827,11 +1748,30 @@ with tab2:
                 start_time = time.time()
 
                 for idx in range(start_index, max_records):
-                    record = records[idx]
-                    email_text = record.get("email_text") or record.get("body_text") or record.get("body_html") or ""
+                    raw_record = records[idx]
 
                     try:
-                        results = run_combined_detection(email_text, record)
+                        record, record_identifier = (
+                            prepare_record_for_detection(
+                                raw_record,
+                                fallback_id=(
+                                    f"{Path(uploaded_file.name).stem}"
+                                    f"_record_{idx + 1}"
+                                ),
+                            )
+                        )
+
+                        true_label = get_record_true_label(record)
+
+                        results = detect_email_dict(
+                            email_data=record,
+                            mode=selected_mode,
+                            true_label=true_label,
+                            filename=record_identifier,
+                            fusion_strategy=(
+                                selected_fusion_strategy
+                            ),
+                        )
 
                         detailed_results.append(results)
                         output_rows.append(build_output_row(results))
@@ -847,18 +1787,37 @@ with tab2:
                             index=False
                         )
 
-                        with open(checkpoint_path, "w", encoding="utf-8") as f:
+                        with open(
+                            checkpoint_path,
+                            "w",
+                            encoding="utf-8",
+                        ) as f:
                             json.dump(
                                 {
                                     "last_processed": idx + 1,
                                     "total_requested": max_records,
                                     "source_file": uploaded_file.name,
-                                    "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-                                    "elapsed_seconds": previous_elapsed_seconds + (time.time() - start_time),
-                                    "total_tokens_used": previous_total_tokens + get_total_tokens_used()
+                                    "detection_mode": selected_mode,
+                                    "fusion_strategy": (
+                                        selected_fusion_strategy
+                                    ),
+                                    "timestamp": time.strftime(
+                                        "%Y-%m-%d %H:%M:%S"
+                                    ),
+                                    "elapsed_seconds": (
+                                        previous_elapsed_seconds
+                                        + (
+                                            time.time()
+                                            - start_time
+                                        )
+                                    ),
+                                    "total_tokens_used": (
+                                        previous_total_tokens
+                                        + get_total_tokens_used()
+                                    ),
                                 },
                                 f,
-                                indent=4
+                                indent=4,
                             )
 
                         current_progress = (idx + 1) / max_records
@@ -911,10 +1870,18 @@ with tab2:
                 print(f"📈 Average tokens/email  : {avg_tokens:,}")
                 print("=" * 70)
 
-                st.info(
-                    f"📊 Total Tokens Used: **{total_tokens:,}** | "
-                    f"Average per Email: **{avg_tokens:,}**"
-                )
+                if selected_mode in LLM_MODES:
+                    st.info(
+                        f"📊 Total Tokens Used: "
+                        f"**{total_tokens:,}** | "
+                        f"Average per Email: "
+                        f"**{avg_tokens:,}**"
+                    )
+                else:
+                    st.info(
+                        "📊 No LLM API calls were made for "
+                        "this detection mode."
+                    )
 
                 st.session_state["last_runtime_summary"] = {
                     "emails_analyzed": len(output_rows),
@@ -928,9 +1895,26 @@ with tab2:
                 st.session_state["detailed_results"] = detailed_results
 
         elif text_input:
-            data = {"email_text": text_input, "body_text": text_input}
-            results = run_combined_detection(text_input, data)
-            st.session_state["single_result"] = results
+            data = {
+                "email_id": "pasted_email",
+                "source_file": "pasted_email.txt",
+                "email_text": text_input,
+                "body_text": text_input,
+            }
+
+            results = detect_email_dict(
+                email_data=data,
+                mode=selected_mode,
+                true_label="unknown",
+                filename="pasted_email.txt",
+                fusion_strategy=(
+                    selected_fusion_strategy
+                ),
+            )
+
+            st.session_state["single_result"] = (
+                results
+            )
 
         else:
             st.error("Please upload or paste an email first.")
@@ -944,26 +1928,45 @@ with tab2:
         st.markdown("### Detection Results")
         summary = st.session_state["result_df"]
 
-        c1,c2,c3,c4 = st.columns(4)
+        c1, c2, c3, c4 = st.columns(4)
 
         c1.metric(
-        "Emails",
-        len(summary)
+            "Emails",
+            len(summary),
         )
 
         c2.metric(
-        "Benign",
-        (summary.hybrid_label=="benign").sum()
+            "Benign",
+            int(
+                (
+                    summary["prediction"]
+                    == "benign"
+                ).sum()
+            ),
         )
 
         c3.metric(
-        "Suspicious",
-        (summary.hybrid_label=="suspicious").sum()
+            "Unknown / Review",
+            int(
+                (
+                    ~summary["prediction"].isin(
+                        [
+                            "benign",
+                            "phishing",
+                        ]
+                    )
+                ).sum()
+            ),
         )
 
         c4.metric(
-        "Phishing",
-        (summary.hybrid_label=="phishing").sum()
+            "Phishing",
+            int(
+                (
+                    summary["prediction"]
+                    == "phishing"
+                ).sum()
+            ),
         )
         st.dataframe(st.session_state["result_df"], use_container_width=True)
 
@@ -985,15 +1988,108 @@ with tab2:
         )
 
     if "detailed_results" in st.session_state:
-        with st.expander("🔍 Detailed Indicator Analysis"):
-            for idx, result in enumerate(st.session_state["detailed_results"], start=1):
+        with st.expander(
+            "🔍 Detailed Detector Analysis"
+        ):
+            for idx, result in enumerate(
+                st.session_state[
+                    "detailed_results"
+                ],
+                start=1,
+            ):
+                record_name = (
+                    result.get("email_id")
+                    or result.get("source_file")
+                    or f"Record {idx}"
+                )
+
                 st.markdown(
-                    f"##### Record {idx}: {result['normalized_email'].get('email_id','')}"
+                    f"##### Record {idx}: "
+                    f"{record_name}"
                 )
-                st.dataframe(
-                    indicator_dataframe(result["rule_result"].get("indicators", [])),
-                    use_container_width=True,
+
+                detector_results = result.get(
+                    "detector_results",
+                    {},
                 )
+
+                heuristic = detector_results.get(
+                    "weighted_heuristic",
+                    {},
+                )
+
+                association = detector_results.get(
+                    "rule_association",
+                    {},
+                )
+
+                llm = detector_results.get(
+                    "llm",
+                    {},
+                )
+
+                final_result = result.get(
+                    "final_result",
+                    {},
+                )
+
+                if heuristic:
+                    st.markdown(
+                        "**Weighted Heuristic Indicators**"
+                    )
+
+                    indicators = heuristic.get(
+                        "indicators",
+                        heuristic.get(
+                            "triggered_indicators",
+                            [],
+                        ),
+                    )
+
+                    st.dataframe(
+                        indicator_dataframe(
+                            indicators
+                        ),
+                        use_container_width=True,
+                    )
+
+                if association:
+                    st.markdown(
+                        "**Association Patterns**"
+                    )
+
+                    matched_patterns = (
+                        association.get(
+                            "matched_patterns",
+                            [],
+                        )
+                    )
+
+                    if matched_patterns:
+                        st.dataframe(
+                            pd.DataFrame(
+                                matched_patterns
+                            ),
+                            use_container_width=True,
+                        )
+                    else:
+                        st.caption(
+                            "No association patterns matched."
+                        )
+
+                if llm:
+                    st.markdown(
+                        "**LLM Explanation**"
+                    )
+
+                    st.write(
+                        llm.get(
+                            "explanation",
+                            "No explanation returned.",
+                        )
+                    )
+
+                st.divider()
     if "last_runtime_summary" in st.session_state:
         summary = st.session_state["last_runtime_summary"]
 
@@ -1015,19 +2111,47 @@ with tab3:
     st.dataframe(pd.DataFrame({"recommended_column": IMPORTANT_COLUMNS}), use_container_width=True)
 
     st.subheader("Recommended Output Fields")
-    st.dataframe(pd.DataFrame({
-        "field": ["rule_score", "rule_confidence", "llm_label", "llm_confidence", "hybrid_score", "risk_level", "hybrid_label", "top_indicators"],
-        "purpose": [
-            "Transparent heuristic score from weighted indicators",
-            "Normalized 0-1 heuristic confidence",
-            "LLM semantic classification",
-            "Parsed or default LLM confidence",
-            "Aggregated fusion score from rule + LLM evidence",
-            "Low / Medium / High risk decision support",
-            "Final label for evaluation (Benign / Suspicious / Phishing)",
-            "Explainability summary for analysts",
-        ],
-    }), use_container_width=True)
+    st.dataframe(
+    pd.DataFrame(
+        {
+            "field": [
+                "detection_mode",
+                "final_method",
+                "prediction",
+                "confidence",
+                "actual_label",
+                "correct",
+                "heuristic_prediction",
+                "heuristic_confidence",
+                "association_prediction",
+                "association_confidence",
+                "matched_pattern_count",
+                "llm_prediction",
+                "llm_confidence",
+                "phishing_score",
+                "fusion_strategy",
+            ],
+            "purpose": [
+                "Selected experimental detector configuration",
+                "Detector or fusion method producing the final result",
+                "Final binary phishing or benign prediction",
+                "Confidence in the final prediction",
+                "Normalized evaluation ground truth",
+                "Whether the final prediction matches ground truth",
+                "Weighted heuristic prediction",
+                "Weighted heuristic confidence",
+                "Rule-association prediction",
+                "Rule-association confidence",
+                "Number of matched association patterns",
+                "LLM semantic prediction",
+                "LLM semantic confidence",
+                "Fused phishing probability",
+                "Weighted fusion or majority voting",
+            ],
+        }
+    ),
+    use_container_width=True,
+)
 
 with tab4:
     st.subheader("Architecture Alignment")
@@ -1040,22 +2164,42 @@ with tab4:
         hide_index=True
     )
 
-    st.markdown("#### Current Hybrid Fusion Formula")
-    st.code("hybrid_score = 0.35 * heuristic_confidence + 0.65 * llm_phishing_probability")
+    st.markdown("#### Configurable Fusion")
 
-    st.markdown("#### Risk Mapping")
-    risk_df = pd.DataFrame({
-    "hybrid_score": ["0-39", "40-69", "70-100"],
-    "risk_level": ["Low", "Medium", "High"],
-    "interpretation": [
-        "Likely benign",
-        "Needs analyst review",
-        "High phishing likelihood",
-    ],
-})
+    st.code(
+        "full_ensemble_score = "
+        "0.30 * heuristic_phishing_probability + "
+        "0.30 * association_phishing_probability + "
+        "0.40 * llm_phishing_probability"
+    )
+
+    st.caption(
+        "These are pilot weights. They should be "
+        "validated using pilot or validation data "
+        "before final evaluation."
+    )
+
+    st.markdown("#### Decision Threshold")
+
+    decision_df = pd.DataFrame(
+        {
+            "phishing_probability": [
+                "Below 0.50",
+                "0.50 or above",
+            ],
+            "prediction": [
+                "Benign",
+                "Phishing",
+            ],
+            "interpretation": [
+                "The fused phishing probability is below the threshold",
+                "The fused phishing probability meets or exceeds the threshold",
+            ],
+        }
+    )
 
     st.dataframe(
-        risk_df,
+        decision_df,
         use_container_width=True,
         hide_index=True,
     )

@@ -34,20 +34,21 @@ for scenario in benign_scenarios:
         print(f"✉️ Generating: {scenario['category']} - {scenario['brand']} (v{i+1}/5)")
 
         try:
-            response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": f"{scenario['prompt']} Make this variation realistic and professional. (version {i+1})"}],
-                temperature=0.7,
-                max_tokens=350
+            response = client.responses.create(
+                model="gpt-5",
+                input=f"{scenario['prompt']} Make this variation realistic and professional. (version {i+1})",
+                reasoning={"effort": "low"},
+                text={"verbosity": "medium"},
+                max_output_tokens=700,
             )
 
-            email_text = response.choices[0].message.content
+            email_text = response.output_text
 
             email_metadata = {
                 "timestamp": datetime.now().isoformat(),
                 "category": scenario["category"],
                 "brand": scenario["brand"],
-                "source_model": "gpt-3.5-turbo",
+                "source_model": "gpt-5",
                 "variation": i + 1,
                 "email_text": email_text
             }

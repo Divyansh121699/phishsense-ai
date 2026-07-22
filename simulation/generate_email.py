@@ -40,21 +40,22 @@ for scenario in phishing_scenarios:
         print(f"📧 Generating: {scenario['category']} - {scenario['target']} (v{i+1}/8)")
 
         try:
-            response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.7,
-                max_tokens=350
+            response = client.responses.create(
+                model="gpt-5",
+                input=prompt,
+                reasoning={"effort": "low"},
+                text={"verbosity": "medium"},
+                max_output_tokens=700,
             )
 
-            email_text = response.choices[0].message.content
+            email_text = response.output_text
 
             # Structure the output
             email_metadata = {
                 "timestamp": datetime.now().isoformat(),
                 "category": scenario["category"],
                 "target_brand": scenario["target"],
-                "source_model": "gpt-3.5-turbo",
+                "source_model": "gpt-5",
                 "variation": i + 1,
                 "email_text": email_text
             }

@@ -1,111 +1,148 @@
 import json
 from pathlib import Path
 
-# ========== CONFIG ==========
-RULE_PATH = Path("detection/output_rule/details/summary_detected.json")
-LLM_PATH = Path("detection/output_llm/details/llm_scan_results.json")
+from detection.detection_controller import detect_email
+
+# ==========================
+# CONFIGURATION
+# ==========================
+
+PHISHING_DIR = Path("phishing_emails")
+BENIGN_DIR = Path("benign_emails")
+
 OUTPUT_DIR = Path("detection/output_hybrid")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-# ========== LOAD DATA ==========
-def load_results():
-    with open(RULE_PATH, "r", encoding="utf-8") as f:
-        rule_data = json.load(f)
-    with open(LLM_PATH, "r", encoding="utf-8") as f:
-        llm_data = json.load(f)
-    return rule_data, llm_data
+# Detection mode to evaluate
+DETECTION_MODE = "full_ensemble"
 
-# ========== MERGE BY FILENAME ==========
-def merge_results(rule_data, llm_data):
-    llm_lookup = {d["source_file"]: d for d in llm_data}
-    combined = []
+# Fusion strategy
+FUSION_STRATEGY = "weighted"
 
-    for r in rule_data:
-        fname = r["source_file"]
-        if fname not in llm_lookup:
-            continue
-        l = llm_lookup[fname]
-        combined.append({
-            "filename": fname,
-            "true_label": r["actual_label"],
-            "rule_label": r["predicted_label"],
-            "llm_label": l["llm_label"],
-            "rule_score": r["score"],
-            "llm_explanation": l.get("explanation", "")
-        })
-    return combined
 
-# ========== METRICS ==========
-def evaluate(predictions):
+# ==========================
+# EVALUATION
+# ==========================
+
+def evaluate_directory(directory, true_label):
+
+    results = []
+
+    files = list(directory.glob("*.json"))
+
+    for file in files:
+
+        result = detect_email(
+            file_path=file,
+            mode=DETECTION_MODE,
+            true_label=true_label,
+            fusion_strategy=FUSION_STRATEGY,
+        )
+
+        results.append(result)
+
+        print(
+            f"{file.name} -> "
+            f"{result['prediction']} "
+            f"({result['confidence']:.3f})"
+        )
+
+    return results
+
+
+# ==========================
+# METRICS
+# ==========================
+
+def compute_metrics(results):
+
     TP = TN = FP = FN = 0
-    for p in predictions:
-        pred = p["hybrid_label"]
-        true = p["true_label"]
-        if pred == "phishing" and true == "phishing":
+
+    for r in results:
+
+        pred = r["prediction"]
+        actual = r["actual_label"]
+
+        if pred == "phishing" and actual == "phishing":
             TP += 1
-        elif pred == "benign" and true == "benign":
+
+        elif pred == "benign" and actual == "benign":
             TN += 1
-        elif pred == "phishing" and true == "benign":
+
+        elif pred == "phishing" and actual == "benign":
             FP += 1
-        elif pred == "benign" and true == "phishing":
+
+        elif pred == "benign" and actual == "phishing":
             FN += 1
 
-    precision = round(TP / (TP + FP), 3) if (TP + FP) > 0 else 0
-    recall = round(TP / (TP + FN), 3) if (TP + FN) > 0 else 0
-    accuracy = round((TP + TN) / (TP + TN + FP + FN), 3)
-    f1 = round(2 * TP / (2 * TP + FP + FN), 3) if (2 * TP + FP + FN) > 0 else 0
+    total = TP + TN + FP + FN
 
     return {
-        "total_emails": TP + TN + FP + FN,
+
+        "total_emails": total,
+
         "true_positives": TP,
         "true_negatives": TN,
         "false_positives": FP,
         "false_negatives": FN,
-        "precision": precision,
-        "recall": recall,
-        "accuracy": accuracy,
-        "f1_score": f1
+
+        "precision":
+            round(TP / (TP + FP), 3)
+            if TP + FP else 0,
+
+        "recall":
+            round(TP / (TP + FN), 3)
+            if TP + FN else 0,
+
+        "accuracy":
+            round((TP + TN) / total, 3)
+            if total else 0,
+
+        "f1_score":
+            round(
+                2 * TP /
+                (2 * TP + FP + FN),
+                3,
+            )
+            if (2 * TP + FP + FN)
+            else 0,
     }
 
-# ========== STRATEGY EXECUTION ==========
-def run_strategy(data, strategy):
-    predictions = []
-    for d in data:
-        r = d["rule_label"]
-        l = d["llm_label"]
 
-        if strategy == "union":
-            pred = "phishing" if "phishing" in (r, l) else "benign"
-        elif strategy == "intersection":
-            pred = "phishing" if r == "phishing" and l == "phishing" else "benign"
-        elif strategy == "weighted":
-            score = 0
-            if r == "phishing":
-                score += 1
-            if l == "phishing":
-                score += 1
-            pred = "phishing" if score >= 1 else "benign"
-        else:
-            raise ValueError("Unknown strategy")
+# ==========================
+# MAIN
+# ==========================
 
-        d["hybrid_label"] = pred
-        predictions.append(d)
+if __name__ == "__main__":
 
-    metrics = evaluate(predictions)
-    print(f"\n📊 Strategy: {strategy.upper()}")
-    print(json.dumps(metrics, indent=4))
+    phishing = evaluate_directory(
+        PHISHING_DIR,
+        "phishing",
+    )
 
-    # Save results
-    with open(OUTPUT_DIR / f"{strategy}_results.json", "w", encoding="utf-8") as f:
-        json.dump(predictions, f, indent=4)
+    benign = evaluate_directory(
+        BENIGN_DIR,
+        "benign",
+    )
 
-    with open(OUTPUT_DIR / f"{strategy}_metrics.json", "w", encoding="utf-8") as f:
+    all_results = phishing + benign
+
+    metrics = compute_metrics(all_results)
+
+    with open(
+        OUTPUT_DIR / "evaluation_results.json",
+        "w",
+        encoding="utf-8",
+    ) as f:
+        json.dump(all_results, f, indent=4)
+
+    with open(
+        OUTPUT_DIR / "evaluation_metrics.json",
+        "w",
+        encoding="utf-8",
+    ) as f:
         json.dump(metrics, f, indent=4)
 
-# ========== MAIN ==========
-if __name__ == "__main__":
-    rule_data, llm_data = load_results()
-    combined_data = merge_results(rule_data, llm_data)
+    print()
 
-    for strategy in ["union", "intersection", "weighted"]:
-        run_strategy(combined_data, strategy)
+    print(json.dumps(metrics, indent=4))

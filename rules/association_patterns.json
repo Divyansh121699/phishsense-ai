@@ -1,0 +1,160 @@
+[
+  {
+    "pattern_id": "credential_theft_001",
+    "pattern_name": "Credential Theft",
+    "description": "Attempts to obtain account credentials through a suspicious link and credential-related language.",
+    "required_indicators": [
+      "has_url",
+      "credential_request"
+    ],
+    "supporting_indicators": [
+      "suspicious_url",
+      "urgency",
+      "brand_mention",
+      "sender_mismatch",
+      "authentication_failure",
+      "short_email_with_link"
+    ],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.85,
+    "pilot_support": 0.0,
+    "enabled": true
+  },
+  {
+    "pattern_id": "brand_impersonation_001",
+    "pattern_name": "Brand Impersonation",
+    "description": "Mentions a trusted brand while using a mismatched sender identity or suspicious destination.",
+    "required_indicators": [
+      "brand_mention",
+      "sender_mismatch"
+    ],
+    "supporting_indicators": [
+      "has_url",
+      "suspicious_url",
+      "credential_request",
+      "urgency",
+      "authentication_failure"
+    ],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.8,
+    "pilot_support": 0.0,
+    "enabled": true
+  },
+  {
+    "pattern_id": "business_email_compromise_001",
+    "pattern_name": "Business Email Compromise",
+    "description": "Uses an executive reference, urgency, and a payment or reply request to pressure the recipient.",
+    "required_indicators": [
+      "executive_reference",
+      "urgency"
+    ],
+    "supporting_indicators": [
+      "payment_request",
+      "immediate_reply_request",
+      "sender_mismatch",
+      "authentication_failure"
+    ],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.85,
+    "pilot_support": 0.0,
+    "enabled": true
+  },
+  {
+    "pattern_id": "payment_fraud_001",
+    "pattern_name": "Payment Fraud",
+    "description": "Requests a payment, wire transfer, gift card, bank action, or invoice-related transaction under suspicious conditions.",
+    "required_indicators": [
+      "payment_request"
+    ],
+    "supporting_indicators": [
+      "urgency",
+      "sender_mismatch",
+      "authentication_failure",
+      "attachment_present",
+      "dangerous_attachment",
+      "executive_reference"
+    ],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.8,
+    "pilot_support": 0.0,
+    "enabled": true
+  },
+  {
+    "pattern_id": "malicious_attachment_001",
+    "pattern_name": "Malicious Attachment Delivery",
+    "description": "Uses an attachment or attachment reference as the likely delivery mechanism for malicious content.",
+    "required_indicators": [
+      "attachment_present"
+    ],
+    "supporting_indicators": [
+      "dangerous_attachment",
+      "urgency",
+      "authentication_failure",
+      "sender_mismatch",
+      "short_email_with_link"
+    ],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.8,
+    "pilot_support": 0.0,
+    "enabled": true
+  },
+  {
+    "pattern_id": "suspicious_link_001",
+    "pattern_name": "Suspicious Link Delivery",
+    "description": "Directs the recipient to a suspicious, shortened, obfuscated, or high-risk web destination.",
+    "required_indicators": [
+      "has_url",
+      "suspicious_url"
+    ],
+    "supporting_indicators": [
+      "urgency",
+      "credential_request",
+      "sender_mismatch",
+      "brand_mention",
+      "short_email_with_link",
+      "obfuscated_content"
+    ],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.8,
+    "pilot_support": 0.0,
+    "enabled": true
+  },
+  {
+    "pattern_id": "account_verification_001",
+    "pattern_name": "Account Verification Scam",
+    "description": "Claims that the recipient must verify, confirm, unlock, or secure an account through a link.",
+    "required_indicators": [
+      "credential_request",
+      "urgency"
+    ],
+    "supporting_indicators": [
+      "has_url",
+      "suspicious_url",
+      "brand_mention",
+      "sender_mismatch",
+      "authentication_failure",
+      "generic_greeting"
+    ],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.85,
+    "pilot_support": 0.0,
+    "enabled": true
+  },
+  {
+    "pattern_id": "marketing_spam_001",
+    "pattern_name": "Marketing or Promotional Spam",
+    "description": "Contains promotional or marketing language without sufficient evidence of credential theft or financial fraud.",
+    "required_indicators": [
+      "spam_marketing_language"
+    ],
+    "supporting_indicators": [
+      "has_url",
+      "multiple_urls",
+      "image_present"
+    ],
+    "minimum_supporting_matches": 0,
+    "pilot_confidence": 0.6,
+    "pilot_support": 0.0,
+    "enabled": true
+  }
+]

@@ -10,14 +10,21 @@
     "supporting_indicators": [
       "suspicious_url",
       "urgency",
+      "authentication_failure",
+      "verification_request",
+      "account_maintenance_language",
+      "payment_request",
       "brand_mention",
       "sender_mismatch",
-      "authentication_failure",
+      "file_sharing_language",
+      "document_lure",
       "short_email_with_link"
     ],
+    "excluded_indicators": [],
     "minimum_supporting_matches": 1,
     "pilot_confidence": 0.85,
-    "pilot_support": 0.0,
+    "pilot_support": null,
+    "output_label": "phishing",
     "enabled": true
   },
   {
@@ -33,11 +40,17 @@
       "suspicious_url",
       "credential_request",
       "urgency",
-      "authentication_failure"
+      "authentication_failure",
+      "verification_request",
+      "payment_request"
+    ],
+    "excluded_indicators": [
+      "legitimate_brand_domain"
     ],
     "minimum_supporting_matches": 1,
     "pilot_confidence": 0.8,
-    "pilot_support": 0.0,
+    "pilot_support": null,
+    "output_label": "phishing",
     "enabled": true
   },
   {
@@ -52,31 +65,39 @@
       "payment_request",
       "immediate_reply_request",
       "sender_mismatch",
-      "authentication_failure"
+      "authentication_failure",
+      "document_lure"
     ],
+    "excluded_indicators": [],
     "minimum_supporting_matches": 1,
     "pilot_confidence": 0.85,
-    "pilot_support": 0.0,
+    "pilot_support": null,
+    "output_label": "phishing",
     "enabled": true
   },
   {
     "pattern_id": "payment_fraud_001",
     "pattern_name": "Payment Fraud",
-    "description": "Requests a payment, wire transfer, gift card, bank action, or invoice-related transaction under suspicious conditions.",
+    "description": "Requests a payment, transfer, purchase, invoice-related transaction, or other financial action under suspicious conditions.",
     "required_indicators": [
       "payment_request"
     ],
     "supporting_indicators": [
+      "suspicious_url",
       "urgency",
       "sender_mismatch",
       "authentication_failure",
+      "document_lure",
       "attachment_present",
-      "dangerous_attachment",
-      "executive_reference"
+      "macro_attachment",
+      "archive_attachment",
+      "executable_attachment"
     ],
+    "excluded_indicators": [],
     "minimum_supporting_matches": 1,
     "pilot_confidence": 0.8,
-    "pilot_support": 0.0,
+    "pilot_support": null,
+    "output_label": "phishing",
     "enabled": true
   },
   {
@@ -91,11 +112,17 @@
       "urgency",
       "authentication_failure",
       "sender_mismatch",
-      "short_email_with_link"
+      "document_lure",
+      "file_sharing_language",
+      "macro_attachment",
+      "archive_attachment",
+      "executable_attachment"
     ],
+    "excluded_indicators": [],
     "minimum_supporting_matches": 1,
     "pilot_confidence": 0.8,
-    "pilot_support": 0.0,
+    "pilot_support": null,
+    "output_label": "phishing",
     "enabled": true
   },
   {
@@ -112,49 +139,343 @@
       "sender_mismatch",
       "brand_mention",
       "short_email_with_link",
-      "obfuscated_content"
+      "obfuscated_content",
+      "verification_request",
+      "account_maintenance_language",
+      "payment_request",
+      "delivery_language",
+      "subscription_language",
+      "file_sharing_language"
+    ],
+    "excluded_indicators": [
+      "legitimate_brand_domain"
     ],
     "minimum_supporting_matches": 1,
     "pilot_confidence": 0.8,
-    "pilot_support": 0.0,
+    "pilot_support": null,
+    "output_label": "phishing",
     "enabled": true
   },
   {
     "pattern_id": "account_verification_001",
     "pattern_name": "Account Verification Scam",
-    "description": "Claims that the recipient must verify, confirm, unlock, or secure an account through a link.",
+    "description": "Claims that the recipient must verify, confirm, unlock, secure, or update an account.",
     "required_indicators": [
-      "credential_request",
-      "urgency"
+      "credential_request"
     ],
     "supporting_indicators": [
+      "verification_request",
+      "account_maintenance_language",
+      "urgency",
       "has_url",
       "suspicious_url",
-      "brand_mention",
       "sender_mismatch",
-      "authentication_failure",
-      "generic_greeting"
+      "authentication_failure"
     ],
+    "excluded_indicators": [],
     "minimum_supporting_matches": 1,
     "pilot_confidence": 0.85,
-    "pilot_support": 0.0,
+    "pilot_support": null,
+    "output_label": "phishing",
     "enabled": true
   },
   {
     "pattern_id": "marketing_spam_001",
     "pattern_name": "Marketing or Promotional Spam",
-    "description": "Contains promotional or marketing language without sufficient evidence of credential theft or financial fraud.",
+    "description": "Contains ordinary promotional, newsletter, discount, or retail-marketing language without stronger indicators of phishing, fraud, credential theft, or malicious commercial activity.",
     "required_indicators": [
       "spam_marketing_language"
     ],
     "supporting_indicators": [
       "has_url",
       "multiple_urls",
-      "image_present"
+      "image_present",
+      "newsletter_language",
+      "contains_unsubscribe",
+      "legitimate_brand_domain"
     ],
-    "minimum_supporting_matches": 0,
+    "excluded_indicators": [
+      "credential_request",
+      "payment_request",
+      "pharmacy_language",
+      "adult_content_language",
+      "counterfeit_language",
+      "advance_fee_language",
+      "verification_request",
+      "suspicious_url",
+      "authentication_failure"
+    ],
+    "minimum_supporting_matches": 1,
     "pilot_confidence": 0.6,
-    "pilot_support": 0.0,
+    "pilot_support": null,
+    "output_label": "benign",
+    "enabled": true
+  },
+  {
+    "pattern_id": "mailbox_account_maintenance_001",
+    "pattern_name": "Mailbox or Account Maintenance Scam",
+    "description": "Claims that the recipient's mailbox, email account, storage, synchronization, or message delivery requires immediate action.",
+    "required_indicators": [
+      "account_maintenance_language"
+    ],
+    "supporting_indicators": [
+      "has_url",
+      "suspicious_url",
+      "credential_request",
+      "verification_request",
+      "urgency",
+      "authentication_failure",
+      "sender_mismatch",
+      "delivery_language"
+    ],
+    "excluded_indicators": [],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.85,
+    "pilot_support": 0.0213,
+    "output_label": "phishing",
+    "enabled": true
+  },
+  {
+    "pattern_id": "advance_fee_fraud_001",
+    "pattern_name": "Donation, Charity, or Advance-Fee Fraud",
+    "description": "Uses donation, inheritance, lottery, charity, compensation, or fund-transfer language to persuade the recipient to reply or provide personal information.",
+    "required_indicators": [
+      "advance_fee_language"
+    ],
+    "supporting_indicators": [
+      "donation_language",
+      "immediate_reply_request",
+      "payment_request",
+      "urgency",
+      "sender_mismatch"
+    ],
+    "excluded_indicators": [],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.85,
+    "pilot_support": 0.0225,
+    "output_label": "phishing",
+    "enabled": true
+  },
+  {
+    "pattern_id": "pharmacy_spam_001",
+    "pattern_name": "Pharmacy or Medication Spam",
+    "description": "Promotes prescription medication, supplements, enhancement products, or medical products through unsolicited or suspicious messaging.",
+    "required_indicators": [
+      "pharmacy_language"
+    ],
+    "supporting_indicators": [
+      "health_language",
+      "has_url",
+      "suspicious_url",
+      "adult_content_language",
+      "spam_marketing_language",
+      "short_email_with_link"
+    ],
+    "excluded_indicators": [
+      "legitimate_brand_domain",
+      "newsletter_language"
+    ],
+    "minimum_supporting_matches": 2,
+    "pilot_confidence": 0.8,
+    "pilot_support": 0.0163,
+    "output_label": "phishing",
+    "enabled": true
+  },
+  {
+    "pattern_id": "adult_content_spam_001",
+    "pattern_name": "Adult or Sexual Content Spam",
+    "description": "Contains unsolicited dating, sexual-content, enhancement-product, or adult-service language combined with links or promotional requests.",
+    "required_indicators": [
+      "adult_content_language"
+    ],
+    "supporting_indicators": [
+      "romance_language",
+      "has_url",
+      "suspicious_url",
+      "short_email_with_link",
+      "spam_marketing_language",
+      "obfuscated_content"
+    ],
+    "excluded_indicators": [],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.8,
+    "pilot_support": 0.04,
+    "output_label": "phishing",
+    "enabled": true
+  },
+  {
+    "pattern_id": "delivery_shipping_scam_001",
+    "pattern_name": "Delivery or Shipping Scam",
+    "description": "Claims that a shipment requires payment, identity verification, or corrective action through a suspicious channel.",
+    "required_indicators": [
+      "delivery_language"
+    ],
+    "supporting_indicators": [
+      "suspicious_url",
+      "payment_request",
+      "urgency",
+      "sender_mismatch",
+      "verification_request",
+      "credential_request",
+      "authentication_failure",
+      "account_threat"
+    ],
+    "excluded_indicators": [
+      "legitimate_brand_domain",
+      "newsletter_language"
+    ],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.85,
+    "pilot_support": 0.01,
+    "output_label": "phishing",
+    "enabled": true
+  },
+  {
+    "pattern_id": "counterfeit_goods_001",
+    "pattern_name": "Counterfeit or Replica Goods Spam",
+    "description": "Promotes replica, imitation, counterfeit, or unauthorized luxury products through unsolicited messaging.",
+    "required_indicators": [
+      "counterfeit_language"
+    ],
+    "supporting_indicators": [
+      "has_url",
+      "suspicious_url",
+      "spam_marketing_language",
+      "short_email_with_link",
+      "brand_mention"
+    ],
+    "excluded_indicators": [],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.8,
+    "pilot_support": 0.01,
+    "output_label": "phishing",
+    "enabled": true
+  },
+  {
+    "pattern_id": "subscription_renewal_001",
+    "pattern_name": "Subscription or Renewal Scam",
+    "description": "Claims that a subscription or recurring payment has failed, expired, or requires suspicious corrective action.",
+    "required_indicators": [
+      "subscription_language"
+    ],
+    "supporting_indicators": [
+      "payment_request",
+      "credential_request",
+      "suspicious_url",
+      "verification_request",
+      "urgency",
+      "sender_mismatch",
+      "authentication_failure",
+      "account_threat"
+    ],
+    "excluded_indicators": [
+      "legitimate_brand_domain",
+      "newsletter_language",
+      "contains_unsubscribe"
+    ],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.85,
+    "pilot_support": 0.0025,
+    "output_label": "phishing",
+    "enabled": true
+  },
+  {
+    "pattern_id": "file_sharing_lure_001",
+    "pattern_name": "File-Sharing or Document Lure",
+    "description": "Claims that a document, shared file, voicemail, fax, or cloud file is waiting for the recipient.",
+    "required_indicators": [
+      "file_sharing_language"
+    ],
+    "supporting_indicators": [
+      "has_url",
+      "suspicious_url",
+      "credential_request",
+      "brand_mention",
+      "document_lure",
+      "urgency",
+      "sender_mismatch",
+      "short_email_with_link",
+      "attachment_present"
+    ],
+    "excluded_indicators": [],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.85,
+    "pilot_support": 0.0063,
+    "output_label": "phishing",
+    "enabled": true
+  },
+  {
+    "pattern_id": "health_medical_scam_001",
+    "pattern_name": "Health or Medical Product Scam",
+    "description": "Uses health, weight-loss, treatment, testing, or medical-product claims to attract the recipient to a suspicious offer.",
+    "required_indicators": [
+      "health_language"
+    ],
+    "supporting_indicators": [
+      "has_url",
+      "suspicious_url",
+      "spam_marketing_language",
+      "document_lure",
+      "urgency",
+      "payment_request"
+    ],
+    "excluded_indicators": [
+      "pharmacy_language"
+    ],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.75,
+    "pilot_support": 0.005,
+    "output_label": "phishing",
+    "enabled": true
+  },
+  {
+    "pattern_id": "romance_dating_lure_001",
+    "pattern_name": "Romance or Dating Lure",
+    "description": "Uses unsolicited dating, romantic, personal-contact, or relationship language to encourage a reply or suspicious link visit.",
+    "required_indicators": [
+      "romance_language"
+    ],
+    "supporting_indicators": [
+      "adult_content_language",
+      "immediate_reply_request",
+      "suspicious_url",
+      "short_email_with_link",
+      "sender_mismatch"
+    ],
+    "excluded_indicators": [
+      "legitimate_brand_domain",
+      "newsletter_language"
+    ],
+    "minimum_supporting_matches": 2,
+    "pilot_confidence": 0.75,
+    "pilot_support": 0.0075,
+    "output_label": "phishing",
+    "enabled": true
+  },
+  {
+    "pattern_id": "content_obfuscation_001",
+    "pattern_name": "Content Obfuscation or Word-Salad Spam",
+    "description": "Uses obfuscated content together with a suspicious destination or another strong malicious signal.",
+    "required_indicators": [
+      "obfuscated_content"
+    ],
+    "supporting_indicators": [
+      "suspicious_url",
+      "credential_request",
+      "authentication_failure",
+      "sender_mismatch",
+      "verification_request",
+      "account_threat"
+    ],
+    "excluded_indicators": [
+      "legitimate_brand_domain",
+      "newsletter_language",
+      "contains_unsubscribe"
+    ],
+    "minimum_supporting_matches": 1,
+    "pilot_confidence": 0.75,
+    "pilot_support": 0.0113,
+    "output_label": "phishing",
     "enabled": true
   }
 ]

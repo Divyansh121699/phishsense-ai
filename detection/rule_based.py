@@ -25,6 +25,54 @@ TRUSTED_BRANDS = [
     "amazon", "microsoft", "paypal", "fedex", "coinbase", "linkedin",
     "netflix", "google", "apple", "bankofamerica", "chase", "wellsfargo"
 ]
+
+TRUSTED_BRAND_DOMAINS = {
+    "amazon": {
+        "amazon.com",
+        "amazon.co.uk",
+        "amazonaws.com",
+    },
+    "microsoft": {
+        "microsoft.com",
+        "office.com",
+        "outlook.com",
+        "live.com",
+    },
+    "paypal": {
+        "paypal.com",
+    },
+    "fedex": {
+        "fedex.com",
+    },
+    "coinbase": {
+        "coinbase.com",
+    },
+    "linkedin": {
+        "linkedin.com",
+    },
+    "netflix": {
+        "netflix.com",
+    },
+    "google": {
+        "google.com",
+        "gmail.com",
+    },
+    "apple": {
+        "apple.com",
+        "icloud.com",
+    },
+    "bankofamerica": {
+        "bankofamerica.com",
+    },
+    "chase": {
+        "chase.com",
+        "jpmorgan.com",
+    },
+    "wellsfargo": {
+        "wellsfargo.com",
+    },
+}
+
 HIGH_RISK_TLDS = [".top", ".xyz", ".icu", ".click", ".info", ".link", ".live", ".monster", ".cam"]
 SHORTENER_DOMAINS = ["bit.ly", "tinyurl.com", "t.co", "goo.gl", "ow.ly", "is.gd", "buff.ly", "rebrand.ly"]
 
@@ -81,6 +129,28 @@ def _domain_from_url(url: str) -> str:
     except Exception:
         return ""
 
+def _domain_matches(
+    sender_domain: str,
+    trusted_domain: str,
+) -> bool:
+    """
+    Return True when the sender domain is either the trusted domain
+    itself or a legitimate subdomain of it.
+    """
+
+    sender_domain = str(sender_domain or "").strip().lower()
+    trusted_domain = str(trusted_domain or "").strip().lower()
+
+    if not sender_domain or not trusted_domain:
+        return False
+
+    return (
+        sender_domain == trusted_domain
+        or sender_domain.endswith(
+            f".{trusted_domain}"
+        )
+    )
+
 
 def _has_ip_domain(domain: str) -> bool:
     return bool(re.fullmatch(r"\d{1,3}(\.\d{1,3}){3}", domain or ""))
@@ -110,7 +180,6 @@ def _add_indicator(indicators, category, rule, weight, evidence="", strength="mo
     })
 
 def build_atomic_indicators(
-        
     data: dict,
     indicators: list[dict],
     brands_in_text: list[str],
@@ -129,18 +198,59 @@ def build_atomic_indicators(
         if indicator.get("weight", 0) > 0
     }
 
-    text = str(data.get("email_text", "")).lower()
+    text = str(
+        data.get("email_text", "")
+    ).lower()
+
+    subject = str(
+        data.get("subject", "")
+    ).lower()
+
+    attachment_names = data.get(
+        "attachment_names",
+        [],
+    ) or data.get(
+        "attachments",
+        [],
+    ) or []
+
+    if isinstance(attachment_names, str):
+        attachment_names = [
+            attachment_names
+        ]
+
+    normalized_attachment_names = [
+        str(name).strip().lower()
+        for name in attachment_names
+        if str(name).strip()
+    ]
+
+    url_count = (
+        _to_int(data.get("url_count"))
+        or len(data.get("urls", []) or [])
+    )
+
+    # --------------------------------------------------
+    # Core phishing indicators
+    # --------------------------------------------------
 
     credential_terms = [
         "password",
         "reset your password",
         "verify your account",
         "confirm your account",
+        "verify your identity",
+        "confirm your identity",
         "login to your account",
+        "log in to your account",
         "sign in to your account",
+        "update your credentials",
         "2fa",
         "mfa code",
         "one-time password",
+        "one time password",
+        "security code",
+        "verification code",
         "otp",
     ]
 
@@ -152,15 +262,20 @@ def build_atomic_indicators(
         "action required",
         "act now",
         "within 24 hours",
+        "within 48 hours",
         "final notice",
         "account suspended",
         "account locked",
         "limited time",
+        "expires today",
+        "avoid suspension",
+        "avoid closure",
     ]
 
     payment_terms = [
         "wire transfer",
         "wire funds",
+        "bank transfer",
         "payment",
         "invoice",
         "gift card",
@@ -168,16 +283,25 @@ def build_atomic_indicators(
         "pay immediately",
         "payment failed",
         "invoice overdue",
+        "outstanding balance",
+        "payment information",
+        "billing information",
+        "credit card",
+        "debit card",
     ]
 
     executive_terms = [
-    "ceo",
-    "chief executive officer",
-    "chief executive",
-    "cfo",
-    "chief financial officer",
-    "company president",
-    "vice president",
+        "ceo",
+        "chief executive officer",
+        "chief executive",
+        "cfo",
+        "chief financial officer",
+        "company president",
+        "vice president",
+        "managing director",
+        "executive director",
+        "your manager",
+        "your supervisor",
     ]
 
     immediate_reply_terms = [
@@ -186,7 +310,214 @@ def build_atomic_indicators(
         "reply now",
         "respond now",
         "reply as soon as possible",
+        "respond as soon as possible",
+        "get back to me immediately",
+        "let me know immediately",
     ]
+
+    account_maintenance_terms = [
+        "mailbox",
+        "mailbox storage",
+        "mailbox quota",
+        "storage quota",
+        "email quota",
+        "mail quota",
+        "upgrade your mailbox",
+        "validate your mailbox",
+        "update your mailbox",
+        "mailbox maintenance",
+        "account maintenance",
+        "account update",
+        "account upgrade",
+        "storage limit",
+        "storage full",
+        "mailbox full",
+        "deactivation",
+        "account deactivation",
+    ]
+
+    # --------------------------------------------------
+    # Spam/scam category indicators
+    # --------------------------------------------------
+
+    donation_terms = [
+        "donation",
+        "donate",
+        "charity",
+        "charitable",
+        "fundraising",
+        "fundraiser",
+        "humanitarian assistance",
+        "support our cause",
+        "help the victims",
+        "relief fund",
+    ]
+
+    advance_fee_terms = [
+        "inheritance",
+        "beneficiary",
+        "unclaimed funds",
+        "unclaimed money",
+        "transfer the funds",
+        "processing fee",
+        "administrative fee",
+        "release fee",
+        "advance fee",
+        "lottery winnings",
+        "won the lottery",
+        "foreign prince",
+        "next of kin",
+        "confidential transaction",
+        "million dollars",
+        "millions of dollars",
+    ]
+
+    pharmacy_terms = [
+        "pharmacy",
+        "prescription",
+        "medication",
+        "medicine",
+        "pills",
+        "generic viagra",
+        "viagra",
+        "cialis",
+        "online pharmacy",
+        "no prescription",
+        "weight loss pills",
+        "pain medication",
+    ]
+
+    adult_content_terms = [
+        "adult content",
+        "adult dating",
+        "explicit content",
+        "sexy singles",
+        "hot singles",
+        "meet singles",
+        "private photos",
+        "nude photos",
+        "xxx",
+        "18+",
+    ]
+
+    delivery_terms = [
+        "package",
+        "parcel",
+        "shipment",
+        "delivery",
+        "delivery failed",
+        "failed delivery",
+        "delivery attempt",
+        "missed delivery",
+        "tracking number",
+        "track your package",
+        "shipping fee",
+        "customs fee",
+        "reschedule delivery",
+        "confirm delivery address",
+    ]
+
+    counterfeit_terms = [
+        "replica",
+        "counterfeit",
+        "designer replica",
+        "luxury replica",
+        "fake designer",
+        "brand-name replica",
+        "cheap rolex",
+        "replica watch",
+        "replica handbag",
+        "discount luxury",
+    ]
+
+    subscription_terms = [
+        "subscription",
+        "subscription expired",
+        "subscription expires",
+        "subscription renewal",
+        "renew your subscription",
+        "membership expired",
+        "membership renewal",
+        "automatic renewal",
+        "cancel your subscription",
+        "billing renewal",
+        "renewal payment",
+    ]
+
+    file_sharing_terms = [
+        "shared a file",
+        "shared a document",
+        "shared document",
+        "shared folder",
+        "view the document",
+        "open the document",
+        "review the document",
+        "download the document",
+        "document shared with you",
+        "file shared with you",
+        "secure document",
+        "view shared file",
+        "onedrive document",
+        "sharepoint document",
+        "google drive document",
+        "dropbox file",
+        "docusign document",
+    ]
+
+    health_terms = [
+        "health remedy",
+        "miracle cure",
+        "cure your",
+        "medical breakthrough",
+        "reverse diabetes",
+        "lose weight fast",
+        "weight loss",
+        "detox",
+        "anti-aging",
+        "anti aging",
+        "natural remedy",
+        "health supplement",
+        "boost immunity",
+        "doctor recommended",
+    ]
+
+    romance_terms = [
+        "dating",
+        "romance",
+        "looking for love",
+        "looking for a relationship",
+        "meet someone",
+        "meet singles",
+        "lonely",
+        "soulmate",
+        "life partner",
+        "love connection",
+        "beautiful woman",
+        "handsome man",
+        "private message",
+    ]
+
+    marketing_terms = [
+        "unsubscribe",
+        "special offer",
+        "limited offer",
+        "promotion",
+        "promotional",
+        "discount",
+        "sale",
+        "coupon",
+        "deal",
+        "buy now",
+        "shop now",
+        "offer expires",
+        "exclusive offer",
+        "newsletter",
+        "marketing preferences",
+    ]
+
+    # --------------------------------------------------
+    # URL and attachment indicators
+    # --------------------------------------------------
 
     suspicious_url_rules = {
         "high-risk tld",
@@ -200,95 +531,346 @@ def build_atomic_indicators(
         "suspicious attachment reference",
     }
 
-    return {
-        "has_url": bool(has_link),
+    dangerous_extensions = {
+        ".exe",
+        ".scr",
+        ".bat",
+        ".cmd",
+        ".com",
+        ".js",
+        ".jse",
+        ".vbs",
+        ".vbe",
+        ".wsf",
+        ".wsh",
+        ".ps1",
+        ".msi",
+        ".hta",
+        ".lnk",
+        ".iso",
+        ".img",
+    }
 
-        "suspicious_url": any(
-            rule in triggered_rules
-            for rule in suspicious_url_rules
-        ),
+    macro_extensions = {
+        ".docm",
+        ".xlsm",
+        ".pptm",
+        ".dotm",
+        ".xltm",
+        ".potm",
+    }
 
-        "credential_request": any(
-            term in text
-            for term in credential_terms
-        ),
+    archive_extensions = {
+        ".zip",
+        ".rar",
+        ".7z",
+        ".tar",
+        ".gz",
+        ".bz2",
+    }
 
-        "urgency": (
-            any(term in text for term in urgency_terms)
-            or "urgent subject" in triggered_rules
-        ),
+    document_extensions = {
+        ".pdf",
+        ".doc",
+        ".docx",
+        ".docm",
+        ".xls",
+        ".xlsx",
+        ".xlsm",
+        ".ppt",
+        ".pptx",
+        ".pptm",
+        ".html",
+        ".htm",
+    }
 
-        "brand_mention": bool(brands_in_text),
+    executable_attachment = any(
+        any(
+            name.endswith(extension)
+            for extension in dangerous_extensions
+        )
+        for name in normalized_attachment_names
+    )
 
-        "sender_mismatch": any(
-            rule.startswith("brand domain mismatch:")
-            for rule in triggered_rules
-        ),
+    macro_attachment = any(
+        any(
+            name.endswith(extension)
+            for extension in macro_extensions
+        )
+        for name in normalized_attachment_names
+    )
 
-        "authentication_failure": any(
-            rule in {
-                "spf fail",
-                "dkim fail",
-                "dmarc fail",
-                "authentication failure",
-            }
-            for rule in triggered_rules
-        ),
+    archive_attachment = any(
+        any(
+            name.endswith(extension)
+            for extension in archive_extensions
+        )
+        for name in normalized_attachment_names
+    )
 
-        "attachment_present": bool(
-            data.get("has_attachment")
-            or _to_int(data.get("attachment_count")) > 0
-        ),
+    document_attachment = any(
+        any(
+            name.endswith(extension)
+            for extension in document_extensions
+        )
+        for name in normalized_attachment_names
+    )
 
-        "dangerous_attachment": any(
+    attachment_present = bool(
+        data.get("has_attachment")
+        or data.get("attachment_present")
+        or _to_int(
+            data.get("attachment_count")
+        ) > 0
+        or normalized_attachment_names
+    )
+
+    image_present = bool(
+        data.get("has_image")
+        or data.get("image_present")
+        or _to_int(
+            data.get("image_count")
+        ) > 0
+    )
+
+    suspicious_url = any(
+        rule in triggered_rules
+        for rule in suspicious_url_rules
+    )
+
+    dangerous_attachment = (
+        executable_attachment
+        or macro_attachment
+        or any(
             rule in triggered_rules
             for rule in dangerous_attachment_rules
-        ),
+        )
+    )
 
-        "image_present": bool(
-            data.get("has_image")
-            or _to_int(data.get("image_count")) > 0
-        ),
+    credential_request = any(
+        term in text
+        for term in credential_terms
+    )
 
-        "payment_request": any(
+    payment_request = any(
+        term in text
+        for term in payment_terms
+    )
+
+    urgency = (
+        any(
             term in text
-            for term in payment_terms
-        ),
+            for term in urgency_terms
+        )
+        or "urgent subject" in triggered_rules
+    )
 
+    authentication_failure = any(
+        rule in {
+            "spf fail",
+            "dkim fail",
+            "dmarc fail",
+            "authentication failure",
+        }
+        for rule in triggered_rules
+    )
+
+    sender_mismatch = any(
+        rule.startswith(
+            "brand domain mismatch:"
+        )
+        for rule in triggered_rules
+    )
+
+    sender_domain = _domain_from_email(
+        str(data.get("sender", ""))
+    )
+
+    legitimate_brand_domain = (
+    any(
+        _domain_matches(
+            sender_domain,
+            trusted_domain,
+        )
+        for brand in brands_in_text
+        for trusted_domain
+        in TRUSTED_BRAND_DOMAINS.get(
+            brand,
+            set(),
+        )
+    )
+    if sender_domain
+    else False
+)
+
+    spam_marketing_language = (
+        any(
+            term in text
+            for term in marketing_terms
+        )
+        or any(
+            indicator.get("category")
+            == "spam_marketing"
+            and indicator.get("weight", 0) > 0
+            for indicator in indicators
+        )
+    )
+
+    return {
+        # Core structural indicators
+        "has_url": bool(has_link),
+        "multiple_urls": (
+            url_count > 1
+            or "multiple urls" in triggered_rules
+        ),
+        "suspicious_url": suspicious_url,
+        "attachment_present": attachment_present,
+        "image_present": image_present,
+
+        # Credential and impersonation indicators
+        "credential_request": credential_request,
+        "urgency": urgency,
+        "brand_mention": bool(brands_in_text),
+        "sender_mismatch": sender_mismatch,
+        "legitimate_brand_domain": legitimate_brand_domain,
+        "authentication_failure": authentication_failure,
+
+        # Payment and BEC indicators
+        "payment_request": payment_request,
         "executive_reference": any(
             term in text
             for term in executive_terms
         ),
-
         "immediate_reply_request": any(
             term in text
             for term in immediate_reply_terms
         ),
 
+        # Content-structure indicators
         "generic_greeting": (
             "generic greeting" in triggered_rules
         ),
-
         "short_email_with_link": (
-            "short email with link" in triggered_rules
+            "short email with link"
+            in triggered_rules
         ),
-
-        "multiple_urls": (
-            "multiple urls" in triggered_rules
-        ),
-
         "obfuscated_content": (
-            "obfuscated pattern" in triggered_rules
+            "obfuscated pattern"
+            in triggered_rules
         ),
 
-        "spam_marketing_language": any(
-            indicator.get("category") == "spam_marketing"
-            and indicator.get("weight", 0) > 0
-            for indicator in indicators
+        # Attachment indicators
+        "dangerous_attachment": dangerous_attachment,
+        "executable_attachment": executable_attachment,
+        "macro_attachment": macro_attachment,
+        "archive_attachment": archive_attachment,
+        "document_attachment": document_attachment,
+
+        # Category-specific semantic indicators
+        "account_maintenance_language": any(
+            term in text
+            for term in account_maintenance_terms
+        ),
+        "donation_language": any(
+            term in text
+            for term in donation_terms
+        ),
+        "advance_fee_language": any(
+            term in text
+            for term in advance_fee_terms
+        ),
+        "pharmacy_language": any(
+            term in text
+            for term in pharmacy_terms
+        ),
+        "adult_content_language": any(
+            term in text
+            for term in adult_content_terms
+        ),
+        "delivery_language": any(
+            term in text
+            for term in delivery_terms
+        ),
+        "counterfeit_language": any(
+            term in text
+            for term in counterfeit_terms
+        ),
+        "subscription_language": any(
+            term in text
+            for term in subscription_terms
+        ),
+        "file_sharing_language": any(
+            term in text
+            for term in file_sharing_terms
+        ),
+        "health_language": any(
+            term in text
+            for term in health_terms
+        ),
+        "romance_language": any(
+            term in text
+            for term in romance_terms
+        ),
+        "spam_marketing_language":
+            spam_marketing_language,
+
+        # Helpful benign-marketing exclusions
+        "contains_unsubscribe": (
+            "unsubscribe" in text
+        ),
+        "newsletter_language": any(
+            term in text
+            for term in {
+                "newsletter",
+                "email preferences",
+                "marketing preferences",
+                "manage preferences",
+                "view in browser",
+            }
+        ),
+
+        # Combined intent indicators
+        "account_threat": any(
+            term in text
+            for term in {
+                "account suspended",
+                "account locked",
+                "account disabled",
+                "account deactivated",
+                "unauthorized activity",
+                "unusual activity",
+                "security alert",
+            }
+        ),
+        "verification_request": any(
+            term in text
+            for term in {
+                "verify your account",
+                "confirm your account",
+                "verify your identity",
+                "confirm your identity",
+                "verification required",
+            }
+        ),
+        "document_lure": (
+            document_attachment
+            or any(
+                term in text
+                for term in file_sharing_terms
+            )
+        ),
+        "subject_urgency": any(
+            term in subject
+            for term in {
+                "urgent",
+                "action required",
+                "immediate",
+                "final notice",
+                "account locked",
+                "verify",
+            }
         ),
     }
-
-
 # ========== DETECTION FUNCTION ==========
 def analyze_email(file_path, true_label=None):
     with open(file_path, "r", encoding="utf-8") as f:
@@ -317,12 +899,44 @@ def analyze_email(file_path, true_label=None):
     if any(x in sender for x in ["support@", "no-reply@", "noreply@"] ) and not any(t in sender for t in TRUSTED_BRANDS):
         _add_indicator(indicators, "sender_domain", "suspicious sender alias", 10, sender, "moderate")
 
-    brands_in_text = [brand for brand in TRUSTED_BRANDS if brand in text]
+    brands_in_text = [
+        brand
+        for brand in TRUSTED_BRANDS
+        if brand in text
+    ]
+
     for brand in brands_in_text:
-        if sender_domain and brand not in sender_domain:
-            _add_indicator(indicators, "sender_domain", f"brand domain mismatch:{brand}", 12, f"sender={sender_domain}", "moderate")
-        else:
-            _add_indicator(indicators, "sender_domain", f"brand mention:{brand}", 1, brand, "weak")
+        trusted_domains = TRUSTED_BRAND_DOMAINS.get(
+            brand,
+            set(),
+        )
+
+        sender_matches_brand = any(
+            _domain_matches(
+                sender_domain,
+                trusted_domain,
+            )
+            for trusted_domain in trusted_domains
+        )
+
+        if sender_domain and not sender_matches_brand:
+            _add_indicator(
+                indicators,
+                "sender_domain",
+                f"brand domain mismatch:{brand}",
+                12,
+                f"sender={sender_domain}",
+                "moderate",
+            )
+        elif sender_matches_brand:
+            _add_indicator(
+                indicators,
+                "sender_domain",
+                f"brand mention:{brand}",
+                1,
+                brand,
+                "weak",
+            )
 
     if re.search(r"^(dear\s+(user|customer|member|client))", body_text[:120] or text[:120]):
         _add_indicator(indicators, "content", "generic greeting", 2, "Dear user/customer", "weak")
@@ -334,8 +948,15 @@ def analyze_email(file_path, true_label=None):
     if has_link:
         _add_indicator(indicators, "url_routing", "link detected", 2, str(url_count), "weak")
 
-    if url_count >= 3:
-        _add_indicator(indicators, "url_routing", "multiple URLs", 3, str(url_count), "weak")
+    if url_count > 1:
+        _add_indicator(
+            indicators,
+            "url_routing",
+            "multiple URLs",
+            3,
+            str(url_count),
+            "weak",
+        )
 
     for url in urls:
         domain = _domain_from_url(url)
@@ -398,17 +1019,164 @@ def analyze_email(file_path, true_label=None):
             _add_indicator(indicators, "content", "obfuscated pattern", 10, pattern, "moderate")
 
     # 5. Attachment/image indicators
-    attachment_count = _to_int(data.get("attachment_count"))
-    if data.get("has_attachment") or attachment_count > 0:
-        _add_indicator(indicators, "attachment", "attachment present", 2, str(attachment_count), "weak")
+    attachment_count = _to_int(
+        data.get("attachment_count")
+    )
 
-    if data.get("has_image") or _to_int(data.get("image_count")) > 0:
-        _add_indicator(indicators, "attachment", "image present", 1, str(data.get("image_count", 0)), "weak")
+    attachment_names = (
+        data.get("attachment_names")
+        or data.get("attachments")
+        or []
+    )
 
-    if any(ext in body_html for ext in [".exe", ".scr", ".bat", ".cmd", ".js"]):
-        _add_indicator(indicators, "attachment", "dangerous attachment reference", 16, "executable/script reference", "critical")
-    elif any(ext in body_html for ext in [".html", ".htm"]):
-        _add_indicator(indicators, "attachment", "suspicious attachment reference", 10, "HTML attachment reference", "moderate")
+    if isinstance(attachment_names, str):
+        attachment_names = [
+            attachment_names
+        ]
+
+    attachment_names = [
+        str(name).strip().lower()
+        for name in attachment_names
+        if str(name).strip()
+    ]
+
+    attachment_text = " ".join(
+        attachment_names
+    )
+
+    if (
+        data.get("has_attachment")
+        or data.get("attachment_present")
+        or attachment_count > 0
+        or attachment_names
+    ):
+        _add_indicator(
+            indicators,
+            "attachment",
+            "attachment present",
+            2,
+            (
+                ", ".join(attachment_names)
+                if attachment_names
+                else str(attachment_count)
+            ),
+            "weak",
+        )
+
+    if (
+        data.get("has_image")
+        or data.get("image_present")
+        or _to_int(data.get("image_count")) > 0
+    ):
+        _add_indicator(
+            indicators,
+            "attachment",
+            "image present",
+            1,
+            str(data.get("image_count", 0)),
+            "weak",
+        )
+
+    dangerous_extensions = [
+        ".exe",
+        ".scr",
+        ".bat",
+        ".cmd",
+        ".com",
+        ".js",
+        ".jse",
+        ".vbs",
+        ".vbe",
+        ".wsf",
+        ".wsh",
+        ".ps1",
+        ".msi",
+        ".hta",
+        ".lnk",
+        ".iso",
+        ".img",
+    ]
+
+    macro_extensions = [
+        ".docm",
+        ".xlsm",
+        ".pptm",
+        ".dotm",
+        ".xltm",
+        ".potm",
+    ]
+
+    archive_extensions = [
+        ".zip",
+        ".rar",
+        ".7z",
+        ".tar",
+        ".gz",
+        ".bz2",
+    ]
+
+    html_extensions = [
+        ".html",
+        ".htm",
+    ]
+
+    if any(
+        extension in attachment_text
+        or extension in body_html
+        for extension in dangerous_extensions
+    ):
+        _add_indicator(
+            indicators,
+            "attachment",
+            "dangerous attachment reference",
+            16,
+            attachment_text
+            or "executable/script reference",
+            "critical",
+        )
+
+    elif any(
+        extension in attachment_text
+        or extension in body_html
+        for extension in macro_extensions
+    ):
+        _add_indicator(
+            indicators,
+            "attachment",
+            "dangerous attachment reference",
+            16,
+            attachment_text
+            or "macro-enabled document",
+            "critical",
+        )
+
+    elif any(
+        extension in attachment_text
+        for extension in archive_extensions
+    ):
+        _add_indicator(
+            indicators,
+            "attachment",
+            "suspicious attachment reference",
+            10,
+            attachment_text,
+            "moderate",
+        )
+
+    elif any(
+        extension in attachment_text
+        or extension in body_html
+        for extension in html_extensions
+    ):
+        _add_indicator(
+            indicators,
+            "attachment",
+            "suspicious attachment reference",
+            10,
+            attachment_text
+            or "HTML attachment reference",
+            "moderate",
+        )
 
     # Weighted scoring with weak-signal cap.
     critical_score = sum(i["weight"] for i in indicators if i["strength"] == "critical" and i["weight"] > 0)
@@ -526,10 +1294,34 @@ def analyze_email(file_path, true_label=None):
         "num_social_engineering_hits": len([i for i in indicators if i["category"] == "social_engineering"]),
         "num_spam_hits": len([i for i in indicators if i["category"] == "spam_marketing"]),
         "brand_mentions": brands_in_text,
-        "has_attachment": bool(data.get("has_attachment")),
+        "has_attachment": bool(
+            data.get("has_attachment")
+            or data.get("attachment_present")
+            or attachment_count > 0
+            or attachment_names
+        ),
+        "attachment_present": bool(
+            data.get("has_attachment")
+            or data.get("attachment_present")
+            or attachment_count > 0
+            or attachment_names
+        ),
         "attachment_count": attachment_count,
-        "has_image": bool(data.get("has_image")),
-        "image_count": _to_int(data.get("image_count")),
+        "attachment_names": attachment_names,
+
+        "has_image": bool(
+            data.get("has_image")
+            or data.get("image_present")
+            or _to_int(data.get("image_count")) > 0
+        ),
+        "image_present": bool(
+            data.get("has_image")
+            or data.get("image_present")
+            or _to_int(data.get("image_count")) > 0
+        ),
+        "image_count": _to_int(
+            data.get("image_count")
+        ),
         "is_html": bool(data.get("is_html")),
         "is_plain_text": bool(data.get("is_plain_text")),
         "filename": Path(file_path).name,

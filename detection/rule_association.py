@@ -11,7 +11,7 @@ except ImportError:
 # ========== CONFIG ==========
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 PATTERN_FILE = PROJECT_ROOT / "rules" / "association_patterns.json"
-
+_PRINTED_PATTERN_WARNINGS = False
 DEFAULT_PATTERN_THRESHOLD = 0.70
 
 
@@ -51,15 +51,34 @@ def validate_pattern(
     """
     Return indicator names used by a pattern that do not exist in
     the atomic-indicator output.
+
+    Required, supporting, and excluded indicators are validated.
     """
 
-    required = pattern.get("required_indicators", [])
-    supporting = pattern.get("supporting_indicators", [])
+    required = pattern.get(
+        "required_indicators",
+        [],
+    )
 
-    referenced_indicators = set(required + supporting)
+    supporting = pattern.get(
+        "supporting_indicators",
+        [],
+    )
+
+    excluded = pattern.get(
+        "excluded_indicators",
+        [],
+    )
+
+    referenced_indicators = set(
+        required
+        + supporting
+        + excluded
+    )
 
     return sorted(
-        referenced_indicators - available_indicators
+        referenced_indicators
+        - available_indicators
     )
 
 
@@ -70,6 +89,11 @@ def match_pattern(
 ) -> dict[str, Any]:
     """
     Check whether one association pattern matches an email.
+
+    A pattern matches when:
+    1. Every required indicator is active.
+    2. The minimum number of supporting indicators is active.
+    3. No excluded indicator is active.
     """
 
     required_indicators = pattern.get(
@@ -82,6 +106,11 @@ def match_pattern(
         [],
     )
 
+    excluded_indicators = pattern.get(
+        "excluded_indicators",
+        [],
+    )
+
     minimum_supporting_matches = int(
         pattern.get(
             "minimum_supporting_matches",
@@ -89,22 +118,53 @@ def match_pattern(
         )
     )
 
+    output_label = str(
+        pattern.get(
+            "output_label",
+            "phishing",
+        )
+    ).strip().lower()
+
+    if output_label not in {
+        "phishing",
+        "benign",
+    }:
+        output_label = "phishing"
+
     matched_required = [
         indicator
         for indicator in required_indicators
-        if atomic_indicators.get(indicator, False)
+        if atomic_indicators.get(
+            indicator,
+            False,
+        )
     ]
 
     missing_required = [
         indicator
         for indicator in required_indicators
-        if not atomic_indicators.get(indicator, False)
+        if not atomic_indicators.get(
+            indicator,
+            False,
+        )
     ]
 
     matched_supporting = [
         indicator
         for indicator in supporting_indicators
-        if atomic_indicators.get(indicator, False)
+        if atomic_indicators.get(
+            indicator,
+            False,
+        )
+    ]
+
+    matched_excluded = [
+        indicator
+        for indicator in excluded_indicators
+        if atomic_indicators.get(
+            indicator,
+            False,
+        )
     ]
 
     required_match = (
@@ -117,16 +177,26 @@ def match_pattern(
         >= minimum_supporting_matches
     )
 
-    matched = required_match and supporting_match
+    excluded_match = bool(
+        matched_excluded
+    )
+
+    matched = (
+        required_match
+        and supporting_match
+        and not excluded_match
+    )
 
     required_coverage = (
-        len(matched_required) / len(required_indicators)
+        len(matched_required)
+        / len(required_indicators)
         if required_indicators
         else 1.0
     )
 
     supporting_coverage = (
-        len(matched_supporting) / len(supporting_indicators)
+        len(matched_supporting)
+        / len(supporting_indicators)
         if supporting_indicators
         else 1.0
     )
@@ -138,10 +208,26 @@ def match_pattern(
         )
     )
 
-    if matched:
-        confidence = base_confidence
-    else:
-        confidence = 0.0
+    base_confidence = max(
+        0.0,
+        min(base_confidence, 1.0),
+    )
+
+    confidence = (
+        base_confidence
+        if matched
+        else 0.0
+    )
+
+    raw_support = pattern.get(
+        "pilot_support"
+    )
+
+    pilot_support = (
+        float(raw_support)
+        if raw_support is not None
+        else None
+    )
 
     return {
         "pattern_id": pattern.get(
@@ -156,28 +242,58 @@ def match_pattern(
             "description",
             "",
         ),
+        "output_label": output_label,
         "matched": matched,
         "confidence": round(
             confidence,
             3,
         ),
-        "pilot_support": float(
-            pattern.get(
-                "pilot_support",
-                0.0,
-            )
-        ),
-        "required_indicators": required_indicators,
-        "supporting_indicators": supporting_indicators,
-        "matched_required_indicators": matched_required,
-        "missing_required_indicators": missing_required,
-        "matched_supporting_indicators": matched_supporting,
+        "pilot_support": pilot_support,
+
+        "required_indicators":
+            required_indicators,
+
+        "supporting_indicators":
+            supporting_indicators,
+
+        "excluded_indicators":
+            excluded_indicators,
+
+        "matched_required_indicators":
+            matched_required,
+
+        "missing_required_indicators":
+            missing_required,
+
+        "matched_supporting_indicators":
+            matched_supporting,
+
+        "matched_excluded_indicators":
+            matched_excluded,
+
         "minimum_supporting_matches":
             minimum_supporting_matches,
+
+        "supporting_match_count":
+            len(matched_supporting),
+
+        "excluded_match_count":
+            len(matched_excluded),
+
+        "required_match":
+            required_match,
+
+        "supporting_match":
+            supporting_match,
+
+        "excluded_match":
+            excluded_match,
+
         "required_coverage": round(
             required_coverage,
             3,
         ),
+
         "supporting_coverage": round(
             supporting_coverage,
             3,
@@ -360,6 +476,22 @@ def build_association_result(
                 missing_indicator_names
             )
 
+    # Display association-rule indicator mismatches during execution.
+    # This helps identify indicators referenced in association_patterns.json
+    # that are not generated by build_atomic_indicators() in rule_based.py.
+    global _PRINTED_PATTERN_WARNINGS
+
+    if pattern_warnings and not _PRINTED_PATTERN_WARNINGS:
+        print("\n⚠ Association-rule indicator mismatches found:")
+
+        for pattern_id, missing_indicators in pattern_warnings.items():
+            print(
+                f"  - {pattern_id}: "
+                f"{', '.join(missing_indicators)}"
+            )
+
+        _PRINTED_PATTERN_WARNINGS = True
+
     pattern_results = match_patterns(
         atomic_indicators=atomic_indicators,
         patterns=patterns,
@@ -371,14 +503,78 @@ def build_association_result(
         if pattern.get("matched")
     ]
 
-    confidence = calculate_pattern_confidence(
-        matched_patterns=matched_patterns,
-        strategy=confidence_strategy,
+    matched_phishing_patterns = [
+        pattern
+        for pattern in matched_patterns
+        if pattern.get(
+            "output_label",
+            "phishing",
+        ) == "phishing"
+    ]
+
+    matched_benign_patterns = [
+        pattern
+        for pattern in matched_patterns
+        if pattern.get(
+            "output_label"
+        ) == "benign"
+    ]
+
+    phishing_confidence = (
+        calculate_pattern_confidence(
+            matched_patterns=
+                matched_phishing_patterns,
+            strategy=confidence_strategy,
+        )
+    )
+
+    benign_confidence = (
+        calculate_pattern_confidence(
+            matched_patterns=
+                matched_benign_patterns,
+            strategy=confidence_strategy,
+        )
+    )
+
+    benign_marketing_match = any(
+        pattern.get("pattern_id")
+        == "marketing_spam_001"
+        for pattern in matched_benign_patterns
+    )
+
+    strong_phishing_indicators = {
+        "suspicious_url",
+        "credential_request",
+        "authentication_failure",
+        "sender_mismatch",
+        "dangerous_attachment",
+        "executable_attachment",
+        "macro_attachment",
+        "advance_fee_language",
+        "counterfeit_language",
+    }
+
+    active_strong_phishing_indicators = [
+        indicator_name
+        for indicator_name
+        in strong_phishing_indicators
+        if atomic_indicators.get(
+            indicator_name,
+            False,
+        )
+    ]
+
+    strong_phishing_evidence = bool(
+        active_strong_phishing_indicators
     )
 
     is_phishing = (
-        bool(matched_patterns)
-        and confidence >= threshold
+        bool(matched_phishing_patterns)
+        and phishing_confidence >= threshold
+        and (
+            not benign_marketing_match
+            or strong_phishing_evidence
+        )
     )
 
     prediction = (
@@ -386,6 +582,18 @@ def build_association_result(
         if is_phishing
         else "benign"
     )
+
+    if is_phishing:
+        confidence = phishing_confidence
+    elif matched_benign_patterns:
+        confidence = benign_confidence
+    elif matched_phishing_patterns:
+        confidence = round(
+            1.0 - phishing_confidence,
+            3,
+        )
+    else:
+        confidence = 0.0
 
     actual_label = str(
         heuristic_result.get(
@@ -412,9 +620,20 @@ def build_association_result(
 
     strongest_pattern = None
 
-    if matched_patterns:
+    if is_phishing:
+        strongest_pattern_candidates = (
+            matched_phishing_patterns
+        )
+    elif matched_benign_patterns:
+        strongest_pattern_candidates = (
+            matched_benign_patterns
+        )
+    else:
+        strongest_pattern_candidates = []
+
+    if strongest_pattern_candidates:
         strongest_pattern = max(
-            matched_patterns,
+            strongest_pattern_candidates,
             key=lambda pattern: pattern.get(
                 "confidence",
                 0.0,
@@ -450,16 +669,42 @@ def build_association_result(
 
         "prediction": prediction,
         "confidence": confidence,
+        "phishing_confidence":
+            phishing_confidence,
+        "benign_confidence":
+            benign_confidence,
         "is_phishing": is_phishing,
         "threshold": threshold,
         "confidence_strategy":
             confidence_strategy,
+
+        "benign_marketing_match":
+            benign_marketing_match,
+
+        "strong_phishing_evidence":
+            strong_phishing_evidence,
+
+        "active_strong_phishing_indicators":
+            active_strong_phishing_indicators,
+
+        "phishing_suppressed_by_benign_pattern": (
+            bool(matched_phishing_patterns)
+            and phishing_confidence >= threshold
+            and benign_marketing_match
+            and not strong_phishing_evidence
+        ),
 
         "actual_label": actual_label,
         "correct": correct,
 
         "matched_pattern_count":
             len(matched_patterns),
+
+        "matched_phishing_pattern_count":
+            len(matched_phishing_patterns),
+
+        "matched_benign_pattern_count":
+            len(matched_benign_patterns),
 
         "matched_pattern_ids": [
             pattern.get(
@@ -475,6 +720,38 @@ def build_association_result(
                 "",
             )
             for pattern in matched_patterns
+        ],
+
+        "matched_phishing_pattern_ids": [
+            pattern.get(
+                "pattern_id",
+                "",
+            )
+            for pattern in matched_phishing_patterns
+        ],
+
+        "matched_phishing_pattern_names": [
+            pattern.get(
+                "pattern_name",
+                "",
+            )
+            for pattern in matched_phishing_patterns
+        ],
+
+        "matched_benign_pattern_ids": [
+            pattern.get(
+                "pattern_id",
+                "",
+            )
+            for pattern in matched_benign_patterns
+        ],
+
+        "matched_benign_pattern_names": [
+            pattern.get(
+                "pattern_name",
+                "",
+            )
+            for pattern in matched_benign_patterns
         ],
 
         "strongest_pattern": (
@@ -503,6 +780,11 @@ def build_association_result(
 
         "atomic_indicators":
             atomic_indicators,
+
+        "heuristic_indicators": heuristic_result.get(
+            "indicators",
+            [],
+        ),
 
         "active_indicators": [
             indicator_name

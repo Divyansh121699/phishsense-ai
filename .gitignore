@@ -19,3 +19,12 @@ temp/
 # macOS
 .DS_Store
 venv_hopper/
+
+# Large embeddings / external model resources
+resources/embeddings/
+
+# Trained model outputs
+training/models/*/output/
+
+# Local development / research datasets
+data/sample/

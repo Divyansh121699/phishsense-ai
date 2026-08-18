@@ -1573,6 +1573,16 @@ def main():
         final_model_dir
     )
 
+    # Remove temporary checkpoint after saving
+    # the final reusable Hugging Face model.
+    if best_model_path.exists():
+        best_model_path.unlink()
+
+        print(
+            "\nTemporary best_model.pt "
+            "checkpoint removed."
+        )
+
     # ========================================================
     # SAVE PREDICTIONS
     # ========================================================

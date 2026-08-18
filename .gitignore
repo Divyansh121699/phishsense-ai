@@ -28,3 +28,7 @@ training/models/*/output/
 
 # Local development / research datasets
 data/sample/
+
+# Slurm job logs
+*.out
+*.err

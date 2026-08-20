@@ -12,7 +12,7 @@
 #SBATCH --error=roberta_%j.err
 
 echo "=================================================="
-echo "PhishSense AI - RoBERTa Development Run"
+echo "PhishSense AI - RoBERTa Preliminary 3000 Run"
 echo "Job ID: $SLURM_JOB_ID"
 echo "Node: $(hostname)"
 echo "Started: $(date)"
@@ -45,8 +45,8 @@ echo "Starting RoBERTa training..."
 echo
 
 python training/models/roberta/train.py \
-    --dataset data/sample/development_800.csv \
-    --splits data/sample/development_800_splits.csv
+    --dataset data/sample/preliminary_3000.csv \
+    --splits data/sample/preliminary_3000_splits.csv
 
 EXIT_CODE=$?
 

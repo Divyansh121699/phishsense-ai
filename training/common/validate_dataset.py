@@ -57,78 +57,180 @@ def load_dataset(file_path):
     file_path = Path(file_path)
 
     if not file_path.exists():
-        raise FileNotFoundError(f"Dataset not found: {file_path}")
+        raise FileNotFoundError(
+            f"Dataset not found: {file_path}"
+        )
 
     if file_path.suffix.lower() != ".csv":
-        raise ValueError("Dataset must be a CSV file.")
+        raise ValueError(
+            "Dataset must be a CSV file."
+        )
 
     return pd.read_csv(file_path)
 
 
+def normalize_body_text(series):
+    return (
+        series
+        .fillna("")
+        .astype(str)
+        .str.lower()
+        .str.strip()
+        .str.replace(
+            r"\s+",
+            " ",
+            regex=True,
+        )
+    )
+
+
+# -------------------------------------------------------------------
+# 1. Schema validation
+# -------------------------------------------------------------------
+
 def validate_columns(df):
     missing_columns = [
-        column for column in REQUIRED_COLUMNS
+        column
+        for column in REQUIRED_COLUMNS
         if column not in df.columns
     ]
 
     extra_columns = [
-        column for column in df.columns
+        column
+        for column in df.columns
         if column not in REQUIRED_COLUMNS
     ]
 
     print_section("1. SCHEMA VALIDATION")
 
     if missing_columns:
-        print("FAIL: Missing required columns:")
+        print(
+            "FAIL: Missing required columns:"
+        )
+
         for column in missing_columns:
-            print(f"  - {column}")
+            print(
+                f"  - {column}"
+            )
     else:
-        print("PASS: All required columns are present.")
+        print(
+            "PASS: All required columns are present."
+        )
 
     if extra_columns:
-        print("\nAdditional columns detected:")
+        print(
+            "\nAdditional columns detected:"
+        )
+
         for column in extra_columns:
-            print(f"  - {column}")
+            print(
+                f"  - {column}"
+            )
     else:
-        print("PASS: No unexpected columns detected.")
+        print(
+            "PASS: No unexpected columns detected."
+        )
 
     return len(missing_columns) == 0
 
 
+# -------------------------------------------------------------------
+# 2. Email ID validation
+# -------------------------------------------------------------------
+
 def validate_email_ids(df):
-    print_section("2. EMAIL ID VALIDATION")
+    print_section(
+        "2. EMAIL ID VALIDATION"
+    )
 
-    missing_ids = df["email_id"].isna().sum()
+    missing_ids = (
+        df["email_id"]
+        .isna()
+        .sum()
+    )
 
-    duplicate_mask = df["email_id"].duplicated(keep=False)
-    duplicate_rows = df.loc[
-        duplicate_mask,
-        ["email_id", "source_dataset", "source_file"]
-    ]
+    duplicate_counts = (
+        df["email_id"]
+        .dropna()
+        .value_counts()
+    )
 
-    print(f"Missing email_id values: {missing_ids}")
-    print(f"Unique email_id values: {df['email_id'].nunique(dropna=True)}")
-    print(f"Total rows: {len(df)}")
+    duplicate_counts = (
+        duplicate_counts[
+            duplicate_counts > 1
+        ]
+    )
+
+    duplicate_id_groups = len(
+        duplicate_counts
+    )
+
+    duplicate_rows_involved = int(
+        duplicate_counts.sum()
+    )
+
+    extra_duplicate_copies = int(
+        (duplicate_counts - 1).sum()
+    )
+
+    print(
+        f"Missing email_id values: "
+        f"{missing_ids}"
+    )
+
+    print(
+        f"Unique email_id values: "
+        f"{df['email_id'].nunique(dropna=True)}"
+    )
+
+    print(
+        f"Total rows: {len(df)}"
+    )
+
+    print(
+        f"Duplicate email_id groups: "
+        f"{duplicate_id_groups}"
+    )
+
+    print(
+        f"Rows involved in duplicate IDs: "
+        f"{duplicate_rows_involved}"
+    )
+
+    print(
+        "Extra duplicate-ID copies "
+        f"to remove: {extra_duplicate_copies}"
+    )
 
     if missing_ids == 0:
-        print("PASS: No missing email IDs.")
-    else:
-        print("WARNING: Missing email IDs detected.")
-
-    if duplicate_rows.empty:
-        print("PASS: All email IDs are unique.")
+        print(
+            "PASS: No missing email IDs."
+        )
     else:
         print(
-            f"WARNING: {duplicate_rows['email_id'].nunique()} "
-            "duplicated email ID(s) detected."
+            "WARNING: Missing email IDs detected."
         )
 
-        print("\nDuplicate email ID records:")
-        print(duplicate_rows.to_string(index=False))
+    if duplicate_id_groups == 0:
+        print(
+            "PASS: All email IDs are unique."
+        )
+    else:
+        print(
+            "WARNING: Duplicate email IDs detected. "
+            "Extra copies should be removed "
+            "before analysis."
+        )
 
+
+# -------------------------------------------------------------------
+# 3. Label validation
+# -------------------------------------------------------------------
 
 def validate_labels(df):
-    print_section("3. LABEL VALIDATION")
+    print_section(
+        "3. LABEL VALIDATION"
+    )
 
     labels = (
         df["high_level_category"]
@@ -139,32 +241,63 @@ def validate_labels(df):
     )
 
     invalid_labels = sorted(
-        set(labels.unique()) - VALID_HIGH_LEVEL_LABELS
+        set(labels.unique())
+        - VALID_HIGH_LEVEL_LABELS
     )
 
-    missing_labels = df["high_level_category"].isna().sum()
+    missing_labels = (
+        df["high_level_category"]
+        .isna()
+        .sum()
+    )
 
-    print(f"Missing high-level labels: {missing_labels}")
+    print(
+        f"Missing high-level labels: "
+        f"{missing_labels}"
+    )
 
-    print("\nHigh-level category distribution:")
+    print(
+        "\nHigh-level category distribution:"
+    )
+
     print(
         df["high_level_category"]
-        .value_counts(dropna=False)
+        .value_counts(
+            dropna=False
+        )
         .to_string()
     )
 
     if invalid_labels:
-        print("\nWARNING: Unexpected high-level labels detected:")
-        for label in invalid_labels:
-            print(f"  - {label}")
-    else:
-        print("\nPASS: High-level labels are valid.")
+        print(
+            "\nWARNING: Unexpected "
+            "high-level labels detected:"
+        )
 
+        for label in invalid_labels:
+            print(
+                f"  - {label}"
+            )
+    else:
+        print(
+            "\nPASS: High-level labels are valid."
+        )
+
+
+# -------------------------------------------------------------------
+# 4. Body text validation
+# -------------------------------------------------------------------
 
 def check_body_text(df):
-    print_section("4. BODY TEXT VALIDATION")
+    print_section(
+        "4. BODY TEXT VALIDATION"
+    )
 
-    missing_body = df["body_text"].isna().sum()
+    missing_body = (
+        df["body_text"]
+        .isna()
+        .sum()
+    )
 
     empty_body = (
         df["body_text"]
@@ -175,22 +308,46 @@ def check_body_text(df):
         .sum()
     )
 
-    print(f"Missing body_text values: {missing_body}")
-    print(f"Empty body_text values: {empty_body}")
+    print(
+        f"Missing body_text values: "
+        f"{missing_body}"
+    )
 
-    if missing_body == 0 and empty_body == 0:
-        print("PASS: Every record contains body text.")
+    print(
+        f"Empty body_text values: "
+        f"{empty_body}"
+    )
+
+    if (
+        missing_body == 0
+        and empty_body == 0
+    ):
+        print(
+            "PASS: Every record contains body text."
+        )
     else:
         print(
-            "WARNING: Some records do not contain usable body text."
+            "WARNING: Some records do not "
+            "contain usable body text."
         )
 
 
+# -------------------------------------------------------------------
+# 5. Missing value summary
+# -------------------------------------------------------------------
+
 def check_missing_values(df):
-    print_section("5. MISSING VALUE SUMMARY")
+    print_section(
+        "5. MISSING VALUE SUMMARY"
+    )
 
     missing = df.isna().sum()
-    missing_percent = (missing / len(df) * 100).round(2)
+
+    missing_percent = (
+        missing
+        / len(df)
+        * 100
+    ).round(2)
 
     missing_table = pd.DataFrame(
         {
@@ -199,115 +356,175 @@ def check_missing_values(df):
         }
     )
 
-    missing_table = missing_table[
-        missing_table["missing_count"] > 0
-    ].sort_values(
-        "missing_percent",
-        ascending=False
+    missing_table = (
+        missing_table[
+            missing_table[
+                "missing_count"
+            ] > 0
+        ]
+        .sort_values(
+            "missing_percent",
+            ascending=False,
+        )
     )
 
     if missing_table.empty:
-        print("PASS: No missing values detected.")
+        print(
+            "PASS: No missing values detected."
+        )
     else:
-        print(missing_table.to_string())
+        print(
+            missing_table.to_string()
+        )
 
+
+# -------------------------------------------------------------------
+# 6. Duplicate content check
+# -------------------------------------------------------------------
 
 def check_duplicates(df):
-    print_section("6. DUPLICATE CONTENT CHECK")
-
-    normalized_body = (
-        df["body_text"]
-        .fillna("")
-        .astype(str)
-        .str.lower()
-        .str.strip()
-        .str.replace(r"\s+", " ", regex=True)
+    print_section(
+        "6. DUPLICATE CONTENT CHECK"
     )
 
-    duplicate_body_mask = normalized_body.duplicated(
-        keep=False
-    ) & normalized_body.ne("")
+    normalized_body = (
+        normalize_body_text(
+            df["body_text"]
+        )
+    )
 
-    duplicate_body_count = duplicate_body_mask.sum()
+    duplicate_body_mask = (
+        normalized_body.duplicated(
+            keep=False
+        )
+        & normalized_body.ne("")
+    )
+
+    duplicate_body_count = int(
+        duplicate_body_mask.sum()
+    )
 
     duplicate_groups = (
-        normalized_body[duplicate_body_mask]
+        normalized_body[
+            duplicate_body_mask
+        ]
         .value_counts()
     )
 
+    extra_duplicate_copies = int(
+        (duplicate_groups - 1).sum()
+    )
+
     print(
-        f"Rows participating in duplicate body-text groups: "
+        "Rows participating in duplicate "
+        f"body-text groups: "
         f"{duplicate_body_count}"
     )
 
     print(
-        f"Number of duplicate body-text groups: "
+        "Number of duplicate body-text groups: "
         f"{len(duplicate_groups)}"
     )
 
+    print(
+        "Extra duplicate body-text copies: "
+        f"{extra_duplicate_copies}"
+    )
+
     if duplicate_body_count == 0:
-        print("PASS: No duplicate body text detected.")
+        print(
+            "PASS: No duplicate body text detected."
+        )
     else:
         print(
             "WARNING: Duplicate body text exists. "
-            "Review before creating train/validation/test splits."
+            "Repeated copies must not cross "
+            "train/validation/test splits."
         )
 
 
+# -------------------------------------------------------------------
+# 7. Duplicate label conflict check
+# -------------------------------------------------------------------
+
 def check_label_conflicts(df):
-    print_section("7. DUPLICATE LABEL CONFLICT CHECK")
-
-    temp = df[
-        ["body_text", "high_level_category"]
-    ].copy()
-
-    temp["normalized_body"] = (
-        temp["body_text"]
-        .fillna("")
-        .astype(str)
-        .str.lower()
-        .str.strip()
-        .str.replace(r"\s+", " ", regex=True)
+    print_section(
+        "7. DUPLICATE LABEL CONFLICT CHECK"
     )
 
-    temp = temp[temp["normalized_body"] != ""]
+    temp = df[
+        [
+            "body_text",
+            "high_level_category",
+        ]
+    ].copy()
+
+    temp[
+        "normalized_body"
+    ] = normalize_body_text(
+        temp["body_text"]
+    )
+
+    temp = temp[
+        temp["normalized_body"] != ""
+    ]
 
     conflict_counts = (
-        temp.groupby("normalized_body")[
+        temp
+        .groupby(
+            "normalized_body"
+        )[
             "high_level_category"
         ]
         .nunique()
     )
 
-    conflicts = conflict_counts[conflict_counts > 1]
+    conflicts = (
+        conflict_counts[
+            conflict_counts > 1
+        ]
+    )
 
     if conflicts.empty:
         print(
-            "PASS: No identical body text appears with "
-            "conflicting high-level labels."
+            "PASS: No identical body text appears "
+            "with conflicting high-level labels."
         )
     else:
         print(
-            f"WARNING: {len(conflicts)} duplicate body-text "
-            "group(s) contain conflicting labels."
+            f"WARNING: {len(conflicts)} "
+            "duplicate body-text group(s) contain "
+            "conflicting labels."
         )
 
 
+# -------------------------------------------------------------------
+# 8. Source distribution
+# -------------------------------------------------------------------
+
 def check_source_distribution(df):
-    print_section("8. SOURCE AND CLASS DISTRIBUTION")
+    print_section(
+        "8. SOURCE AND CLASS DISTRIBUTION"
+    )
 
     source_column = None
 
     if "source_dataset" in df.columns:
         source_column = "source_dataset"
+
     elif "dataset_source" in df.columns:
         source_column = "dataset_source"
 
     if source_column is None:
-        print("Source field not available.")
+        print(
+            "Source field not available."
+        )
         return
 
-    print(f"Using source field: {source_column}")
+    print(
+        f"Using source field: "
+        f"{source_column}"
+    )
 
     distribution = pd.crosstab(
         df[source_column],
@@ -315,26 +532,47 @@ def check_source_distribution(df):
         margins=True,
     )
 
-    print("\nSource x high-level category:")
-    print(distribution.to_string())
+    print(
+        "\nSource x high-level category:"
+    )
 
+    print(
+        distribution.to_string()
+    )
+
+
+# -------------------------------------------------------------------
+# 9. Generation type distribution
+# -------------------------------------------------------------------
 
 def check_generation_distribution(df):
-    print_section("9. GENERATION TYPE DISTRIBUTION")
+    print_section(
+        "9. GENERATION TYPE DISTRIBUTION"
+    )
 
     if "generation_type" not in df.columns:
-        print("generation_type column not available.")
+        print(
+            "generation_type column not available."
+        )
         return
 
     print(
         df["generation_type"]
-        .value_counts(dropna=False)
+        .value_counts(
+            dropna=False
+        )
         .to_string()
     )
 
 
+# -------------------------------------------------------------------
+# 10. Numeric feature validation
+# -------------------------------------------------------------------
+
 def check_numeric_fields(df):
-    print_section("10. NUMERIC FEATURE VALIDATION")
+    print_section(
+        "10. NUMERIC FEATURE VALIDATION"
+    )
 
     numeric_columns = [
         "url_count",
@@ -343,17 +581,24 @@ def check_numeric_fields(df):
     ]
 
     for column in numeric_columns:
+
         numeric_values = pd.to_numeric(
             df[column],
             errors="coerce",
         )
 
-        invalid = (
-            numeric_values.isna()
-            & df[column].notna()
-        ).sum()
+        invalid = int(
+            (
+                numeric_values.isna()
+                & df[column].notna()
+            ).sum()
+        )
 
-        negative = (numeric_values < 0).sum()
+        negative = int(
+            (
+                numeric_values < 0
+            ).sum()
+        )
 
         print(
             f"{column}: "
@@ -362,8 +607,14 @@ def check_numeric_fields(df):
         )
 
 
+# -------------------------------------------------------------------
+# 11. Boolean feature validation
+# -------------------------------------------------------------------
+
 def check_boolean_fields(df):
-    print_section("11. BOOLEAN FEATURE VALIDATION")
+    print_section(
+        "11. BOOLEAN FEATURE VALIDATION"
+    )
 
     boolean_columns = [
         "has_url",
@@ -393,46 +644,76 @@ def check_boolean_fields(df):
         )
 
         invalid_values = sorted(
-            set(values.unique()) - allowed_values
+            set(values.unique())
+            - allowed_values
         )
 
         if invalid_values:
             print(
-                f"{column}: WARNING unexpected values "
+                f"{column}: WARNING "
+                "unexpected values "
                 f"{invalid_values}"
             )
         else:
-            print(f"{column}: PASS")
+            print(
+                f"{column}: PASS"
+            )
 
+
+# -------------------------------------------------------------------
+# 12. Dataset summary
+# -------------------------------------------------------------------
 
 def dataset_summary(df):
-    print_section("12. DATASET SUMMARY")
+    print_section(
+        "12. DATASET SUMMARY"
+    )
 
     total = len(df)
 
-    print(f"Total records: {total}")
-    print(f"Total columns: {len(df.columns)}")
+    print(
+        f"Total records: {total}"
+    )
 
-    if "high_level_category" in df.columns:
-        print("\nClass distribution:")
+    print(
+        f"Total columns: {len(df.columns)}"
+    )
 
-        counts = df[
-            "high_level_category"
-        ].value_counts(dropna=False)
+    if (
+        "high_level_category"
+        in df.columns
+    ):
+        print(
+            "\nClass distribution:"
+        )
+
+        counts = (
+            df[
+                "high_level_category"
+            ]
+            .value_counts(
+                dropna=False
+            )
+        )
 
         for label, count in counts.items():
+
             percent = (
-                count / total * 100
+                count
+                / total
+                * 100
                 if total
                 else 0
             )
 
             print(
                 f"  {label}: "
-                f"{count} ({percent:.2f}%)"
+                f"{count} "
+                f"({percent:.2f}%)"
             )
 
     if "body_text" in df.columns:
+
         words = (
             df["body_text"]
             .fillna("")
@@ -441,51 +722,125 @@ def dataset_summary(df):
             .str.len()
         )
 
-        print("\nBody-text word statistics:")
-        print(f"  Mean: {words.mean():.2f}")
-        print(f"  Median: {words.median():.2f}")
-        print(f"  Minimum: {words.min()}")
-        print(f"  Maximum: {words.max()}")
+        print(
+            "\nBody-text word statistics:"
+        )
 
+        print(
+            f"  Mean: "
+            f"{words.mean():.2f}"
+        )
+
+        print(
+            f"  Median: "
+            f"{words.median():.2f}"
+        )
+
+        print(
+            f"  Minimum: "
+            f"{words.min()}"
+        )
+
+        print(
+            f"  Maximum: "
+            f"{words.max()}"
+        )
+
+
+# -------------------------------------------------------------------
+# Main validation
+# -------------------------------------------------------------------
 
 def validate_dataset(file_path):
-    print("\nPhishSenseAI Dataset Validator")
-    print(f"Dataset: {file_path}")
-
-    df = load_dataset(file_path)
-
-    schema_valid = validate_columns(df)
-
-    if not schema_valid:
-        print_section("VALIDATION STOPPED")
-        print(
-            "Dataset does not match the fixed "
-            "PhishSenseAI schema."
-        )
-        return False
-
-    validate_email_ids(df)
-    validate_labels(df)
-    check_body_text(df)
-    check_missing_values(df)
-    check_duplicates(df)
-    check_label_conflicts(df)
-    check_source_distribution(df)
-    check_generation_distribution(df)
-    check_numeric_fields(df)
-    check_boolean_fields(df)
-    dataset_summary(df)
-
-    print_section("VALIDATION COMPLETE")
+    print(
+        "\nPhishSenseAI Dataset Validator"
+    )
 
     print(
-        "The dataset has been checked against the fixed "
+        f"Dataset: {file_path}"
+    )
+
+    df = load_dataset(
+        file_path
+    )
+
+    schema_valid = (
+        validate_columns(
+            df
+        )
+    )
+
+    if not schema_valid:
+
+        print_section(
+            "VALIDATION STOPPED"
+        )
+
+        print(
+            "Dataset does not match "
+            "the fixed PhishSenseAI schema."
+        )
+
+        return False
+
+    validate_email_ids(
+        df
+    )
+
+    validate_labels(
+        df
+    )
+
+    check_body_text(
+        df
+    )
+
+    check_missing_values(
+        df
+    )
+
+    check_duplicates(
+        df
+    )
+
+    check_label_conflicts(
+        df
+    )
+
+    check_source_distribution(
+        df
+    )
+
+    check_generation_distribution(
+        df
+    )
+
+    check_numeric_fields(
+        df
+    )
+
+    check_boolean_fields(
+        df
+    )
+
+    dataset_summary(
+        df
+    )
+
+    print_section(
+        "VALIDATION COMPLETE"
+    )
+
+    print(
+        "The dataset has been checked "
+        "against the fixed "
         "PhishSenseAI schema."
     )
 
     print(
-        "Warnings should be reviewed before creating the "
-        "common train/validation/test split."
+        "Warnings should be reviewed "
+        "before creating the common "
+        "train/validation/test split."
     )
 
     return True
@@ -498,21 +853,34 @@ def validate_dataset(file_path):
 if __name__ == "__main__":
 
     if len(sys.argv) != 2:
+
         print(
             "Usage:\n"
             "python validate_dataset.py "
             "<path_to_dataset.csv>"
         )
+
         sys.exit(1)
 
-    dataset_path = sys.argv[1]
+    dataset_path = (
+        sys.argv[1]
+    )
 
     try:
-        success = validate_dataset(dataset_path)
+
+        success = (
+            validate_dataset(
+                dataset_path
+            )
+        )
 
         if not success:
             sys.exit(1)
 
     except Exception as error:
-        print(f"\nERROR: {error}")
+
+        print(
+            f"\nERROR: {error}"
+        )
+
         sys.exit(1)

@@ -12,7 +12,7 @@
 #SBATCH --error=bilstm_%j.err
 
 echo "=================================================="
-echo "PhishSense AI - BiLSTM Development Run"
+echo "PhishSense AI - BiLSTM Preliminary 3000 Run"
 echo "Job ID: $SLURM_JOB_ID"
 echo "Node: $(hostname)"
 echo "Started: $(date)"
@@ -45,8 +45,8 @@ echo "Starting BiLSTM training..."
 echo
 
 python training/models/bilstm/train.py \
-    --dataset data/sample/development_800.csv \
-    --splits data/sample/development_800_splits.csv \
+    --dataset data/sample/preliminary_3000.csv \
+    --splits data/sample/preliminary_3000_splits.csv \
     --glove resources/embeddings/glove.6B.100d.txt
 
 EXIT_CODE=$?

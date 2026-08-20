@@ -32,3 +32,7 @@ data/sample/
 # Slurm job logs
 *.out
 *.err
+
+# Local experiment result backups
+results/
+
